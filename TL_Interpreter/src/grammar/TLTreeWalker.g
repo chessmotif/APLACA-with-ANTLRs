@@ -7,6 +7,8 @@ options {
 
 @header { 
   import tl.tree.*; 
+  import tl.tree.binNode.*;
+  import tl.tree.relNode.*;
   import java.util.Map; 
   import java.util.HashMap; 
 }  
@@ -27,11 +29,23 @@ options {
 }  
   
 walk returns [TLNode node]
-  :  block{node=null;}
+  :  block		{node = $block.node;}
   ;
 
 block returns [TLNode node]
-  :  ^(BLOCK ^(STATEMENTS statement*) ^(RETURN expression?))
+@init { 
+  BlockNode bn = new BlockNode(); 
+  node = bn; 
+  Scope scope = new Scope(currentScope); 
+  currentScope = scope; 
+}  
+@after { 
+  currentScope = currentScope.parent(); 
+}  
+  :	^(BLOCK 
+  		^(STATEMENTS (statement  {bn.addStatement($statement.node);})*) 
+  		^(RETURN (expression  {bn.addStatement($expression.node);})?)
+  	)
   ;
 
 delimitedBlock returns [TLNode node]
@@ -49,21 +63,15 @@ functionCall  returns [TLNode node]
   ;
 
 ifStatement returns [TLNode node]
-  : ^(IF ifStat elseIfStat* elseStat?)
+@init  { 
+  IfNode ifNode = new IfNode(); 
+  node = ifNode; 
+}  
+  : ^(IF (^(EXP e=expression a=block) {ifNode.addChoice($e.node,$a.node);})+ 
+  		(^(EXP b=block)             {ifNode.addChoice(new AtomNode(true),$b.node);})?
+  	)
   ;
-  
-ifStat
-  : ^(EXP expression block)
-  ;
-  
-elseIfStat
-  : ^(EXP expression block)
-  ;
-
-elseStat
-  : ^(EXP block)
-  ;
-  
+    
 idList returns [java.util.List<String> i] 
   : ^(ID_LIST Identifier+)
   ;
@@ -84,18 +92,18 @@ exprList   returns [java.util.List<TLNode> e]
 expression  returns [TLNode node]  
   :  ^('|_|' expression expression)  
   |  ^('&_&' expression expression)  
-  |  ^('=_=' expression expression)  
-  |  ^('>_<' expression expression)  
-  |  ^('>_=' expression expression)  
-  |  ^('=_<' expression expression)  
-  |  ^('>_>' expression expression)  
-  |  ^('<_<' expression expression)  
-  |  ^('+' expression expression)  
-  |  ^('-' expression expression)  
-  |  ^('*' expression expression)  
-  |  ^('/' expression expression)  
-  |  ^('//' expression expression)  
-  |  ^('%' expression expression)  
+  |  ^('=_=' a=expression b=expression)  {node = new EqNode($a.node, $b.node);}
+  |  ^('>_<' a=expression b=expression)  {node = new NENode($a.node, $b.node);}
+  |  ^('>_=' a=expression b=expression)  {node = new GTENode($a.node, $b.node);}
+  |  ^('=_<' a=expression b=expression)  {node = new LTENode($a.node, $b.node);}
+  |  ^('>_>' a=expression b=expression)  {node = new GTNode($a.node, $b.node);}
+  |  ^('<_<' a=expression b=expression)  {node = new LTNode($a.node, $b.node);}
+  |  ^('+' a=expression b=expression)	{node = new AddNode($a.node, $b.node);}
+  |  ^('-' a=expression b=expression)	{node = new SubNode($a.node, $b.node);}
+  |  ^('*' a=expression b=expression)	{node = new MultNode($a.node, $b.node);}
+  |  ^('/' a=expression b=expression)	{node = new DivNode($a.node, $b.node);}
+  |  ^('//' a=expression b=expression)	{node = new QuotNode($a.node, $b.node);}
+  |  ^('%' a=expression b=expression)	{node = new ModNode($a.node, $b.node);}
   |  ^('**' expression expression)  
   |  ^('^' expression expression)  
   |  ^('&' expression expression)  
@@ -103,9 +111,9 @@ expression  returns [TLNode node]
   |  ^(UNARY_MIN expression)  
   |  ^(NOT expression)  
   |  ^(BIN_NOT expression)  
-  |  Number
-  |  Bool
-  |  Null
+  |  Number							{node = new AtomNode(Double.parseDouble($Number.text));}
+  |  Bool							{node = new AtomNode(Boolean.parseBoolean($Bool.text));}
+  |  Null							{node = new AtomNode(null);}
   |  In
   |  lookup             
   ;

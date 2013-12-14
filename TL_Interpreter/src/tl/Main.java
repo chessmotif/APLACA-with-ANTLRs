@@ -1,8 +1,8 @@
 package tl;
 
+import tl.tree.*;
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.*;
-import org.antlr.stringtemplate.StringTemplate;
 
 public class Main {
   public static void main(String[] args) throws Exception {
@@ -17,19 +17,13 @@ public class Main {
     
     // walk the tree
     CommonTree tree = (CommonTree)parser.parse().getTree();
-   
     CommonTreeNodeStream nodes = new CommonTreeNodeStream(tree);
     
-    TLTreeWalker walker = new TLTreeWalker(nodes,parser.functions);  
-   
-    TLNode returned = walker.walk();  
-    System.out.println(returned == null ? "null" : returned.evaluate());
+    // pass the reference to the Map of functions to the tree walker
+    TLTreeWalker walker = new TLTreeWalker(nodes, parser.functions);
     
-    /*
-    // print nodes
-    DOTTreeGenerator gen = new DOTTreeGenerator();  
-    StringTemplate str = gen.toDOT(tree);  
-    System.out.println(str);
-    */
+    // get the returned node 
+    TLNode returned = walker.walk();
+    System.out.println(returned == null ? "null" : returned.evaluate());
   }
 }

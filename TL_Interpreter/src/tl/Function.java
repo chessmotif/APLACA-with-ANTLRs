@@ -4,7 +4,7 @@ import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.tree.CommonTree;  
 import org.antlr.runtime.tree.CommonTreeNodeStream;  
 import tl.TLTreeWalker;  
-import tl.TLNode;  
+import tl.tree.TLNode;
   
 import java.util.ArrayList;  
 import java.util.List;  
