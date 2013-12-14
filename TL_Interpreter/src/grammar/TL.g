@@ -73,10 +73,10 @@ powExpr
   ;
   
 unaryExpr
-  :  '-' parenExpr
-  |  '!' parenExpr
-  |  '~' parenExpr
-  |  parenExpr
+  :  '-' atom
+  |  '!' atom
+  |  '~' atom
+  |  atom
   ;
   
   /*
