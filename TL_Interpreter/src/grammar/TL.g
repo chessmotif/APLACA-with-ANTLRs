@@ -1,90 +1,137 @@
 grammar TL;
 
+options { 
+  output=AST;
+}
+
+tokens {
+  BLOCK;
+  RETURN;
+  STATEMENTS;
+  ASSIGNMENT;
+  IF;
+  EXP;
+  ID_LIST;
+  INDEXES;
+  UNARY_MIN;
+  NOT;
+  BIN_NOT;
+  LOOKUP;
+  LIST;
+  EXP_LIST;
+  FUNC_CALL;
+}
+
 parse
   :  delimitedBlock EOF
   ;
 
 block
   :  '{' delimitedBlock '}'
+  		-> delimitedBlock
   ;
 
 delimitedBlock
   : (statement | functionDecl)* (Return expression ';')?
+  		-> ^(BLOCK ^(STATEMENTS statement*) ^(RETURN expression?))
   ;
 
 statement
-  :  assignment ';'
-  |  functionCall ';'
+  :  assignment ';' -> assignment
+  |  functionCall ';' -> functionCall
   |  ifStatement
   ;
 
+ifStatement
+  :  ifStat elseIfStat* elseStat? -> ^(IF ifStat elseIfStat* elseStat?)
+  ;
+
+ifStat
+  :  If expression block -> ^(EXP expression block)
+  ;
+
+elseIfStat
+  :  Else_If expression block -> ^(EXP expression block)
+  |  Else If expression block -> ^(EXP expression block)
+  ;
+
+elseStat
+  :  Else block -> ^(EXP block)
+  ;
+
 functionDecl
-  :  Def_Func Identifier '(' idList? ')' block
+  :  Def_Func Identifier '(' idList? ')' block // TBI
   ;
 
 idList
-  :  Identifier (',' Identifier)*
+  :  Identifier (',' Identifier)* -> ^(ID_LIST Identifier+)
   ;
  
  assignment
   :  Identifier indexes? '<-' expression
+  		-> ^(ASSIGNMENT Identifier indexes? expression)
   ;
 
 indexes
-  :  ('[' expression ']')+
+  :  ('[' expression ']')+ -> ^(INDEXES expression+)
   ;
  
  expression
   :  orExpr
   ;
 
-/*
+/* FOR IF STATEMENTS
 condExpr
   :  orExpr ( ifStatement )?
   ;
 */
 
 orExpr
-  :  andExpr ('||' andExpr)*
+  :  andExpr ('|_|'^ andExpr)*
   ;
 
 andExpr
-  :  equExpr ('&&' equExpr)*
+  :  bitORExpr ('&_&'^ bitORExpr)*
+  ;
+
+bitORExpr
+  :  bitXORExpr ('|'^ bitXORExpr)*
+  ;
+
+bitXORExpr
+  :  bitANDExpr ('^'^ bitANDExpr)*
+  ;
+
+bitANDExpr
+  :  equExpr ('&'^ equExpr)*
   ;
 
 equExpr
-  :  relExpr (('=_=' | '>_<') relExpr)*
+  :  relExpr (('=_=' | '>_<')^ relExpr)*
   ;
 
 relExpr
-  :  addExpr (('>_=' | '=_<' | '>_>' | '<_<') addExpr)*
+  :  addExpr (('>_=' | '=_<' | '>_>' | '<_<')^ addExpr)*
   ;
 
 addExpr
-  :  mulExpr (('+' | '-') mulExpr)*
+  :  mulExpr (('+' | '-')^ mulExpr)*
   ;
 
 mulExpr
-  :  powExpr (('*' | '/' | '%' | '//') powExpr)*
+  :  powExpr (('*' | '/' | '%' | '//')^ powExpr)*
   ;
 
 powExpr
-  :  unaryExpr ('**' unaryExpr)*
+  :  unaryExpr ('**'^ unaryExpr)*
   ;
   
 unaryExpr
-  :  '-' atom
-  |  '!' atom
-  |  '~' atom
+  :  '-' atom -> ^(UNARY_MIN atom)
+  |  '!' atom -> ^(NOT atom)
+  |  '~' atom -> ^(BIN_NOT atom)
   |  atom
   ;
-  
-  /*
-parenExpr
-  :  '(' atom ')'
-  |  atom
-  ;
-*/
 
 atom
   :  Null
@@ -94,41 +141,25 @@ atom
   ;
  
 lookup
-  :  functionCall indexes?
-  |  '(' expression ')' indexes?
-  |  list indexes?
-  |  Identifier indexes?
-  |  String indexes?
+  :  functionCall indexes?			-> ^(LOOKUP functionCall indexes?)
+  |  '(' expression ')' indexes?	-> ^(LOOKUP expression indexes?)
+  |  list indexes?					-> ^(LOOKUP list indexes?)
+  |  Identifier indexes?			-> ^(LOOKUP Identifier indexes?)
+  |  String indexes?				-> ^(LOOKUP String indexes?)
   ;
 
 list
-  :  '[' exprList? ']'
+  :  '[' exprList? ']' -> ^(LIST exprList?)
   ;
 
 exprList
-  :  expression (',' expression)*
+  :  expression (',' expression)* -> ^(EXP_LIST expression+)
   ;
 
 functionCall
-  :  Identifier '(' exprList? ')'
+  :  Identifier '(' exprList? ')' -> ^(FUNC_CALL Identifier exprList?)
   ;
  
-ifStatement
-  :  ifStat elseIfStat* elseStat?
-  ;
-
-ifStat
-  :  If expression block
-  ;
-
-elseIfStat
-  :  Else If expression block
-  ;
-
-elseStat
-  :  Else block
-  ;
-
 Def_Func		: 'func';
 If				: 'if';
 Else_If			: 'fiif';
