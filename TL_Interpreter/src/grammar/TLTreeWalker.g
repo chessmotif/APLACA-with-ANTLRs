@@ -31,7 +31,7 @@ walk returns [TLNode node]
   ;
 
 block returns [TLNode node]
-  :  delimitedBlock
+  :  ^(BLOCK ^(STATEMENTS statement*) ^(RETURN expression?))
   ;
 
 delimitedBlock returns [TLNode node]
@@ -70,6 +70,7 @@ idList returns [java.util.List<String> i]
   
 assignment
   : ^(ASSIGNMENT Identifier indexes? expression)
+  | ^(TO_PRINT expression)
   ;
 
 indexes returns [TLNode node]  
@@ -102,9 +103,10 @@ expression  returns [TLNode node]
   |  ^(UNARY_MIN expression)  
   |  ^(NOT expression)  
   |  ^(BIN_NOT expression)  
-  |  Number  
-  |  Bool  
-  |  Null  
+  |  Number
+  |  Bool
+  |  Null
+  |  In
   |  lookup             
   ;
   

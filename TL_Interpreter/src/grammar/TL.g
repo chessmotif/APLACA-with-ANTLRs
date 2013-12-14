@@ -9,6 +9,7 @@ tokens {
   RETURN;
   STATEMENTS;
   ASSIGNMENT;
+  TO_PRINT;
   IF;
   EXP;
   ID_LIST;
@@ -50,8 +51,8 @@ parse
   ;
 
 block
-  :  '{' delimitedBlock '}'
-  		-> delimitedBlock
+  :  '{' (statement | functionDecl)* (Return expression ';')? '}'
+  		-> ^(BLOCK ^(STATEMENTS statement*) ^(RETURN expression?))
   ;
 
 delimitedBlock
@@ -94,6 +95,8 @@ idList
  assignment
   :  Identifier indexes? '<-' expression
   		-> ^(ASSIGNMENT Identifier indexes? expression)
+  |  Out '<-' expression
+        -> ^(TO_PRINT expression)
   ;
 
 indexes
@@ -161,6 +164,7 @@ atom
   :  Null
   |  Number
   |  Bool
+  |  In
   |  lookup
   ;
  
