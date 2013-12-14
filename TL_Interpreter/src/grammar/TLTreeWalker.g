@@ -5,6 +5,27 @@ options {
   ASTLabelType=CommonTree;
 }
 
+@header { 
+  import tl.tree.*; 
+  import java.util.Map; 
+  import java.util.HashMap; 
+}  
+  
+@members { 
+  public Map<String, Function> functions = null; 
+  Scope currentScope = null; 
+   
+  public TLTreeWalker(CommonTreeNodeStream nodes, Map<String, Function> fns) { 
+    this(nodes, null, fns); 
+  } 
+   
+  public TLTreeWalker(CommonTreeNodeStream nds, Scope sc, Map<String, Function> fns) { 
+    super(nds); 
+    currentScope = sc; 
+    functions = fns; 
+  } 
+}  
+  
 walk returns [TLNode node]
   :  block{node=null;}
   ;

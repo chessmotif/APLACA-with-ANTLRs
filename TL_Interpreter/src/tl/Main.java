@@ -24,12 +24,10 @@ public class Main {
    
     TLNode returned = walker.walk();  
     System.out.println(returned == null ? "null" : returned.evaluate());
+
     // print nodes
     DOTTreeGenerator gen = new DOTTreeGenerator();  
     StringTemplate str = gen.toDOT(tree);  
     System.out.println(str);
-
-
-    
   }
 }
