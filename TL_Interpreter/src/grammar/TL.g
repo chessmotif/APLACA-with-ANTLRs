@@ -22,6 +22,7 @@ tokens {
   FUNC_CALL;
 }
 
+
 parse
   :  delimitedBlock EOF
   ;
@@ -60,7 +61,8 @@ elseStat
   ;
 
 functionDecl
-  :  Def_Func Identifier '(' idList? ')' block // TBI
+  :  Def_Func Identifier '(' idList? ')' block 
+  	  {defineFunction($Identifier.text, $idList.tree, $block.tree);}
   ;
 
 idList

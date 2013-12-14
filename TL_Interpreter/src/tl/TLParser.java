@@ -5,6 +5,8 @@ import org.antlr.runtime.*;
 import java.util.Stack;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map; 
+import java.util.HashMap; 
 
 
 import org.antlr.runtime.tree.*;
@@ -78,6 +80,20 @@ public class TLParser extends Parser {
     // delegates
     // delegators
 
+    public Map<String, Function> functions = new HashMap<String, Function>(); 
+    
+    private void defineFunction(String id, Object idList, Object block) { 
+   
+      // `idList` is possibly null!  Create an empty tree in that case.  
+      CommonTree idListTree = idList == null ? new CommonTree() : (CommonTree)idList; 
+   
+      // `block` is never null 
+      CommonTree blockTree = (CommonTree)block; 
+   
+      // The function name with the number of parameters after it, is the unique key 
+      String key = id + idListTree.getChildCount(); 
+      functions.put(key, new Function(id, idListTree, blockTree)); 
+    } 
 
         public TLParser(TokenStream input) {
             this(input, new RecognizerSharedState());

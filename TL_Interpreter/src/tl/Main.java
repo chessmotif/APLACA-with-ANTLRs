@@ -17,9 +17,13 @@ public class Main {
     
     // walk the tree
     CommonTree tree = (CommonTree)parser.parse().getTree();
+   
     CommonTreeNodeStream nodes = new CommonTreeNodeStream(tree);
-    TLTreeWalker walker = new TLTreeWalker(nodes);
-    walker.walk();
+    
+    TLTreeWalker walker = new TLTreeWalker(nodes,parser.functions);  
+   
+    TLNode returned = walker.walk();  
+    System.out.println(returned == null ? "null" : returned.evaluate());
     // print nodes
     DOTTreeGenerator gen = new DOTTreeGenerator();  
     StringTemplate str = gen.toDOT(tree);  

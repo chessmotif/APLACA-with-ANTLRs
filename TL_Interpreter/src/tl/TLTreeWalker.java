@@ -5,6 +5,8 @@ import org.antlr.runtime.*;
 import org.antlr.runtime.tree.*;import java.util.Stack;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
 public class TLTreeWalker extends TreeParser {
     public static final String[] tokenNames = new String[] {
@@ -75,6 +77,18 @@ public class TLTreeWalker extends TreeParser {
     // delegates
     // delegators
 
+    public Map<String, Function> functions = null; 
+    Scope currentScope = null; 
+     
+    public TLTreeWalker(CommonTreeNodeStream nodes, Map<String, Function> fns) { 
+      this(nodes, null, fns); 
+    } 
+     
+    public TLTreeWalker(CommonTreeNodeStream nds, Scope sc, Map<String, Function> fns) { 
+      super(nds); 
+      currentScope = sc; 
+      functions = fns; 
+    } 
 
         public TLTreeWalker(TreeNodeStream input) {
             this(input, new RecognizerSharedState());

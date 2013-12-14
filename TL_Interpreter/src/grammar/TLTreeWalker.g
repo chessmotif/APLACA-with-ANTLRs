@@ -5,29 +5,29 @@ options {
   ASTLabelType=CommonTree;
 }
 
-walk
+walk returns [TLNode node]
+  :  block{node=null;}
+  ;
+
+block returns [TLNode node]
   :  delimitedBlock
   ;
 
-block
-  :  delimitedBlock
-  ;
-
-delimitedBlock
+delimitedBlock returns [TLNode node]
   : ^(BLOCK ^(STATEMENTS statement*) ^(RETURN expression?))
   ;
   
-statement
+statement returns [TLNode node]
   : assignment
   | functionCall
   | ifStatement
   ;
 
-functionCall  
+functionCall  returns [TLNode node]
   :  ^(FUNC_CALL Identifier exprList?)  
   ;
 
-ifStatement
+ifStatement returns [TLNode node]
   : ^(IF ifStat elseIfStat* elseStat?)
   ;
   
@@ -43,7 +43,7 @@ elseStat
   : ^(EXP block)
   ;
   
-idList
+idList returns [java.util.List<String> i] 
   : ^(ID_LIST Identifier+)
   ;
   
@@ -51,15 +51,15 @@ assignment
   : ^(ASSIGNMENT Identifier indexes? expression)
   ;
 
-indexes
+indexes returns [TLNode node]  
   : ^(INDEXES expression+)
   ;
   
-exprList  
+exprList   returns [java.util.List<TLNode> e] 
   :  ^(EXP_LIST expression+)  
   ;
   
-expression  
+expression  returns [TLNode node]  
   :  ^('|_|' expression expression)  
   |  ^('&_&' expression expression)  
   |  ^('=_=' expression expression)  
@@ -87,11 +87,11 @@ expression
   |  lookup             
   ;
   
-list  
+list  returns [TLNode node]  
   :  ^(LIST exprList?)  
   ;  
   
-lookup  
+lookup  returns [TLNode node]  
   :  ^(LOOKUP functionCall indexes?)  
   |  ^(LOOKUP list indexes?)  
   |  ^(LOOKUP expression indexes?)   
