@@ -20,5 +20,12 @@ public class Main {
     CommonTreeNodeStream nodes = new CommonTreeNodeStream(tree);
     TLTreeWalker walker = new TLTreeWalker(nodes);
     walker.walk();
+    // print nodes
+    DOTTreeGenerator gen = new DOTTreeGenerator();  
+    StringTemplate str = gen.toDOT(tree);  
+    System.out.println(str);
+
+
+    
   }
 }
