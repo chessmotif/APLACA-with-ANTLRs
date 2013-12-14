@@ -5,7 +5,7 @@ HOW TO COMPILE:
 cmd all the way to the grammar folder
 
 run these commands:
-  java -cp antlr-3.2.jar org.antlr.Tool TL.g
+  java -cp antlr-3.2.jar org.antlr.Tool TL.g TLTreeWalker.g
   javac -cp antlr-3.2.jar TL*.java
 
 compile main
