@@ -1,3 +1,3 @@
-aaa = 1.333 + 'a\'b"'; 
-b = /* comment 1 */ aaa^aaa; 
-println('b=' + b); // comment 2
+n <- (+ 3 2);
+asd <- 'asd';
+out <- (+ in 5);
