@@ -1,23 +1,25 @@
 grammar TL;
 
 parse
-  :  block EOF
+  :  delimitedBlock EOF
   ;
 
 block
-  :  (statement | functionDecl)* (Return expression ';')?
+  :  '{' delimitedBlock '}'
+  ;
+
+delimitedBlock
+  : (statement | functionDecl)* (Return expression ';')?
   ;
 
 statement
   :  assignment ';'
   |  functionCall ';'
   |  ifStatement
-  |  forStatement
-  |  whileStatement
   ;
 
 functionDecl
-  :  Def Identifier '(' idList? ')' block End
+  :  Def_Func Identifier '(' idList? ')' block
   ;
 
 idList
@@ -25,7 +27,7 @@ idList
   ;
  
  assignment
-  :  Identifier indexes? '=' expression
+  :  Identifier indexes? '<-' expression
   ;
 
 indexes
@@ -33,14 +35,14 @@ indexes
   ;
  
  expression
-  :  condExpr
+  :  orExpr
   ;
 
+/*
 condExpr
-  :  orExpr ( '?' expression ':' expression
-            | In expression
-            )?
+  :  orExpr ( ifStatement )?
   ;
+*/
 
 orExpr
   :  andExpr ('||' andExpr)*
@@ -51,11 +53,11 @@ andExpr
   ;
 
 equExpr
-  :  relExpr (('==' | '!=') relExpr)*
+  :  relExpr (('=_=' | '>_<') relExpr)*
   ;
 
 relExpr
-  :  addExpr (('>=' | '<=' | '>' | '<') addExpr)*
+  :  addExpr (('>_=' | '=_<' | '>_>' | '<_<') addExpr)*
   ;
 
 addExpr
@@ -63,16 +65,17 @@ addExpr
   ;
 
 mulExpr
-  :  powExpr (('*' | '/' | '%') powExpr)*
+  :  powExpr (('*' | '/' | '%' | '//') powExpr)*
   ;
 
 powExpr
-  :  unaryExpr ('^' unaryExpr)*
+  :  unaryExpr ('**' unaryExpr)*
   ;
   
 unaryExpr
   :  '-' atom
   |  '!' atom
+  |  '~' atom
   |  atom
   ;
 
@@ -101,78 +104,64 @@ exprList
 
 functionCall
   :  Identifier '(' exprList? ')'
-  |  Println '(' expression? ')'
-  |  Print '(' expression ')'
-  |  Assert '(' expression ')'
-  |  Size '(' expression ')'
   ;
  
 ifStatement
-  :  ifStat elseIfStat* elseStat? End 
+  :  ifStat elseIfStat* elseStat?
   ;
 
 ifStat
-  :  If expression Do block
+  :  If expression block
   ;
 
 elseIfStat
-  :  Else If expression Do block
+  :  Else If expression block
   ;
 
 elseStat
-  :  Else Do block
+  :  Else block
   ;
 
-forStatement
-  :  For Identifier '=' expression To expression Do block End 
-  ;
+Def_Func		: 'func';
+If				: 'if';
+Else_If			: 'fiif';
+Else			: 'fi';
+Return			: 'return';
+Out				: 'out';
+In				: 'in';
+Null			: 'null';
 
-whileStatement
-  :  While expression Do block End
-  ;
+Or				: '|_|';
+And				: '&_&';
+Equals			: '=_=';
+NEquals			: '>_<';
+GTEquals		: '>_=';
+LTEquals		: '=_<';
+GT				: '>_>';
+LT				: '<_<';
+Not				: '!';
 
-Println  : 'println';
-Print    : 'print';
-Assert   : 'assert';
-Size     : 'size';
-Def      : 'def';
-If       : 'if';
-Else     : 'else';
-Return   : 'return';
-For      : 'for';
-While    : 'while';
-To       : 'to';
-Do       : 'do';
-End      : 'end';
-In       : 'in';
-Null     : 'null';
+Pow				: '**';
+Add				: '+';
+Subt			: '-';
+Mult			: '*';
+Int_Div			: '//';
+Div				: '/';
+Mod				: '%';
+Bit_Or			: '|';
+Bit_And			: '&';
+Bit_Xor			: '^';
+Bit_Not			: '~';
 
-Or       : '||';
-And      : '&&';
-Equals   : '==';
-NEquals  : '!=';
-GTEquals : '>=';
-LTEquals : '<=';
-Pow      : '^';
-Excl     : '!';
-GT       : '>';
-LT       : '<';
-Add      : '+';
-Subtract : '-';
-Multiply : '*';
-Divide   : '/';
-Modulus  : '%';
-OBrace   : '{';
-CBrace   : '}';
-OBracket : '[';
-CBracket : ']';
-OParen   : '(';
-CParen   : ')';
-SColon   : ';';
-Assign   : '=';
-Comma    : ',';
-QMark    : '?';
-Colon    : ':';
+Gets			: '<-';
+Comma			: ',';
+
+Open_Paren		: '(';
+Close_Paren		: ')';
+Open_Bracket	: '[';
+Close_Bracket	: ']';
+Open_Brace		: '{';
+Close_Brace		: '}';
 
 Bool
   :  'true' 
@@ -191,8 +180,7 @@ String
 @after {
   setText(getText().substring(1, getText().length()-1).replaceAll("\\\\(.)", "$1"));
 }
-  :  '"'  (~('"' | '\\')  | '\\' .)* '"' 
-  |  '\'' (~('\'' | '\\') | '\\' .)* '\'' 
+  :  '\'' (~('\'' | '\\') | '\\' .)* '\'' 
   ;
 
 Comment
