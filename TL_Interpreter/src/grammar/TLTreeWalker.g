@@ -89,12 +89,13 @@ idList returns [java.util.List<String> i]
   ;
   
 assignment returns [TLNode node]
-  : ^(ASSIGNMENT i=Identifier x=indexes? e=expression)   {node = new AssignmentNode($i.node, $x.node, $e.node, currentScope);}
+  : ^(ASSIGNMENT i=Identifier x=indexes? e=expression)   {node = new AssignmentNode($i.text, $x.e, $e.node, currentScope);}
   | ^(TO_PRINT expression)  {node = new OutNode($expression.node);}
   ;
 
-indexes returns [TLNode node]  
-  : ^(INDEXES expression+)
+indexes returns [List<TLNode> e]  
+@init {e = new ArrayList<TLNode>();}
+  : ^(INDEXES (expression  {e.add($expression.node);})+)
   ;
   
 exprList   returns [java.util.List<TLNode> e] 
@@ -127,7 +128,7 @@ expression  returns [TLNode node]
   |  Bool							{node = new AtomNode(Boolean.parseBoolean($Bool.text));}
   |  Null							{node = new AtomNode(null);}
   |  In
-  |  lookup             
+  |  lookup             			{node = $lookup.node;}  
   ;
   
 list  returns [TLNode node]  

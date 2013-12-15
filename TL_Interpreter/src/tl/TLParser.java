@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 TL.g 2013-12-15 15:17:53
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 TL.g 2013-12-15 17:36:49
  
   package tl; 
   import java.util.Map; 
@@ -481,7 +481,7 @@ public class TLParser extends Parser {
 
 
             // AST REWRITE
-            // elements: statement, expression
+            // elements: expression, statement
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -820,7 +820,7 @@ public class TLParser extends Parser {
 
 
             // AST REWRITE
-            // elements: elseIfStat, elseStat, ifStat
+            // elements: elseStat, ifStat, elseIfStat
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -922,7 +922,7 @@ public class TLParser extends Parser {
 
 
             // AST REWRITE
-            // elements: expression, block
+            // elements: block, expression
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1040,7 +1040,7 @@ public class TLParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: expression, block
+                    // elements: block, expression
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1092,7 +1092,7 @@ public class TLParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: expression, block
+                    // elements: block, expression
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1528,7 +1528,7 @@ public class TLParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: indexes, Identifier, expression
+                    // elements: expression, indexes, Identifier
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -3216,7 +3216,7 @@ public class TLParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: indexes, functionCall
+                    // elements: functionCall, indexes
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -3290,7 +3290,7 @@ public class TLParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: expression, indexes
+                    // elements: indexes, expression
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -3358,7 +3358,7 @@ public class TLParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: indexes, list
+                    // elements: list, indexes
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
