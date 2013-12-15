@@ -1,1 +1,1 @@
-return true >_< false;
+return 'hello world';
