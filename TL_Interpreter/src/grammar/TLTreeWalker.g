@@ -132,8 +132,8 @@ expression  returns [TLNode node]
   |  Number							{node = new AtomNode(Double.parseDouble($Number.text));}
   |  Bool							{node = new AtomNode(Boolean.parseBoolean($Bool.text));}
   |  Null							{node = new AtomNode(null);}
-  |  In
   |  lookup             			{node = $lookup.node;}  
+  |  ^(In String?)                                  {node = new InputNode($String.text);} // added this line
   ;
   
 list  returns [TLNode node]  

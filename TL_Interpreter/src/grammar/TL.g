@@ -163,8 +163,8 @@ atom
   :  Null
   |  Number
   |  Bool
-  |  In
   |  lookup
+  |		In '(' String? ')' -> ^(In String?) // added this line
   ;
  
 lookup
