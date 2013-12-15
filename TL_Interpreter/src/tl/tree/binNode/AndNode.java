@@ -1,4 +1,4 @@
-	package tl.tree.binNode;
+package tl.tree.binNode;
 
 import tl.TLValue;
 import tl.tree.TLNode;
