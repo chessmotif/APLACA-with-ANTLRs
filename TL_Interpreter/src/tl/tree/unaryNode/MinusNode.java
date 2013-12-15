@@ -13,9 +13,8 @@ public class MinusNode extends UnaryNode {
 
 	    TLValue a = exp.evaluate();
 	    
-	    // number + number
 	    if(a.isNumber()) {
-	      return new TLValue(~a.asInteger());
+	      return new TLValue(-a.asDouble());
 	    }
 
 	    throw new RuntimeException("illegal expression: " + this);

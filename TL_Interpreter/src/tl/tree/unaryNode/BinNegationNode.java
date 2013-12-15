@@ -13,7 +13,6 @@ public class BinNegationNode extends UnaryNode {
 
 	    TLValue a = exp.evaluate();
 	    
-	    // long
 	    if(a.isNumber()) {
 	    	if (a.asDouble() - a.asLong() < 1E-30)
 	    		return new TLValue(~a.asLong());
