@@ -1,0 +1,9 @@
+========================================
+====CSC617M INTERPRETER AUTHORS FILE====
+========================================
+
+>>>>>>>AUTHORS<<<<<<<
+Duke Danielle delos Santos
+Andrew Laron
+
+>>>>>>>DECLARATION OF ORIGINAL WORK<<<<<<<
