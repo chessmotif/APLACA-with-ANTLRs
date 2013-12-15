@@ -1,5 +1,5 @@
 package tl;
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 TL.g 2013-12-15 21:11:17
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 TL.g 2013-12-15 22:02:08
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 public class TLLexer extends Lexer {
     public static final int LT=39;
-    public static final int T__64=64;
+    public static final int T__65=65;
     public static final int TO_PRINT=8;
-    public static final int Open_Bracket=56;
-    public static final int Close_Brace=59;
+    public static final int Open_Bracket=57;
+    public static final int Close_Brace=60;
     public static final int BIN_NOT=15;
     public static final int EXP_LIST=18;
     public static final int NOT=14;
@@ -20,22 +20,22 @@ public class TLLexer extends Lexer {
     public static final int EOF=-1;
     public static final int Subt=43;
     public static final int Identifier=25;
-    public static final int Int=60;
+    public static final int Int=61;
     public static final int FUNC_CALL=19;
     public static final int IF=9;
-    public static final int Space=63;
+    public static final int Space=64;
     public static final int Out=26;
     public static final int Bit_And=49;
-    public static final int Gets=52;
+    public static final int Gets=53;
     public static final int Number=28;
-    public static final int Comment=62;
+    public static final int Comment=63;
     public static final int EXP=10;
     public static final int GTEquals=36;
     public static final int RETURN=5;
     public static final int Bit_Or=48;
     public static final int String=31;
     public static final int Or=32;
-    public static final int Open_Brace=58;
+    public static final int Open_Brace=59;
     public static final int Return=20;
     public static final int Def_Func=24;
     public static final int If=21;
@@ -47,13 +47,14 @@ public class TLLexer extends Lexer {
     public static final int In=30;
     public static final int NEquals=35;
     public static final int INDEXES=12;
-    public static final int Digit=61;
+    public static final int Strcat=52;
+    public static final int Digit=62;
     public static final int LIST=17;
-    public static final int Open_Paren=54;
+    public static final int Open_Paren=55;
     public static final int Else_If=22;
     public static final int LOOKUP=16;
     public static final int Mult=44;
-    public static final int Close_Bracket=57;
+    public static final int Close_Bracket=58;
     public static final int Bit_Xor=50;
     public static final int BLOCK=4;
     public static final int Not=40;
@@ -65,9 +66,9 @@ public class TLLexer extends Lexer {
     public static final int Bit_Not=51;
     public static final int Else=23;
     public static final int Equals=34;
-    public static final int Comma=53;
+    public static final int Comma=54;
     public static final int Pow=41;
-    public static final int Close_Paren=55;
+    public static final int Close_Paren=56;
     public static final int LTEquals=37;
 
     // delegates
@@ -83,10 +84,10 @@ public class TLLexer extends Lexer {
     }
     public String getGrammarFileName() { return "TL.g"; }
 
-    // $ANTLR start "T__64"
-    public final void mT__64() throws RecognitionException {
+    // $ANTLR start "T__65"
+    public final void mT__65() throws RecognitionException {
         try {
-            int _type = T__64;
+            int _type = T__65;
             int _channel = DEFAULT_TOKEN_CHANNEL;
             // TL.g:3:7: ( ';' )
             // TL.g:3:9: ';'
@@ -101,7 +102,7 @@ public class TLLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__64"
+    // $ANTLR end "T__65"
 
     // $ANTLR start "Def_Func"
     public final void mDef_Func() throws RecognitionException {
@@ -276,8 +277,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Or;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:199:7: ( '|_|' )
-            // TL.g:199:9: '|_|'
+            // TL.g:200:7: ( '|_|' )
+            // TL.g:200:9: '|_|'
             {
             match("|_|"); 
 
@@ -297,8 +298,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = And;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:200:8: ( '&_&' )
-            // TL.g:200:10: '&_&'
+            // TL.g:201:8: ( '&_&' )
+            // TL.g:201:10: '&_&'
             {
             match("&_&"); 
 
@@ -318,8 +319,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Equals;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:201:10: ( '=_=' )
-            // TL.g:201:12: '=_='
+            // TL.g:202:10: ( '=_=' )
+            // TL.g:202:12: '=_='
             {
             match("=_="); 
 
@@ -339,8 +340,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = NEquals;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:202:11: ( '>_<' )
-            // TL.g:202:13: '>_<'
+            // TL.g:203:11: ( '>_<' )
+            // TL.g:203:13: '>_<'
             {
             match(">_<"); 
 
@@ -360,8 +361,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = GTEquals;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:203:11: ( '>_=' )
-            // TL.g:203:13: '>_='
+            // TL.g:204:11: ( '>_=' )
+            // TL.g:204:13: '>_='
             {
             match(">_="); 
 
@@ -381,8 +382,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = LTEquals;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:204:11: ( '=_<' )
-            // TL.g:204:13: '=_<'
+            // TL.g:205:11: ( '=_<' )
+            // TL.g:205:13: '=_<'
             {
             match("=_<"); 
 
@@ -402,8 +403,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = GT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:205:7: ( '>_>' )
-            // TL.g:205:9: '>_>'
+            // TL.g:206:7: ( '>_>' )
+            // TL.g:206:9: '>_>'
             {
             match(">_>"); 
 
@@ -423,8 +424,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = LT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:206:7: ( '<_<' )
-            // TL.g:206:9: '<_<'
+            // TL.g:207:7: ( '<_<' )
+            // TL.g:207:9: '<_<'
             {
             match("<_<"); 
 
@@ -444,8 +445,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Not;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:207:8: ( '!' )
-            // TL.g:207:10: '!'
+            // TL.g:208:8: ( '!' )
+            // TL.g:208:10: '!'
             {
             match('!'); 
 
@@ -464,8 +465,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Pow;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:209:8: ( '**' )
-            // TL.g:209:10: '**'
+            // TL.g:210:8: ( '**' )
+            // TL.g:210:10: '**'
             {
             match("**"); 
 
@@ -485,8 +486,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Add;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:210:8: ( '+' )
-            // TL.g:210:10: '+'
+            // TL.g:211:8: ( '+' )
+            // TL.g:211:10: '+'
             {
             match('+'); 
 
@@ -505,8 +506,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Subt;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:211:8: ( '-' )
-            // TL.g:211:10: '-'
+            // TL.g:212:8: ( '-' )
+            // TL.g:212:10: '-'
             {
             match('-'); 
 
@@ -525,8 +526,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Mult;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:212:8: ( '*' )
-            // TL.g:212:10: '*'
+            // TL.g:213:8: ( '*' )
+            // TL.g:213:10: '*'
             {
             match('*'); 
 
@@ -545,8 +546,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Int_Div;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:213:11: ( '//' )
-            // TL.g:213:13: '//'
+            // TL.g:214:11: ( '//' )
+            // TL.g:214:13: '//'
             {
             match("//"); 
 
@@ -566,8 +567,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Div;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:214:8: ( '/' )
-            // TL.g:214:10: '/'
+            // TL.g:215:8: ( '/' )
+            // TL.g:215:10: '/'
             {
             match('/'); 
 
@@ -586,8 +587,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Mod;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:215:8: ( '%' )
-            // TL.g:215:10: '%'
+            // TL.g:216:8: ( '%' )
+            // TL.g:216:10: '%'
             {
             match('%'); 
 
@@ -606,8 +607,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Bit_Or;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:216:10: ( '|' )
-            // TL.g:216:12: '|'
+            // TL.g:217:10: ( '|' )
+            // TL.g:217:12: '|'
             {
             match('|'); 
 
@@ -626,8 +627,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Bit_And;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:217:11: ( '&' )
-            // TL.g:217:13: '&'
+            // TL.g:218:11: ( '&' )
+            // TL.g:218:13: '&'
             {
             match('&'); 
 
@@ -646,8 +647,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Bit_Xor;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:218:11: ( '^' )
-            // TL.g:218:13: '^'
+            // TL.g:219:11: ( '^' )
+            // TL.g:219:13: '^'
             {
             match('^'); 
 
@@ -666,8 +667,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Bit_Not;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:219:11: ( '~' )
-            // TL.g:219:13: '~'
+            // TL.g:220:11: ( '~' )
+            // TL.g:220:13: '~'
             {
             match('~'); 
 
@@ -681,13 +682,33 @@ public class TLLexer extends Lexer {
     }
     // $ANTLR end "Bit_Not"
 
+    // $ANTLR start "Strcat"
+    public final void mStrcat() throws RecognitionException {
+        try {
+            int _type = Strcat;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // TL.g:221:10: ( '#' )
+            // TL.g:221:12: '#'
+            {
+            match('#'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "Strcat"
+
     // $ANTLR start "Gets"
     public final void mGets() throws RecognitionException {
         try {
             int _type = Gets;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:221:8: ( '<-' )
-            // TL.g:221:10: '<-'
+            // TL.g:223:8: ( '<-' )
+            // TL.g:223:10: '<-'
             {
             match("<-"); 
 
@@ -707,8 +728,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Comma;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:222:9: ( ',' )
-            // TL.g:222:11: ','
+            // TL.g:224:9: ( ',' )
+            // TL.g:224:11: ','
             {
             match(','); 
 
@@ -727,8 +748,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Open_Paren;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:224:13: ( '(' )
-            // TL.g:224:15: '('
+            // TL.g:226:13: ( '(' )
+            // TL.g:226:15: '('
             {
             match('('); 
 
@@ -747,8 +768,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Close_Paren;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:225:14: ( ')' )
-            // TL.g:225:16: ')'
+            // TL.g:227:14: ( ')' )
+            // TL.g:227:16: ')'
             {
             match(')'); 
 
@@ -767,8 +788,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Open_Bracket;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:226:14: ( '[' )
-            // TL.g:226:16: '['
+            // TL.g:228:14: ( '[' )
+            // TL.g:228:16: '['
             {
             match('['); 
 
@@ -787,8 +808,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Close_Bracket;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:227:15: ( ']' )
-            // TL.g:227:17: ']'
+            // TL.g:229:15: ( ']' )
+            // TL.g:229:17: ']'
             {
             match(']'); 
 
@@ -807,8 +828,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Open_Brace;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:228:13: ( '{' )
-            // TL.g:228:15: '{'
+            // TL.g:230:13: ( '{' )
+            // TL.g:230:15: '{'
             {
             match('{'); 
 
@@ -827,8 +848,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Close_Brace;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:229:14: ( '}' )
-            // TL.g:229:16: '}'
+            // TL.g:231:14: ( '}' )
+            // TL.g:231:16: '}'
             {
             match('}'); 
 
@@ -847,7 +868,7 @@ public class TLLexer extends Lexer {
         try {
             int _type = Bool;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:232:3: ( 'true' | 'false' )
+            // TL.g:234:3: ( 'true' | 'false' )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -865,7 +886,7 @@ public class TLLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // TL.g:232:6: 'true'
+                    // TL.g:234:6: 'true'
                     {
                     match("true"); 
 
@@ -873,7 +894,7 @@ public class TLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // TL.g:233:6: 'false'
+                    // TL.g:235:6: 'false'
                     {
                     match("false"); 
 
@@ -895,11 +916,11 @@ public class TLLexer extends Lexer {
         try {
             int _type = Number;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:237:3: ( Int ( '.' ( Digit )* )? )
-            // TL.g:237:6: Int ( '.' ( Digit )* )?
+            // TL.g:239:3: ( Int ( '.' ( Digit )* )? )
+            // TL.g:239:6: Int ( '.' ( Digit )* )?
             {
             mInt(); 
-            // TL.g:237:10: ( '.' ( Digit )* )?
+            // TL.g:239:10: ( '.' ( Digit )* )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -908,10 +929,10 @@ public class TLLexer extends Lexer {
             }
             switch (alt3) {
                 case 1 :
-                    // TL.g:237:11: '.' ( Digit )*
+                    // TL.g:239:11: '.' ( Digit )*
                     {
                     match('.'); 
-                    // TL.g:237:15: ( Digit )*
+                    // TL.g:239:15: ( Digit )*
                     loop2:
                     do {
                         int alt2=2;
@@ -924,7 +945,7 @@ public class TLLexer extends Lexer {
 
                         switch (alt2) {
                     	case 1 :
-                    	    // TL.g:237:15: Digit
+                    	    // TL.g:239:15: Digit
                     	    {
                     	    mDigit(); 
 
@@ -958,8 +979,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Identifier;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:241:3: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | Digit )* )
-            // TL.g:241:6: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | Digit )*
+            // TL.g:243:3: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | Digit )* )
+            // TL.g:243:6: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | Digit )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -970,7 +991,7 @@ public class TLLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // TL.g:241:34: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | Digit )*
+            // TL.g:243:34: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | Digit )*
             loop4:
             do {
                 int alt4=2;
@@ -1019,11 +1040,11 @@ public class TLLexer extends Lexer {
         try {
             int _type = String;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:248:3: ( '\\'' (~ ( '\\'' | '\\\\' ) | '\\\\' . )* '\\'' )
-            // TL.g:248:6: '\\'' (~ ( '\\'' | '\\\\' ) | '\\\\' . )* '\\''
+            // TL.g:250:3: ( '\\'' (~ ( '\\'' | '\\\\' ) | '\\\\' . )* '\\'' )
+            // TL.g:250:6: '\\'' (~ ( '\\'' | '\\\\' ) | '\\\\' . )* '\\''
             {
             match('\''); 
-            // TL.g:248:11: (~ ( '\\'' | '\\\\' ) | '\\\\' . )*
+            // TL.g:250:11: (~ ( '\\'' | '\\\\' ) | '\\\\' . )*
             loop5:
             do {
                 int alt5=3;
@@ -1039,7 +1060,7 @@ public class TLLexer extends Lexer {
 
                 switch (alt5) {
             	case 1 :
-            	    // TL.g:248:12: ~ ( '\\'' | '\\\\' )
+            	    // TL.g:250:12: ~ ( '\\'' | '\\\\' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1054,7 +1075,7 @@ public class TLLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // TL.g:248:29: '\\\\' .
+            	    // TL.g:250:29: '\\\\' .
             	    {
             	    match('\\'); 
             	    matchAny(); 
@@ -1086,7 +1107,7 @@ public class TLLexer extends Lexer {
         try {
             int _type = Comment;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:252:3: ( '##' (~ ( '\\r' | '\\n' ) )* | '/*' ( . )* '*/' )
+            // TL.g:254:3: ( '##' (~ ( '\\r' | '\\n' ) )* | '/*' ( . )* '*/' )
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -1104,11 +1125,11 @@ public class TLLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // TL.g:252:6: '##' (~ ( '\\r' | '\\n' ) )*
+                    // TL.g:254:6: '##' (~ ( '\\r' | '\\n' ) )*
                     {
                     match("##"); 
 
-                    // TL.g:252:11: (~ ( '\\r' | '\\n' ) )*
+                    // TL.g:254:11: (~ ( '\\r' | '\\n' ) )*
                     loop6:
                     do {
                         int alt6=2;
@@ -1121,7 +1142,7 @@ public class TLLexer extends Lexer {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // TL.g:252:11: ~ ( '\\r' | '\\n' )
+                    	    // TL.g:254:11: ~ ( '\\r' | '\\n' )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1146,11 +1167,11 @@ public class TLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // TL.g:253:6: '/*' ( . )* '*/'
+                    // TL.g:255:6: '/*' ( . )* '*/'
                     {
                     match("/*"); 
 
-                    // TL.g:253:11: ( . )*
+                    // TL.g:255:11: ( . )*
                     loop7:
                     do {
                         int alt7=2;
@@ -1175,7 +1196,7 @@ public class TLLexer extends Lexer {
 
                         switch (alt7) {
                     	case 1 :
-                    	    // TL.g:253:11: .
+                    	    // TL.g:255:11: .
                     	    {
                     	    matchAny(); 
 
@@ -1208,8 +1229,8 @@ public class TLLexer extends Lexer {
         try {
             int _type = Space;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:257:3: ( ( ' ' | '\\t' | '\\r' | '\\n' | '\\u000C' ) )
-            // TL.g:257:6: ( ' ' | '\\t' | '\\r' | '\\n' | '\\u000C' )
+            // TL.g:259:3: ( ( ' ' | '\\t' | '\\r' | '\\n' | '\\u000C' ) )
+            // TL.g:259:6: ( ' ' | '\\t' | '\\r' | '\\n' | '\\u000C' )
             {
             if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||(input.LA(1)>='\f' && input.LA(1)<='\r')||input.LA(1)==' ' ) {
                 input.consume();
@@ -1235,7 +1256,7 @@ public class TLLexer extends Lexer {
     // $ANTLR start "Int"
     public final void mInt() throws RecognitionException {
         try {
-            // TL.g:261:3: ( '1' .. '9' ( Digit )* | '0' )
+            // TL.g:263:3: ( '1' .. '9' ( Digit )* | '0' )
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -1253,10 +1274,10 @@ public class TLLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // TL.g:261:6: '1' .. '9' ( Digit )*
+                    // TL.g:263:6: '1' .. '9' ( Digit )*
                     {
                     matchRange('1','9'); 
-                    // TL.g:261:15: ( Digit )*
+                    // TL.g:263:15: ( Digit )*
                     loop9:
                     do {
                         int alt9=2;
@@ -1269,7 +1290,7 @@ public class TLLexer extends Lexer {
 
                         switch (alt9) {
                     	case 1 :
-                    	    // TL.g:261:15: Digit
+                    	    // TL.g:263:15: Digit
                     	    {
                     	    mDigit(); 
 
@@ -1285,7 +1306,7 @@ public class TLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // TL.g:262:6: '0'
+                    // TL.g:264:6: '0'
                     {
                     match('0'); 
 
@@ -1302,8 +1323,8 @@ public class TLLexer extends Lexer {
     // $ANTLR start "Digit"
     public final void mDigit() throws RecognitionException {
         try {
-            // TL.g:266:3: ( '0' .. '9' )
-            // TL.g:266:6: '0' .. '9'
+            // TL.g:268:3: ( '0' .. '9' )
+            // TL.g:268:6: '0' .. '9'
             {
             matchRange('0','9'); 
 
@@ -1316,14 +1337,14 @@ public class TLLexer extends Lexer {
     // $ANTLR end "Digit"
 
     public void mTokens() throws RecognitionException {
-        // TL.g:1:8: ( T__64 | Def_Func | If | Else_If | Else | Return | Out | In | Null | Or | And | Equals | NEquals | GTEquals | LTEquals | GT | LT | Not | Pow | Add | Subt | Mult | Int_Div | Div | Mod | Bit_Or | Bit_And | Bit_Xor | Bit_Not | Gets | Comma | Open_Paren | Close_Paren | Open_Bracket | Close_Bracket | Open_Brace | Close_Brace | Bool | Number | Identifier | String | Comment | Space )
-        int alt11=43;
+        // TL.g:1:8: ( T__65 | Def_Func | If | Else_If | Else | Return | Out | In | Null | Or | And | Equals | NEquals | GTEquals | LTEquals | GT | LT | Not | Pow | Add | Subt | Mult | Int_Div | Div | Mod | Bit_Or | Bit_And | Bit_Xor | Bit_Not | Strcat | Gets | Comma | Open_Paren | Close_Paren | Open_Bracket | Close_Bracket | Open_Brace | Close_Brace | Bool | Number | Identifier | String | Comment | Space )
+        int alt11=44;
         alt11 = dfa11.predict(input);
         switch (alt11) {
             case 1 :
-                // TL.g:1:10: T__64
+                // TL.g:1:10: T__65
                 {
-                mT__64(); 
+                mT__65(); 
 
                 }
                 break;
@@ -1524,98 +1545,105 @@ public class TLLexer extends Lexer {
                 }
                 break;
             case 30 :
-                // TL.g:1:175: Gets
+                // TL.g:1:175: Strcat
+                {
+                mStrcat(); 
+
+                }
+                break;
+            case 31 :
+                // TL.g:1:182: Gets
                 {
                 mGets(); 
 
                 }
                 break;
-            case 31 :
-                // TL.g:1:180: Comma
+            case 32 :
+                // TL.g:1:187: Comma
                 {
                 mComma(); 
 
                 }
                 break;
-            case 32 :
-                // TL.g:1:186: Open_Paren
+            case 33 :
+                // TL.g:1:193: Open_Paren
                 {
                 mOpen_Paren(); 
 
                 }
                 break;
-            case 33 :
-                // TL.g:1:197: Close_Paren
+            case 34 :
+                // TL.g:1:204: Close_Paren
                 {
                 mClose_Paren(); 
 
                 }
                 break;
-            case 34 :
-                // TL.g:1:209: Open_Bracket
+            case 35 :
+                // TL.g:1:216: Open_Bracket
                 {
                 mOpen_Bracket(); 
 
                 }
                 break;
-            case 35 :
-                // TL.g:1:222: Close_Bracket
+            case 36 :
+                // TL.g:1:229: Close_Bracket
                 {
                 mClose_Bracket(); 
 
                 }
                 break;
-            case 36 :
-                // TL.g:1:236: Open_Brace
+            case 37 :
+                // TL.g:1:243: Open_Brace
                 {
                 mOpen_Brace(); 
 
                 }
                 break;
-            case 37 :
-                // TL.g:1:247: Close_Brace
+            case 38 :
+                // TL.g:1:254: Close_Brace
                 {
                 mClose_Brace(); 
 
                 }
                 break;
-            case 38 :
-                // TL.g:1:259: Bool
+            case 39 :
+                // TL.g:1:266: Bool
                 {
                 mBool(); 
 
                 }
                 break;
-            case 39 :
-                // TL.g:1:264: Number
+            case 40 :
+                // TL.g:1:271: Number
                 {
                 mNumber(); 
 
                 }
                 break;
-            case 40 :
-                // TL.g:1:271: Identifier
+            case 41 :
+                // TL.g:1:278: Identifier
                 {
                 mIdentifier(); 
 
                 }
                 break;
-            case 41 :
-                // TL.g:1:282: String
+            case 42 :
+                // TL.g:1:289: String
                 {
                 mString(); 
 
                 }
                 break;
-            case 42 :
-                // TL.g:1:289: Comment
+            case 43 :
+                // TL.g:1:296: Comment
                 {
                 mComment(); 
 
                 }
                 break;
-            case 43 :
-                // TL.g:1:297: Space
+            case 44 :
+                // TL.g:1:304: Space
                 {
                 mSpace(); 
 
@@ -1629,39 +1657,39 @@ public class TLLexer extends Lexer {
 
     protected DFA11 dfa11 = new DFA11(this);
     static final String DFA11_eotS =
-        "\2\uffff\5\35\1\52\1\54\4\uffff\1\62\2\uffff\1\64\12\uffff\1\35"+
-        "\5\uffff\1\35\1\70\1\35\1\72\1\73\3\35\14\uffff\3\35\1\uffff\1\35"+
-        "\2\uffff\1\35\1\111\1\35\5\uffff\1\35\1\114\1\115\2\35\1\uffff\1"+
-        "\120\1\121\2\uffff\1\121\1\35\2\uffff\1\123\1\uffff";
+        "\2\uffff\5\36\1\52\1\54\4\uffff\1\62\2\uffff\1\65\3\uffff\1\66"+
+        "\7\uffff\1\36\4\uffff\1\36\1\72\1\36\1\74\1\75\3\36\16\uffff\3\36"+
+        "\1\uffff\1\36\2\uffff\1\36\1\113\1\36\5\uffff\1\36\1\116\1\117\2"+
+        "\36\1\uffff\1\122\1\123\2\uffff\1\123\1\36\2\uffff\1\125\1\uffff";
     static final String DFA11_eofS =
-        "\124\uffff";
+        "\126\uffff";
     static final String DFA11_minS =
         "\1\11\1\uffff\1\141\1\146\1\145\2\165\4\137\1\55\1\uffff\1\52\2"+
-        "\uffff\1\52\12\uffff\1\162\5\uffff\1\156\1\60\1\154\2\60\2\164\1"+
-        "\154\4\uffff\2\74\6\uffff\1\165\1\143\1\146\1\uffff\1\163\2\uffff"+
-        "\1\165\1\60\1\154\5\uffff\1\145\2\60\1\145\1\162\1\uffff\2\60\2"+
-        "\uffff\1\60\1\156\2\uffff\1\60\1\uffff";
+        "\uffff\1\52\3\uffff\1\43\7\uffff\1\162\4\uffff\1\156\1\60\1\154"+
+        "\2\60\2\164\1\154\4\uffff\2\74\10\uffff\1\165\1\143\1\146\1\uffff"+
+        "\1\163\2\uffff\1\165\1\60\1\154\5\uffff\1\145\2\60\1\145\1\162\1"+
+        "\uffff\2\60\2\uffff\1\60\1\156\2\uffff\1\60\1\uffff";
     static final String DFA11_maxS =
         "\1\176\1\uffff\1\165\1\156\1\145\2\165\5\137\1\uffff\1\52\2\uffff"+
-        "\1\57\12\uffff\1\162\5\uffff\1\156\1\172\1\154\2\172\2\164\1\154"+
-        "\4\uffff\1\75\1\76\6\uffff\1\165\1\143\1\146\1\uffff\1\163\2\uffff"+
-        "\1\165\1\172\1\154\5\uffff\1\145\2\172\1\145\1\162\1\uffff\2\172"+
-        "\2\uffff\1\172\1\156\2\uffff\1\172\1\uffff";
+        "\1\57\3\uffff\1\43\7\uffff\1\162\4\uffff\1\156\1\172\1\154\2\172"+
+        "\2\164\1\154\4\uffff\1\75\1\76\10\uffff\1\165\1\143\1\146\1\uffff"+
+        "\1\163\2\uffff\1\165\1\172\1\154\5\uffff\1\145\2\172\1\145\1\162"+
+        "\1\uffff\2\172\2\uffff\1\172\1\156\2\uffff\1\172\1\uffff";
     static final String DFA11_acceptS =
         "\1\uffff\1\1\12\uffff\1\22\1\uffff\1\24\1\25\1\uffff\1\31\1\34"+
-        "\1\35\1\37\1\40\1\41\1\42\1\43\1\44\1\45\1\uffff\1\47\1\50\1\51"+
-        "\1\52\1\53\10\uffff\1\12\1\32\1\13\1\33\2\uffff\1\21\1\36\1\23\1"+
-        "\26\1\27\1\30\3\uffff\1\5\1\uffff\1\3\1\10\3\uffff\1\14\1\17\1\15"+
-        "\1\16\1\20\5\uffff\1\7\2\uffff\1\2\1\4\2\uffff\1\11\1\46\1\uffff"+
-        "\1\6";
+        "\1\35\1\uffff\1\40\1\41\1\42\1\43\1\44\1\45\1\46\1\uffff\1\50\1"+
+        "\51\1\52\1\54\10\uffff\1\12\1\32\1\13\1\33\2\uffff\1\21\1\37\1\23"+
+        "\1\26\1\27\1\53\1\30\1\36\3\uffff\1\5\1\uffff\1\3\1\10\3\uffff\1"+
+        "\14\1\17\1\15\1\16\1\20\5\uffff\1\7\2\uffff\1\2\1\4\2\uffff\1\11"+
+        "\1\47\1\uffff\1\6";
     static final String DFA11_specialS =
-        "\124\uffff}>";
+        "\126\uffff}>";
     static final String[] DFA11_transitionS = {
-            "\2\40\1\uffff\2\40\22\uffff\1\40\1\14\1\uffff\1\37\1\uffff"+
-            "\1\21\1\10\1\36\1\25\1\26\1\15\1\16\1\24\1\17\1\uffff\1\20\12"+
-            "\34\1\uffff\1\1\1\13\1\11\1\12\2\uffff\32\35\1\27\1\uffff\1"+
-            "\30\1\22\1\35\1\uffff\5\35\1\2\2\35\1\3\4\35\1\6\1\5\2\35\1"+
-            "\4\1\35\1\33\6\35\1\31\1\7\1\32\1\23",
+            "\2\40\1\uffff\2\40\22\uffff\1\40\1\14\1\uffff\1\24\1\uffff"+
+            "\1\21\1\10\1\37\1\26\1\27\1\15\1\16\1\25\1\17\1\uffff\1\20\12"+
+            "\35\1\uffff\1\1\1\13\1\11\1\12\2\uffff\32\36\1\30\1\uffff\1"+
+            "\31\1\22\1\36\1\uffff\5\36\1\2\2\36\1\3\4\36\1\6\1\5\2\36\1"+
+            "\4\1\36\1\34\6\36\1\32\1\7\1\33\1\23",
             "",
             "\1\43\7\uffff\1\42\13\uffff\1\41",
             "\1\44\7\uffff\1\45",
@@ -1677,7 +1705,11 @@ public class TLLexer extends Lexer {
             "\1\61",
             "",
             "",
-            "\1\37\4\uffff\1\63",
+            "\1\64\4\uffff\1\63",
+            "",
+            "",
+            "",
+            "\1\64",
             "",
             "",
             "",
@@ -1685,65 +1717,63 @@ public class TLLexer extends Lexer {
             "",
             "",
             "",
-            "",
-            "",
-            "",
-            "\1\65",
-            "",
+            "\1\67",
             "",
             "",
             "",
             "",
-            "\1\66",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\10\35\1\67\21\35",
-            "\1\71",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\1\74",
-            "\1\75",
+            "\1\70",
+            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\10\36\1\71\21\36",
+            "\1\73",
+            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
+            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
             "\1\76",
+            "\1\77",
+            "\1\100",
             "",
             "",
             "",
             "",
-            "\1\100\1\77",
-            "\1\101\1\102\1\103",
+            "\1\102\1\101",
+            "\1\103\1\104\1\105",
             "",
             "",
             "",
             "",
             "",
             "",
-            "\1\104",
-            "\1\105",
+            "",
+            "",
             "\1\106",
-            "",
             "\1\107",
-            "",
-            "",
             "\1\110",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "",
+            "\1\111",
+            "",
+            "",
             "\1\112",
+            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
+            "\1\114",
             "",
             "",
             "",
             "",
             "",
-            "\1\113",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\1\116",
-            "\1\117",
+            "\1\115",
+            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
+            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
+            "\1\120",
+            "\1\121",
             "",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "",
-            "",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\1\122",
+            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
+            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
             "",
             "",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
+            "\1\124",
+            "",
+            "",
+            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
             ""
     };
 
@@ -1777,7 +1807,7 @@ public class TLLexer extends Lexer {
             this.transition = DFA11_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__64 | Def_Func | If | Else_If | Else | Return | Out | In | Null | Or | And | Equals | NEquals | GTEquals | LTEquals | GT | LT | Not | Pow | Add | Subt | Mult | Int_Div | Div | Mod | Bit_Or | Bit_And | Bit_Xor | Bit_Not | Gets | Comma | Open_Paren | Close_Paren | Open_Bracket | Close_Bracket | Open_Brace | Close_Brace | Bool | Number | Identifier | String | Comment | Space );";
+            return "1:1: Tokens : ( T__65 | Def_Func | If | Else_If | Else | Return | Out | In | Null | Or | And | Equals | NEquals | GTEquals | LTEquals | GT | LT | Not | Pow | Add | Subt | Mult | Int_Div | Div | Mod | Bit_Or | Bit_And | Bit_Xor | Bit_Not | Strcat | Gets | Comma | Open_Paren | Close_Paren | Open_Bracket | Close_Bracket | Open_Brace | Close_Brace | Bool | Number | Identifier | String | Comment | Space );";
         }
     }
  

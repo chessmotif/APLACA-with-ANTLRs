@@ -199,6 +199,7 @@ Null			: 'null';
 
 Or				: '|_|';
 And				: '&_&';
+Xor				: '^_^';
 Equals			: '=_=';
 NEquals			: '>_<';
 GTEquals		: '>_=';
@@ -218,6 +219,7 @@ Bit_Or			: '|';
 Bit_And			: '&';
 Bit_Xor			: '^';
 Bit_Not			: '~';
+Strcat			: '#';
 
 Gets			: '<-';
 Comma			: ',';

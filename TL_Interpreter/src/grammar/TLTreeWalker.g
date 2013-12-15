@@ -108,6 +108,7 @@ exprList   returns [java.util.List<TLNode> e]
 expression  returns [TLNode node]  
   :  ^('|_|' expression expression)  	{node = new OrNode($a.node, $b.node);}
   |  ^('&_&' expression expression)  	{node = new AndNode($a.node, $b.node);}
+  |  ^('^_^' expression expression)  	{node = new XorNode($a.node, $b.node);}
   |  ^('=_=' a=expression b=expression)  {node = new EqNode($a.node, $b.node);}
   |  ^('>_<' a=expression b=expression)  {node = new NENode($a.node, $b.node);}
   |  ^('>_=' a=expression b=expression)  {node = new GTENode($a.node, $b.node);}
@@ -120,11 +121,11 @@ expression  returns [TLNode node]
   |  ^('/' a=expression b=expression)	{node = new DivNode($a.node, $b.node);}
   |  ^('//' a=expression b=expression)	{node = new QuotNode($a.node, $b.node);}
   |  ^('%' a=expression b=expression)	{node = new ModNode($a.node, $b.node);}
-  |  ^('**' expression expression)  	{node = new PowerNode($a.node, $b.node);}
-  |  ^('^' expression expression)  		{node = new XorNode($a.node, $b.node);}
-  |  ^('&' expression expression)  		{node = new BitAndNode($a.node, $b.node);}
-  |  ^('|' expression expression)  		{node = new BitOrNode($a.node, $b.node);}
-  |  ^('#' expression expression)  		{node = new StrCatNode($a.node, $b.node);}
+  |  ^('**' a=expression b=expression)  	{node = new PowerNode($a.node, $b.node);}
+  |  ^('^' a=expression b=expression)  		{node = new BitXorNode($a.node, $b.node);}
+  |  ^('&' a=expression b=expression)  		{node = new BitAndNode($a.node, $b.node);}
+  |  ^('|' a=expression b=expression)  		{node = new BitOrNode($a.node, $b.node);}
+  |  ^('#' a=expression b=expression)  		{node = new StrCatNode($a.node, $b.node);}
   |  ^(UNARY_MIN a=expression)  		{node = new MinusNode($a.node);}
   |  ^(NOT a=expression)  			{node = new NotNode($a.node);}
   |  ^(BIN_NOT a=expression)  		{node = new BinNegationNode($a.node);}

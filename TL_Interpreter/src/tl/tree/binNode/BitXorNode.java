@@ -3,9 +3,9 @@ package tl.tree.binNode;
 import tl.TLValue;
 import tl.tree.TLNode;
 
-public class XorNode extends BinNode {
+public class BitXorNode extends BinNode {
 
-  public XorNode(TLNode lhs, TLNode rhs) {
+  public BitXorNode(TLNode lhs, TLNode rhs) {
 		super(lhs, rhs);
 	}
 
@@ -15,9 +15,9 @@ public class XorNode extends BinNode {
     TLValue a = lhs.evaluate();
     TLValue b = rhs.evaluate();
     
-  if(a.isBoolean()&&b.isBoolean())
+  if(a.isNumber()&&b.isNumber())
   {
-	  return new TLValue(a.asBoolean()^b.asBoolean());
+	  return new TLValue(a.asInteger()^b.asInteger());
   }
     // anything else for division? probs not
     throw new RuntimeException("illegal expression: " + this);
@@ -25,6 +25,6 @@ public class XorNode extends BinNode {
 
   @Override
   public String toString() {
-    return String.format("(%s ^_^ %s)", lhs, rhs);
+    return String.format("(%s ^ %s)", lhs, rhs);
   }
 }
