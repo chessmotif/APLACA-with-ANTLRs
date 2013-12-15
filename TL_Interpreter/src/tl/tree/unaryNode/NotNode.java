@@ -13,9 +13,9 @@ public class NotNode extends UnaryNode {
 
 	    TLValue a = exp.evaluate();
 	    
-	    // number + number
-	    if(a.isNumber()) {
-	      return new TLValue(-a.asDouble());
+	    // boolean
+	    if(a.isBoolean()) {
+	      return new TLValue(!a.asBoolean());
 	    }
 
 	    throw new RuntimeException("illegal expression: " + this);
@@ -23,6 +23,6 @@ public class NotNode extends UnaryNode {
 
 	  @Override
 	  public String toString() {
-	    return String.format("-(%s)", exp);
+	    return String.format("!(%s)", exp);
 	  }
 }
