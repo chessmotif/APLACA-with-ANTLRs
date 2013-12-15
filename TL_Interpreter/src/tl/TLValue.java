@@ -36,6 +36,10 @@ public class TLValue implements Comparable<TLValue> {
   public Long asLong() {
     return ((Number)value).longValue();
   }
+  
+  public Integer asInteger(){
+	  return ((Number)value).intValue();
+  }
 
   @SuppressWarnings("unchecked")
   public List<TLValue> asList() {

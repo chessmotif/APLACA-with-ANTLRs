@@ -29,15 +29,6 @@ public class AddNode extends BinNode {
       return new TLValue(list);
     }
 
-    // string + any, strcat
-    if(a.isString()) {
-      return new TLValue(a.asString() + "" + b.toString());
-    }
-
-    // any + string
-    if(b.isString()) {
-      return new TLValue(a.toString() + "" + b.asString());
-    }
 
     throw new RuntimeException("illegal expression: " + this);
   }
