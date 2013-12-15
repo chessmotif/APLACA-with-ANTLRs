@@ -1,5 +1,5 @@
 package tl;
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 TL.g 2013-12-15 02:50:30
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 TL.g 2013-12-15 15:17:53
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -1086,25 +1086,15 @@ public class TLLexer extends Lexer {
         try {
             int _type = Comment;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // TL.g:253:3: ( '//' (~ ( '\\r' | '\\n' ) )* | '/*' ( . )* '*/' )
+            // TL.g:253:3: ( '##' (~ ( '\\r' | '\\n' ) )* | '/*' ( . )* '*/' )
             int alt8=2;
             int LA8_0 = input.LA(1);
 
-            if ( (LA8_0=='/') ) {
-                int LA8_1 = input.LA(2);
-
-                if ( (LA8_1=='/') ) {
-                    alt8=1;
-                }
-                else if ( (LA8_1=='*') ) {
-                    alt8=2;
-                }
-                else {
-                    NoViableAltException nvae =
-                        new NoViableAltException("", 8, 1, input);
-
-                    throw nvae;
-                }
+            if ( (LA8_0=='#') ) {
+                alt8=1;
+            }
+            else if ( (LA8_0=='/') ) {
+                alt8=2;
             }
             else {
                 NoViableAltException nvae =
@@ -1114,9 +1104,9 @@ public class TLLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // TL.g:253:6: '//' (~ ( '\\r' | '\\n' ) )*
+                    // TL.g:253:6: '##' (~ ( '\\r' | '\\n' ) )*
                     {
-                    match("//"); 
+                    match("##"); 
 
                     // TL.g:253:11: (~ ( '\\r' | '\\n' ) )*
                     loop6:
@@ -1639,55 +1629,55 @@ public class TLLexer extends Lexer {
 
     protected DFA11 dfa11 = new DFA11(this);
     static final String DFA11_eotS =
-        "\2\uffff\5\35\1\51\1\53\4\uffff\1\61\2\uffff\1\64\12\uffff\1\35"+
-        "\4\uffff\1\35\1\70\1\35\1\72\1\73\3\35\12\uffff\1\104\2\uffff\3"+
-        "\35\1\uffff\1\35\2\uffff\1\35\1\112\1\35\6\uffff\1\35\1\115\1\116"+
-        "\2\35\1\uffff\1\121\1\122\2\uffff\1\122\1\35\2\uffff\1\124\1\uffff";
+        "\2\uffff\5\35\1\52\1\54\4\uffff\1\62\2\uffff\1\64\12\uffff\1\35"+
+        "\5\uffff\1\35\1\70\1\35\1\72\1\73\3\35\14\uffff\3\35\1\uffff\1\35"+
+        "\2\uffff\1\35\1\111\1\35\5\uffff\1\35\1\114\1\115\2\35\1\uffff\1"+
+        "\120\1\121\2\uffff\1\121\1\35\2\uffff\1\123\1\uffff";
     static final String DFA11_eofS =
-        "\125\uffff";
+        "\124\uffff";
     static final String DFA11_minS =
         "\1\11\1\uffff\1\141\1\146\1\145\2\165\4\137\1\55\1\uffff\1\52\2"+
-        "\uffff\1\52\12\uffff\1\162\4\uffff\1\156\1\60\1\154\2\60\2\164\1"+
-        "\154\4\uffff\2\74\4\uffff\1\0\2\uffff\1\165\1\143\1\146\1\uffff"+
-        "\1\163\2\uffff\1\165\1\60\1\154\6\uffff\1\145\2\60\1\145\1\162\1"+
-        "\uffff\2\60\2\uffff\1\60\1\156\2\uffff\1\60\1\uffff";
+        "\uffff\1\52\12\uffff\1\162\5\uffff\1\156\1\60\1\154\2\60\2\164\1"+
+        "\154\4\uffff\2\74\6\uffff\1\165\1\143\1\146\1\uffff\1\163\2\uffff"+
+        "\1\165\1\60\1\154\5\uffff\1\145\2\60\1\145\1\162\1\uffff\2\60\2"+
+        "\uffff\1\60\1\156\2\uffff\1\60\1\uffff";
     static final String DFA11_maxS =
         "\1\176\1\uffff\1\165\1\156\1\145\2\165\5\137\1\uffff\1\52\2\uffff"+
-        "\1\57\12\uffff\1\162\4\uffff\1\156\1\172\1\154\2\172\2\164\1\154"+
-        "\4\uffff\1\75\1\76\4\uffff\1\uffff\2\uffff\1\165\1\143\1\146\1\uffff"+
-        "\1\163\2\uffff\1\165\1\172\1\154\6\uffff\1\145\2\172\1\145\1\162"+
-        "\1\uffff\2\172\2\uffff\1\172\1\156\2\uffff\1\172\1\uffff";
+        "\1\57\12\uffff\1\162\5\uffff\1\156\1\172\1\154\2\172\2\164\1\154"+
+        "\4\uffff\1\75\1\76\6\uffff\1\165\1\143\1\146\1\uffff\1\163\2\uffff"+
+        "\1\165\1\172\1\154\5\uffff\1\145\2\172\1\145\1\162\1\uffff\2\172"+
+        "\2\uffff\1\172\1\156\2\uffff\1\172\1\uffff";
     static final String DFA11_acceptS =
         "\1\uffff\1\1\12\uffff\1\22\1\uffff\1\24\1\25\1\uffff\1\31\1\34"+
         "\1\35\1\37\1\40\1\41\1\42\1\43\1\44\1\45\1\uffff\1\47\1\50\1\51"+
-        "\1\53\10\uffff\1\12\1\32\1\13\1\33\2\uffff\1\21\1\36\1\23\1\26\1"+
-        "\uffff\1\52\1\30\3\uffff\1\5\1\uffff\1\3\1\10\3\uffff\1\14\1\17"+
-        "\1\15\1\16\1\20\1\27\5\uffff\1\7\2\uffff\1\2\1\4\2\uffff\1\11\1"+
-        "\46\1\uffff\1\6";
+        "\1\52\1\53\10\uffff\1\12\1\32\1\13\1\33\2\uffff\1\21\1\36\1\23\1"+
+        "\26\1\27\1\30\3\uffff\1\5\1\uffff\1\3\1\10\3\uffff\1\14\1\17\1\15"+
+        "\1\16\1\20\5\uffff\1\7\2\uffff\1\2\1\4\2\uffff\1\11\1\46\1\uffff"+
+        "\1\6";
     static final String DFA11_specialS =
-        "\62\uffff\1\0\42\uffff}>";
+        "\124\uffff}>";
     static final String[] DFA11_transitionS = {
-            "\2\37\1\uffff\2\37\22\uffff\1\37\1\14\3\uffff\1\21\1\10\1\36"+
-            "\1\25\1\26\1\15\1\16\1\24\1\17\1\uffff\1\20\12\34\1\uffff\1"+
-            "\1\1\13\1\11\1\12\2\uffff\32\35\1\27\1\uffff\1\30\1\22\1\35"+
-            "\1\uffff\5\35\1\2\2\35\1\3\4\35\1\6\1\5\2\35\1\4\1\35\1\33\6"+
-            "\35\1\31\1\7\1\32\1\23",
+            "\2\40\1\uffff\2\40\22\uffff\1\40\1\14\1\uffff\1\37\1\uffff"+
+            "\1\21\1\10\1\36\1\25\1\26\1\15\1\16\1\24\1\17\1\uffff\1\20\12"+
+            "\34\1\uffff\1\1\1\13\1\11\1\12\2\uffff\32\35\1\27\1\uffff\1"+
+            "\30\1\22\1\35\1\uffff\5\35\1\2\2\35\1\3\4\35\1\6\1\5\2\35\1"+
+            "\4\1\35\1\33\6\35\1\31\1\7\1\32\1\23",
             "",
-            "\1\42\7\uffff\1\41\13\uffff\1\40",
-            "\1\43\7\uffff\1\44",
-            "\1\45",
+            "\1\43\7\uffff\1\42\13\uffff\1\41",
+            "\1\44\7\uffff\1\45",
             "\1\46",
             "\1\47",
             "\1\50",
-            "\1\52",
-            "\1\54",
+            "\1\51",
+            "\1\53",
             "\1\55",
-            "\1\57\61\uffff\1\56",
+            "\1\56",
+            "\1\60\61\uffff\1\57",
             "",
-            "\1\60",
+            "\1\61",
             "",
             "",
-            "\1\63\4\uffff\1\62",
+            "\1\37\4\uffff\1\63",
             "",
             "",
             "",
@@ -1699,6 +1689,7 @@ public class TLLexer extends Lexer {
             "",
             "",
             "\1\65",
+            "",
             "",
             "",
             "",
@@ -1721,37 +1712,35 @@ public class TLLexer extends Lexer {
             "",
             "",
             "",
-            "\12\63\1\uffff\2\63\1\uffff\ufff2\63",
             "",
             "",
+            "\1\104",
             "\1\105",
             "\1\106",
+            "",
             "\1\107",
             "",
+            "",
             "\1\110",
-            "",
-            "",
-            "\1\111",
             "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "\1\112",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\113",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "\1\114",
             "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
             "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "\1\116",
             "\1\117",
-            "\1\120",
             "",
             "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
             "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
             "",
             "",
             "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\1\123",
+            "\1\122",
             "",
             "",
             "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
@@ -1789,26 +1778,6 @@ public class TLLexer extends Lexer {
         }
         public String getDescription() {
             return "1:1: Tokens : ( T__64 | Def_Func | If | Else_If | Else | Return | Out | In | Null | Or | And | Equals | NEquals | GTEquals | LTEquals | GT | LT | Not | Pow | Add | Subt | Mult | Int_Div | Div | Mod | Bit_Or | Bit_And | Bit_Xor | Bit_Not | Gets | Comma | Open_Paren | Close_Paren | Open_Bracket | Close_Bracket | Open_Brace | Close_Brace | Bool | Number | Identifier | String | Comment | Space );";
-        }
-        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
-            IntStream input = _input;
-        	int _s = s;
-            switch ( s ) {
-                    case 0 : 
-                        int LA11_50 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA11_50>='\u0000' && LA11_50<='\t')||(LA11_50>='\u000B' && LA11_50<='\f')||(LA11_50>='\u000E' && LA11_50<='\uFFFF')) ) {s = 51;}
-
-                        else s = 68;
-
-                        if ( s>=0 ) return s;
-                        break;
-            }
-            NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 11, _s, input);
-            error(nvae);
-            throw nvae;
         }
     }
  

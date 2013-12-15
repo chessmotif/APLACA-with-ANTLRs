@@ -21,7 +21,7 @@ public class IfNode implements TLNode {
 
     for(Choice ch : choices) {
       TLValue value = ch.expression.evaluate();
-
+      
       if(!value.isBoolean()) {
         throw new RuntimeException("illegal boolean expression " + 
             "inside if-statement: " + ch.expression);

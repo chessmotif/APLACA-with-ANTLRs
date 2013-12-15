@@ -1,5 +1,5 @@
 package tl;
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 TLTreeWalker.g 2013-12-15 02:50:30
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 TLTreeWalker.g 2013-12-15 15:17:54
  
   import tl.tree.*; 
   import tl.tree.binNode.*;
@@ -260,18 +260,29 @@ public class TLTreeWalker extends TreeParser {
     public final TLNode delimitedBlock() throws RecognitionException {
         TLNode node = null;
 
+        TLNode statement4 = null;
+
+        TLNode expression5 = null;
+
+
+         
+          BlockNode bn = new BlockNode(); 
+          node = bn; 
+          Scope scope = new Scope(currentScope); 
+          currentScope = scope; 
+
         try {
-            // TLTreeWalker.g:52:3: ( ^( BLOCK ^( STATEMENTS ( statement )* ) ^( RETURN ( expression )? ) ) )
-            // TLTreeWalker.g:52:5: ^( BLOCK ^( STATEMENTS ( statement )* ) ^( RETURN ( expression )? ) )
+            // TLTreeWalker.g:61:3: ( ^( BLOCK ^( STATEMENTS ( statement )* ) ^( RETURN ( expression )? ) ) )
+            // TLTreeWalker.g:61:5: ^( BLOCK ^( STATEMENTS ( statement )* ) ^( RETURN ( expression )? ) )
             {
-            match(input,BLOCK,FOLLOW_BLOCK_in_delimitedBlock150); 
+            match(input,BLOCK,FOLLOW_BLOCK_in_delimitedBlock164); 
 
             match(input, Token.DOWN, null); 
-            match(input,STATEMENTS,FOLLOW_STATEMENTS_in_delimitedBlock153); 
+            match(input,STATEMENTS,FOLLOW_STATEMENTS_in_delimitedBlock172); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // TLTreeWalker.g:52:26: ( statement )*
+                // TLTreeWalker.g:62:18: ( statement )*
                 loop3:
                 do {
                     int alt3=2;
@@ -284,13 +295,14 @@ public class TLTreeWalker extends TreeParser {
 
                     switch (alt3) {
                 	case 1 :
-                	    // TLTreeWalker.g:52:26: statement
+                	    // TLTreeWalker.g:62:19: statement
                 	    {
-                	    pushFollow(FOLLOW_statement_in_delimitedBlock155);
-                	    statement();
+                	    pushFollow(FOLLOW_statement_in_delimitedBlock175);
+                	    statement4=statement();
 
                 	    state._fsp--;
 
+                	    bn.addStatement(statement4);
 
                 	    }
                 	    break;
@@ -303,11 +315,11 @@ public class TLTreeWalker extends TreeParser {
 
                 match(input, Token.UP, null); 
             }
-            match(input,RETURN,FOLLOW_RETURN_in_delimitedBlock160); 
+            match(input,RETURN,FOLLOW_RETURN_in_delimitedBlock189); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // TLTreeWalker.g:52:47: ( expression )?
+                // TLTreeWalker.g:63:14: ( expression )?
                 int alt4=2;
                 int LA4_0 = input.LA(1);
 
@@ -316,13 +328,14 @@ public class TLTreeWalker extends TreeParser {
                 }
                 switch (alt4) {
                     case 1 :
-                        // TLTreeWalker.g:52:47: expression
+                        // TLTreeWalker.g:63:15: expression
                         {
-                        pushFollow(FOLLOW_expression_in_delimitedBlock162);
-                        expression();
+                        pushFollow(FOLLOW_expression_in_delimitedBlock192);
+                        expression5=expression();
 
                         state._fsp--;
 
+                        bn.addStatement(expression5);
 
                         }
                         break;
@@ -337,6 +350,9 @@ public class TLTreeWalker extends TreeParser {
 
             }
 
+             
+              currentScope = currentScope.parent(); 
+
         }
         catch (RecognitionException re) {
             reportError(re);
@@ -350,12 +366,19 @@ public class TLTreeWalker extends TreeParser {
 
 
     // $ANTLR start "statement"
-    // TLTreeWalker.g:55:1: statement returns [TLNode node] : ( assignment | functionCall | ifStatement );
+    // TLTreeWalker.g:67:1: statement returns [TLNode node] : ( assignment | functionCall | ifStatement );
     public final TLNode statement() throws RecognitionException {
         TLNode node = null;
 
+        TLNode assignment6 = null;
+
+        TLNode functionCall7 = null;
+
+        TLNode ifStatement8 = null;
+
+
         try {
-            // TLTreeWalker.g:56:3: ( assignment | functionCall | ifStatement )
+            // TLTreeWalker.g:68:3: ( assignment | functionCall | ifStatement )
             int alt5=3;
             switch ( input.LA(1) ) {
             case ASSIGNMENT:
@@ -383,35 +406,38 @@ public class TLTreeWalker extends TreeParser {
 
             switch (alt5) {
                 case 1 :
-                    // TLTreeWalker.g:56:5: assignment
+                    // TLTreeWalker.g:68:5: assignment
                     {
-                    pushFollow(FOLLOW_assignment_in_statement184);
-                    assignment();
+                    pushFollow(FOLLOW_assignment_in_statement222);
+                    assignment6=assignment();
 
                     state._fsp--;
 
+                    node =assignment6;
 
                     }
                     break;
                 case 2 :
-                    // TLTreeWalker.g:57:5: functionCall
+                    // TLTreeWalker.g:69:5: functionCall
                     {
-                    pushFollow(FOLLOW_functionCall_in_statement190);
-                    functionCall();
+                    pushFollow(FOLLOW_functionCall_in_statement230);
+                    functionCall7=functionCall();
 
                     state._fsp--;
 
+                    node = functionCall7;
 
                     }
                     break;
                 case 3 :
-                    // TLTreeWalker.g:58:5: ifStatement
+                    // TLTreeWalker.g:70:5: ifStatement
                     {
-                    pushFollow(FOLLOW_ifStatement_in_statement196);
-                    ifStatement();
+                    pushFollow(FOLLOW_ifStatement_in_statement238);
+                    ifStatement8=ifStatement();
 
                     state._fsp--;
 
+                    node = ifStatement8;
 
                     }
                     break;
@@ -430,19 +456,19 @@ public class TLTreeWalker extends TreeParser {
 
 
     // $ANTLR start "functionCall"
-    // TLTreeWalker.g:61:1: functionCall returns [TLNode node] : ^( FUNC_CALL Identifier ( exprList )? ) ;
+    // TLTreeWalker.g:73:1: functionCall returns [TLNode node] : ^( FUNC_CALL Identifier ( exprList )? ) ;
     public final TLNode functionCall() throws RecognitionException {
         TLNode node = null;
 
         try {
-            // TLTreeWalker.g:62:3: ( ^( FUNC_CALL Identifier ( exprList )? ) )
-            // TLTreeWalker.g:62:6: ^( FUNC_CALL Identifier ( exprList )? )
+            // TLTreeWalker.g:74:3: ( ^( FUNC_CALL Identifier ( exprList )? ) )
+            // TLTreeWalker.g:74:6: ^( FUNC_CALL Identifier ( exprList )? )
             {
-            match(input,FUNC_CALL,FOLLOW_FUNC_CALL_in_functionCall216); 
+            match(input,FUNC_CALL,FOLLOW_FUNC_CALL_in_functionCall260); 
 
             match(input, Token.DOWN, null); 
-            match(input,Identifier,FOLLOW_Identifier_in_functionCall218); 
-            // TLTreeWalker.g:62:29: ( exprList )?
+            match(input,Identifier,FOLLOW_Identifier_in_functionCall262); 
+            // TLTreeWalker.g:74:29: ( exprList )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -451,9 +477,9 @@ public class TLTreeWalker extends TreeParser {
             }
             switch (alt6) {
                 case 1 :
-                    // TLTreeWalker.g:62:29: exprList
+                    // TLTreeWalker.g:74:29: exprList
                     {
-                    pushFollow(FOLLOW_exprList_in_functionCall220);
+                    pushFollow(FOLLOW_exprList_in_functionCall264);
                     exprList();
 
                     state._fsp--;
@@ -482,7 +508,7 @@ public class TLTreeWalker extends TreeParser {
 
 
     // $ANTLR start "ifStatement"
-    // TLTreeWalker.g:65:1: ifStatement returns [TLNode node] : ^( IF ( ^( EXP e= expression a= block ) )+ ( ^( EXP b= block ) )? ) ;
+    // TLTreeWalker.g:78:1: ifStatement returns [TLNode node] : ^( IF ( ^( EXP e= expression a= block ) )+ ( ^( EXP b= block ) )? ) ;
     public final TLNode ifStatement() throws RecognitionException {
         TLNode node = null;
 
@@ -498,13 +524,13 @@ public class TLTreeWalker extends TreeParser {
           node = ifNode; 
 
         try {
-            // TLTreeWalker.g:70:3: ( ^( IF ( ^( EXP e= expression a= block ) )+ ( ^( EXP b= block ) )? ) )
-            // TLTreeWalker.g:70:5: ^( IF ( ^( EXP e= expression a= block ) )+ ( ^( EXP b= block ) )? )
+            // TLTreeWalker.g:83:3: ( ^( IF ( ^( EXP e= expression a= block ) )+ ( ^( EXP b= block ) )? ) )
+            // TLTreeWalker.g:83:5: ^( IF ( ^( EXP e= expression a= block ) )+ ( ^( EXP b= block ) )? )
             {
-            match(input,IF,FOLLOW_IF_in_ifStatement250); 
+            match(input,IF,FOLLOW_IF_in_ifStatement294); 
 
             match(input, Token.DOWN, null); 
-            // TLTreeWalker.g:70:10: ( ^( EXP e= expression a= block ) )+
+            // TLTreeWalker.g:83:10: ( ^( EXP e= expression a= block ) )+
             int cnt7=0;
             loop7:
             do {
@@ -530,17 +556,17 @@ public class TLTreeWalker extends TreeParser {
 
                 switch (alt7) {
             	case 1 :
-            	    // TLTreeWalker.g:70:11: ^( EXP e= expression a= block )
+            	    // TLTreeWalker.g:83:11: ^( EXP e= expression a= block )
             	    {
-            	    match(input,EXP,FOLLOW_EXP_in_ifStatement254); 
+            	    match(input,EXP,FOLLOW_EXP_in_ifStatement298); 
 
             	    match(input, Token.DOWN, null); 
-            	    pushFollow(FOLLOW_expression_in_ifStatement258);
+            	    pushFollow(FOLLOW_expression_in_ifStatement302);
             	    e=expression();
 
             	    state._fsp--;
 
-            	    pushFollow(FOLLOW_block_in_ifStatement262);
+            	    pushFollow(FOLLOW_block_in_ifStatement306);
             	    a=block();
 
             	    state._fsp--;
@@ -561,7 +587,7 @@ public class TLTreeWalker extends TreeParser {
                 cnt7++;
             } while (true);
 
-            // TLTreeWalker.g:71:5: ( ^( EXP b= block ) )?
+            // TLTreeWalker.g:84:5: ( ^( EXP b= block ) )?
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -570,12 +596,12 @@ public class TLTreeWalker extends TreeParser {
             }
             switch (alt8) {
                 case 1 :
-                    // TLTreeWalker.g:71:6: ^( EXP b= block )
+                    // TLTreeWalker.g:84:6: ^( EXP b= block )
                     {
-                    match(input,EXP,FOLLOW_EXP_in_ifStatement276); 
+                    match(input,EXP,FOLLOW_EXP_in_ifStatement320); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_block_in_ifStatement280);
+                    pushFollow(FOLLOW_block_in_ifStatement324);
                     b=block();
 
                     state._fsp--;
@@ -607,18 +633,18 @@ public class TLTreeWalker extends TreeParser {
 
 
     // $ANTLR start "idList"
-    // TLTreeWalker.g:75:1: idList returns [java.util.List<String> i] : ^( ID_LIST ( Identifier )+ ) ;
+    // TLTreeWalker.g:88:1: idList returns [java.util.List<String> i] : ^( ID_LIST ( Identifier )+ ) ;
     public final java.util.List<String> idList() throws RecognitionException {
         java.util.List<String> i = null;
 
         try {
-            // TLTreeWalker.g:76:3: ( ^( ID_LIST ( Identifier )+ ) )
-            // TLTreeWalker.g:76:5: ^( ID_LIST ( Identifier )+ )
+            // TLTreeWalker.g:89:3: ( ^( ID_LIST ( Identifier )+ ) )
+            // TLTreeWalker.g:89:5: ^( ID_LIST ( Identifier )+ )
             {
-            match(input,ID_LIST,FOLLOW_ID_LIST_in_idList325); 
+            match(input,ID_LIST,FOLLOW_ID_LIST_in_idList369); 
 
             match(input, Token.DOWN, null); 
-            // TLTreeWalker.g:76:15: ( Identifier )+
+            // TLTreeWalker.g:89:15: ( Identifier )+
             int cnt9=0;
             loop9:
             do {
@@ -632,9 +658,9 @@ public class TLTreeWalker extends TreeParser {
 
                 switch (alt9) {
             	case 1 :
-            	    // TLTreeWalker.g:76:15: Identifier
+            	    // TLTreeWalker.g:89:15: Identifier
             	    {
-            	    match(input,Identifier,FOLLOW_Identifier_in_idList327); 
+            	    match(input,Identifier,FOLLOW_Identifier_in_idList371); 
 
             	    }
             	    break;
@@ -666,10 +692,15 @@ public class TLTreeWalker extends TreeParser {
 
 
     // $ANTLR start "assignment"
-    // TLTreeWalker.g:79:1: assignment : ( ^( ASSIGNMENT Identifier ( indexes )? expression ) | ^( TO_PRINT expression ) );
-    public final void assignment() throws RecognitionException {
+    // TLTreeWalker.g:92:1: assignment returns [TLNode node] : ( ^( ASSIGNMENT Identifier ( indexes )? expression ) | ^( TO_PRINT expression ) );
+    public final TLNode assignment() throws RecognitionException {
+        TLNode node = null;
+
+        TLNode expression9 = null;
+
+
         try {
-            // TLTreeWalker.g:80:3: ( ^( ASSIGNMENT Identifier ( indexes )? expression ) | ^( TO_PRINT expression ) )
+            // TLTreeWalker.g:93:3: ( ^( ASSIGNMENT Identifier ( indexes )? expression ) | ^( TO_PRINT expression ) )
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -687,13 +718,13 @@ public class TLTreeWalker extends TreeParser {
             }
             switch (alt11) {
                 case 1 :
-                    // TLTreeWalker.g:80:5: ^( ASSIGNMENT Identifier ( indexes )? expression )
+                    // TLTreeWalker.g:93:5: ^( ASSIGNMENT Identifier ( indexes )? expression )
                     {
-                    match(input,ASSIGNMENT,FOLLOW_ASSIGNMENT_in_assignment345); 
+                    match(input,ASSIGNMENT,FOLLOW_ASSIGNMENT_in_assignment393); 
 
                     match(input, Token.DOWN, null); 
-                    match(input,Identifier,FOLLOW_Identifier_in_assignment347); 
-                    // TLTreeWalker.g:80:29: ( indexes )?
+                    match(input,Identifier,FOLLOW_Identifier_in_assignment395); 
+                    // TLTreeWalker.g:93:29: ( indexes )?
                     int alt10=2;
                     int LA10_0 = input.LA(1);
 
@@ -702,9 +733,9 @@ public class TLTreeWalker extends TreeParser {
                     }
                     switch (alt10) {
                         case 1 :
-                            // TLTreeWalker.g:80:29: indexes
+                            // TLTreeWalker.g:93:29: indexes
                             {
-                            pushFollow(FOLLOW_indexes_in_assignment349);
+                            pushFollow(FOLLOW_indexes_in_assignment397);
                             indexes();
 
                             state._fsp--;
@@ -715,7 +746,7 @@ public class TLTreeWalker extends TreeParser {
 
                     }
 
-                    pushFollow(FOLLOW_expression_in_assignment352);
+                    pushFollow(FOLLOW_expression_in_assignment400);
                     expression();
 
                     state._fsp--;
@@ -726,18 +757,19 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 2 :
-                    // TLTreeWalker.g:81:5: ^( TO_PRINT expression )
+                    // TLTreeWalker.g:94:5: ^( TO_PRINT expression )
                     {
-                    match(input,TO_PRINT,FOLLOW_TO_PRINT_in_assignment360); 
+                    match(input,TO_PRINT,FOLLOW_TO_PRINT_in_assignment408); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_assignment362);
-                    expression();
+                    pushFollow(FOLLOW_expression_in_assignment410);
+                    expression9=expression();
 
                     state._fsp--;
 
 
                     match(input, Token.UP, null); 
+                    node = new OutNode(expression9);
 
                     }
                     break;
@@ -750,24 +782,24 @@ public class TLTreeWalker extends TreeParser {
         }
         finally {
         }
-        return ;
+        return node;
     }
     // $ANTLR end "assignment"
 
 
     // $ANTLR start "indexes"
-    // TLTreeWalker.g:84:1: indexes returns [TLNode node] : ^( INDEXES ( expression )+ ) ;
+    // TLTreeWalker.g:97:1: indexes returns [TLNode node] : ^( INDEXES ( expression )+ ) ;
     public final TLNode indexes() throws RecognitionException {
         TLNode node = null;
 
         try {
-            // TLTreeWalker.g:85:3: ( ^( INDEXES ( expression )+ ) )
-            // TLTreeWalker.g:85:5: ^( INDEXES ( expression )+ )
+            // TLTreeWalker.g:98:3: ( ^( INDEXES ( expression )+ ) )
+            // TLTreeWalker.g:98:5: ^( INDEXES ( expression )+ )
             {
-            match(input,INDEXES,FOLLOW_INDEXES_in_indexes383); 
+            match(input,INDEXES,FOLLOW_INDEXES_in_indexes434); 
 
             match(input, Token.DOWN, null); 
-            // TLTreeWalker.g:85:15: ( expression )+
+            // TLTreeWalker.g:98:15: ( expression )+
             int cnt12=0;
             loop12:
             do {
@@ -781,9 +813,9 @@ public class TLTreeWalker extends TreeParser {
 
                 switch (alt12) {
             	case 1 :
-            	    // TLTreeWalker.g:85:15: expression
+            	    // TLTreeWalker.g:98:15: expression
             	    {
-            	    pushFollow(FOLLOW_expression_in_indexes385);
+            	    pushFollow(FOLLOW_expression_in_indexes436);
             	    expression();
 
             	    state._fsp--;
@@ -819,18 +851,18 @@ public class TLTreeWalker extends TreeParser {
 
 
     // $ANTLR start "exprList"
-    // TLTreeWalker.g:88:1: exprList returns [java.util.List<TLNode> e] : ^( EXP_LIST ( expression )+ ) ;
+    // TLTreeWalker.g:101:1: exprList returns [java.util.List<TLNode> e] : ^( EXP_LIST ( expression )+ ) ;
     public final java.util.List<TLNode> exprList() throws RecognitionException {
         java.util.List<TLNode> e = null;
 
         try {
-            // TLTreeWalker.g:89:3: ( ^( EXP_LIST ( expression )+ ) )
-            // TLTreeWalker.g:89:6: ^( EXP_LIST ( expression )+ )
+            // TLTreeWalker.g:102:3: ( ^( EXP_LIST ( expression )+ ) )
+            // TLTreeWalker.g:102:6: ^( EXP_LIST ( expression )+ )
             {
-            match(input,EXP_LIST,FOLLOW_EXP_LIST_in_exprList411); 
+            match(input,EXP_LIST,FOLLOW_EXP_LIST_in_exprList462); 
 
             match(input, Token.DOWN, null); 
-            // TLTreeWalker.g:89:17: ( expression )+
+            // TLTreeWalker.g:102:17: ( expression )+
             int cnt13=0;
             loop13:
             do {
@@ -844,9 +876,9 @@ public class TLTreeWalker extends TreeParser {
 
                 switch (alt13) {
             	case 1 :
-            	    // TLTreeWalker.g:89:17: expression
+            	    // TLTreeWalker.g:102:17: expression
             	    {
-            	    pushFollow(FOLLOW_expression_in_exprList413);
+            	    pushFollow(FOLLOW_expression_in_exprList464);
             	    expression();
 
             	    state._fsp--;
@@ -882,19 +914,19 @@ public class TLTreeWalker extends TreeParser {
 
 
     // $ANTLR start "expression"
-    // TLTreeWalker.g:92:1: expression returns [TLNode node] : ( ^( '|_|' expression expression ) | ^( '&_&' expression expression ) | ^( '=_=' a= expression b= expression ) | ^( '>_<' a= expression b= expression ) | ^( '>_=' a= expression b= expression ) | ^( '=_<' a= expression b= expression ) | ^( '>_>' a= expression b= expression ) | ^( '<_<' a= expression b= expression ) | ^( '+' a= expression b= expression ) | ^( '-' a= expression b= expression ) | ^( '*' a= expression b= expression ) | ^( '/' a= expression b= expression ) | ^( '//' a= expression b= expression ) | ^( '%' a= expression b= expression ) | ^( '**' expression expression ) | ^( '^' expression expression ) | ^( '&' expression expression ) | ^( '|' expression expression ) | ^( UNARY_MIN expression ) | ^( NOT expression ) | ^( BIN_NOT expression ) | Number | Bool | Null | In | lookup );
+    // TLTreeWalker.g:105:1: expression returns [TLNode node] : ( ^( '|_|' expression expression ) | ^( '&_&' expression expression ) | ^( '=_=' a= expression b= expression ) | ^( '>_<' a= expression b= expression ) | ^( '>_=' a= expression b= expression ) | ^( '=_<' a= expression b= expression ) | ^( '>_>' a= expression b= expression ) | ^( '<_<' a= expression b= expression ) | ^( '+' a= expression b= expression ) | ^( '-' a= expression b= expression ) | ^( '*' a= expression b= expression ) | ^( '/' a= expression b= expression ) | ^( '//' a= expression b= expression ) | ^( '%' a= expression b= expression ) | ^( '**' expression expression ) | ^( '^' expression expression ) | ^( '&' expression expression ) | ^( '|' expression expression ) | ^( UNARY_MIN expression ) | ^( NOT expression ) | ^( BIN_NOT expression ) | Number | Bool | Null | In | lookup );
     public final TLNode expression() throws RecognitionException {
         TLNode node = null;
 
-        CommonTree Number4=null;
-        CommonTree Bool5=null;
+        CommonTree Number10=null;
+        CommonTree Bool11=null;
         TLNode a = null;
 
         TLNode b = null;
 
 
         try {
-            // TLTreeWalker.g:93:3: ( ^( '|_|' expression expression ) | ^( '&_&' expression expression ) | ^( '=_=' a= expression b= expression ) | ^( '>_<' a= expression b= expression ) | ^( '>_=' a= expression b= expression ) | ^( '=_<' a= expression b= expression ) | ^( '>_>' a= expression b= expression ) | ^( '<_<' a= expression b= expression ) | ^( '+' a= expression b= expression ) | ^( '-' a= expression b= expression ) | ^( '*' a= expression b= expression ) | ^( '/' a= expression b= expression ) | ^( '//' a= expression b= expression ) | ^( '%' a= expression b= expression ) | ^( '**' expression expression ) | ^( '^' expression expression ) | ^( '&' expression expression ) | ^( '|' expression expression ) | ^( UNARY_MIN expression ) | ^( NOT expression ) | ^( BIN_NOT expression ) | Number | Bool | Null | In | lookup )
+            // TLTreeWalker.g:106:3: ( ^( '|_|' expression expression ) | ^( '&_&' expression expression ) | ^( '=_=' a= expression b= expression ) | ^( '>_<' a= expression b= expression ) | ^( '>_=' a= expression b= expression ) | ^( '=_<' a= expression b= expression ) | ^( '>_>' a= expression b= expression ) | ^( '<_<' a= expression b= expression ) | ^( '+' a= expression b= expression ) | ^( '-' a= expression b= expression ) | ^( '*' a= expression b= expression ) | ^( '/' a= expression b= expression ) | ^( '//' a= expression b= expression ) | ^( '%' a= expression b= expression ) | ^( '**' expression expression ) | ^( '^' expression expression ) | ^( '&' expression expression ) | ^( '|' expression expression ) | ^( UNARY_MIN expression ) | ^( NOT expression ) | ^( BIN_NOT expression ) | Number | Bool | Null | In | lookup )
             int alt14=26;
             switch ( input.LA(1) ) {
             case Or:
@@ -1036,17 +1068,17 @@ public class TLTreeWalker extends TreeParser {
 
             switch (alt14) {
                 case 1 :
-                    // TLTreeWalker.g:93:6: ^( '|_|' expression expression )
+                    // TLTreeWalker.g:106:6: ^( '|_|' expression expression )
                     {
-                    match(input,Or,FOLLOW_Or_in_expression441); 
+                    match(input,Or,FOLLOW_Or_in_expression492); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression443);
+                    pushFollow(FOLLOW_expression_in_expression494);
                     expression();
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression445);
+                    pushFollow(FOLLOW_expression_in_expression496);
                     expression();
 
                     state._fsp--;
@@ -1057,17 +1089,17 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 2 :
-                    // TLTreeWalker.g:94:6: ^( '&_&' expression expression )
+                    // TLTreeWalker.g:107:6: ^( '&_&' expression expression )
                     {
-                    match(input,And,FOLLOW_And_in_expression456); 
+                    match(input,And,FOLLOW_And_in_expression507); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression458);
+                    pushFollow(FOLLOW_expression_in_expression509);
                     expression();
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression460);
+                    pushFollow(FOLLOW_expression_in_expression511);
                     expression();
 
                     state._fsp--;
@@ -1078,17 +1110,17 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 3 :
-                    // TLTreeWalker.g:95:6: ^( '=_=' a= expression b= expression )
+                    // TLTreeWalker.g:108:6: ^( '=_=' a= expression b= expression )
                     {
-                    match(input,Equals,FOLLOW_Equals_in_expression471); 
+                    match(input,Equals,FOLLOW_Equals_in_expression522); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression475);
+                    pushFollow(FOLLOW_expression_in_expression526);
                     a=expression();
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression479);
+                    pushFollow(FOLLOW_expression_in_expression530);
                     b=expression();
 
                     state._fsp--;
@@ -1100,17 +1132,17 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 4 :
-                    // TLTreeWalker.g:96:6: ^( '>_<' a= expression b= expression )
+                    // TLTreeWalker.g:109:6: ^( '>_<' a= expression b= expression )
                     {
-                    match(input,NEquals,FOLLOW_NEquals_in_expression491); 
+                    match(input,NEquals,FOLLOW_NEquals_in_expression542); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression495);
+                    pushFollow(FOLLOW_expression_in_expression546);
                     a=expression();
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression499);
+                    pushFollow(FOLLOW_expression_in_expression550);
                     b=expression();
 
                     state._fsp--;
@@ -1122,17 +1154,17 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 5 :
-                    // TLTreeWalker.g:97:6: ^( '>_=' a= expression b= expression )
+                    // TLTreeWalker.g:110:6: ^( '>_=' a= expression b= expression )
                     {
-                    match(input,GTEquals,FOLLOW_GTEquals_in_expression511); 
+                    match(input,GTEquals,FOLLOW_GTEquals_in_expression562); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression515);
+                    pushFollow(FOLLOW_expression_in_expression566);
                     a=expression();
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression519);
+                    pushFollow(FOLLOW_expression_in_expression570);
                     b=expression();
 
                     state._fsp--;
@@ -1144,17 +1176,17 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 6 :
-                    // TLTreeWalker.g:98:6: ^( '=_<' a= expression b= expression )
+                    // TLTreeWalker.g:111:6: ^( '=_<' a= expression b= expression )
                     {
-                    match(input,LTEquals,FOLLOW_LTEquals_in_expression531); 
+                    match(input,LTEquals,FOLLOW_LTEquals_in_expression582); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression535);
+                    pushFollow(FOLLOW_expression_in_expression586);
                     a=expression();
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression539);
+                    pushFollow(FOLLOW_expression_in_expression590);
                     b=expression();
 
                     state._fsp--;
@@ -1166,17 +1198,17 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 7 :
-                    // TLTreeWalker.g:99:6: ^( '>_>' a= expression b= expression )
+                    // TLTreeWalker.g:112:6: ^( '>_>' a= expression b= expression )
                     {
-                    match(input,GT,FOLLOW_GT_in_expression551); 
+                    match(input,GT,FOLLOW_GT_in_expression602); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression555);
+                    pushFollow(FOLLOW_expression_in_expression606);
                     a=expression();
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression559);
+                    pushFollow(FOLLOW_expression_in_expression610);
                     b=expression();
 
                     state._fsp--;
@@ -1188,17 +1220,17 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 8 :
-                    // TLTreeWalker.g:100:6: ^( '<_<' a= expression b= expression )
+                    // TLTreeWalker.g:113:6: ^( '<_<' a= expression b= expression )
                     {
-                    match(input,LT,FOLLOW_LT_in_expression571); 
+                    match(input,LT,FOLLOW_LT_in_expression622); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression575);
+                    pushFollow(FOLLOW_expression_in_expression626);
                     a=expression();
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression579);
+                    pushFollow(FOLLOW_expression_in_expression630);
                     b=expression();
 
                     state._fsp--;
@@ -1210,17 +1242,17 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 9 :
-                    // TLTreeWalker.g:101:6: ^( '+' a= expression b= expression )
+                    // TLTreeWalker.g:114:6: ^( '+' a= expression b= expression )
                     {
-                    match(input,Add,FOLLOW_Add_in_expression591); 
+                    match(input,Add,FOLLOW_Add_in_expression642); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression595);
+                    pushFollow(FOLLOW_expression_in_expression646);
                     a=expression();
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression599);
+                    pushFollow(FOLLOW_expression_in_expression650);
                     b=expression();
 
                     state._fsp--;
@@ -1232,17 +1264,17 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 10 :
-                    // TLTreeWalker.g:102:6: ^( '-' a= expression b= expression )
+                    // TLTreeWalker.g:115:6: ^( '-' a= expression b= expression )
                     {
-                    match(input,Subt,FOLLOW_Subt_in_expression610); 
+                    match(input,Subt,FOLLOW_Subt_in_expression661); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression614);
+                    pushFollow(FOLLOW_expression_in_expression665);
                     a=expression();
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression618);
+                    pushFollow(FOLLOW_expression_in_expression669);
                     b=expression();
 
                     state._fsp--;
@@ -1254,17 +1286,17 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 11 :
-                    // TLTreeWalker.g:103:6: ^( '*' a= expression b= expression )
+                    // TLTreeWalker.g:116:6: ^( '*' a= expression b= expression )
                     {
-                    match(input,Mult,FOLLOW_Mult_in_expression629); 
+                    match(input,Mult,FOLLOW_Mult_in_expression680); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression633);
+                    pushFollow(FOLLOW_expression_in_expression684);
                     a=expression();
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression637);
+                    pushFollow(FOLLOW_expression_in_expression688);
                     b=expression();
 
                     state._fsp--;
@@ -1276,17 +1308,17 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 12 :
-                    // TLTreeWalker.g:104:6: ^( '/' a= expression b= expression )
+                    // TLTreeWalker.g:117:6: ^( '/' a= expression b= expression )
                     {
-                    match(input,Div,FOLLOW_Div_in_expression648); 
+                    match(input,Div,FOLLOW_Div_in_expression699); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression652);
+                    pushFollow(FOLLOW_expression_in_expression703);
                     a=expression();
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression656);
+                    pushFollow(FOLLOW_expression_in_expression707);
                     b=expression();
 
                     state._fsp--;
@@ -1298,17 +1330,17 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 13 :
-                    // TLTreeWalker.g:105:6: ^( '//' a= expression b= expression )
+                    // TLTreeWalker.g:118:6: ^( '//' a= expression b= expression )
                     {
-                    match(input,Int_Div,FOLLOW_Int_Div_in_expression667); 
+                    match(input,Int_Div,FOLLOW_Int_Div_in_expression718); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression671);
+                    pushFollow(FOLLOW_expression_in_expression722);
                     a=expression();
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression675);
+                    pushFollow(FOLLOW_expression_in_expression726);
                     b=expression();
 
                     state._fsp--;
@@ -1320,17 +1352,17 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 14 :
-                    // TLTreeWalker.g:106:6: ^( '%' a= expression b= expression )
+                    // TLTreeWalker.g:119:6: ^( '%' a= expression b= expression )
                     {
-                    match(input,Mod,FOLLOW_Mod_in_expression686); 
+                    match(input,Mod,FOLLOW_Mod_in_expression737); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression690);
+                    pushFollow(FOLLOW_expression_in_expression741);
                     a=expression();
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression694);
+                    pushFollow(FOLLOW_expression_in_expression745);
                     b=expression();
 
                     state._fsp--;
@@ -1342,17 +1374,17 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 15 :
-                    // TLTreeWalker.g:107:6: ^( '**' expression expression )
+                    // TLTreeWalker.g:120:6: ^( '**' expression expression )
                     {
-                    match(input,Pow,FOLLOW_Pow_in_expression705); 
+                    match(input,Pow,FOLLOW_Pow_in_expression756); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression707);
+                    pushFollow(FOLLOW_expression_in_expression758);
                     expression();
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression709);
+                    pushFollow(FOLLOW_expression_in_expression760);
                     expression();
 
                     state._fsp--;
@@ -1363,17 +1395,17 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 16 :
-                    // TLTreeWalker.g:108:6: ^( '^' expression expression )
+                    // TLTreeWalker.g:121:6: ^( '^' expression expression )
                     {
-                    match(input,Bit_Xor,FOLLOW_Bit_Xor_in_expression720); 
+                    match(input,Bit_Xor,FOLLOW_Bit_Xor_in_expression771); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression722);
+                    pushFollow(FOLLOW_expression_in_expression773);
                     expression();
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression724);
+                    pushFollow(FOLLOW_expression_in_expression775);
                     expression();
 
                     state._fsp--;
@@ -1384,17 +1416,17 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 17 :
-                    // TLTreeWalker.g:109:6: ^( '&' expression expression )
+                    // TLTreeWalker.g:122:6: ^( '&' expression expression )
                     {
-                    match(input,Bit_And,FOLLOW_Bit_And_in_expression735); 
+                    match(input,Bit_And,FOLLOW_Bit_And_in_expression786); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression737);
+                    pushFollow(FOLLOW_expression_in_expression788);
                     expression();
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression739);
+                    pushFollow(FOLLOW_expression_in_expression790);
                     expression();
 
                     state._fsp--;
@@ -1405,17 +1437,17 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 18 :
-                    // TLTreeWalker.g:110:6: ^( '|' expression expression )
+                    // TLTreeWalker.g:123:6: ^( '|' expression expression )
                     {
-                    match(input,Bit_Or,FOLLOW_Bit_Or_in_expression750); 
+                    match(input,Bit_Or,FOLLOW_Bit_Or_in_expression801); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression752);
+                    pushFollow(FOLLOW_expression_in_expression803);
                     expression();
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression754);
+                    pushFollow(FOLLOW_expression_in_expression805);
                     expression();
 
                     state._fsp--;
@@ -1426,12 +1458,12 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 19 :
-                    // TLTreeWalker.g:111:6: ^( UNARY_MIN expression )
+                    // TLTreeWalker.g:124:6: ^( UNARY_MIN expression )
                     {
-                    match(input,UNARY_MIN,FOLLOW_UNARY_MIN_in_expression765); 
+                    match(input,UNARY_MIN,FOLLOW_UNARY_MIN_in_expression816); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression767);
+                    pushFollow(FOLLOW_expression_in_expression818);
                     expression();
 
                     state._fsp--;
@@ -1442,12 +1474,12 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 20 :
-                    // TLTreeWalker.g:112:6: ^( NOT expression )
+                    // TLTreeWalker.g:125:6: ^( NOT expression )
                     {
-                    match(input,NOT,FOLLOW_NOT_in_expression778); 
+                    match(input,NOT,FOLLOW_NOT_in_expression829); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression780);
+                    pushFollow(FOLLOW_expression_in_expression831);
                     expression();
 
                     state._fsp--;
@@ -1458,12 +1490,12 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 21 :
-                    // TLTreeWalker.g:113:6: ^( BIN_NOT expression )
+                    // TLTreeWalker.g:126:6: ^( BIN_NOT expression )
                     {
-                    match(input,BIN_NOT,FOLLOW_BIN_NOT_in_expression791); 
+                    match(input,BIN_NOT,FOLLOW_BIN_NOT_in_expression842); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression793);
+                    pushFollow(FOLLOW_expression_in_expression844);
                     expression();
 
                     state._fsp--;
@@ -1474,40 +1506,40 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 22 :
-                    // TLTreeWalker.g:114:6: Number
+                    // TLTreeWalker.g:127:6: Number
                     {
-                    Number4=(CommonTree)match(input,Number,FOLLOW_Number_in_expression803); 
-                    node = new AtomNode(Double.parseDouble((Number4!=null?Number4.getText():null)));
+                    Number10=(CommonTree)match(input,Number,FOLLOW_Number_in_expression854); 
+                    node = new AtomNode(Double.parseDouble((Number10!=null?Number10.getText():null)));
 
                     }
                     break;
                 case 23 :
-                    // TLTreeWalker.g:115:6: Bool
+                    // TLTreeWalker.g:128:6: Bool
                     {
-                    Bool5=(CommonTree)match(input,Bool,FOLLOW_Bool_in_expression818); 
-                    node = new AtomNode(Boolean.parseBoolean((Bool5!=null?Bool5.getText():null)));
+                    Bool11=(CommonTree)match(input,Bool,FOLLOW_Bool_in_expression869); 
+                    node = new AtomNode(Boolean.parseBoolean((Bool11!=null?Bool11.getText():null)));
 
                     }
                     break;
                 case 24 :
-                    // TLTreeWalker.g:116:6: Null
+                    // TLTreeWalker.g:129:6: Null
                     {
-                    match(input,Null,FOLLOW_Null_in_expression833); 
+                    match(input,Null,FOLLOW_Null_in_expression884); 
                     node = new AtomNode(null);
 
                     }
                     break;
                 case 25 :
-                    // TLTreeWalker.g:117:6: In
+                    // TLTreeWalker.g:130:6: In
                     {
-                    match(input,In,FOLLOW_In_in_expression848); 
+                    match(input,In,FOLLOW_In_in_expression899); 
 
                     }
                     break;
                 case 26 :
-                    // TLTreeWalker.g:118:6: lookup
+                    // TLTreeWalker.g:131:6: lookup
                     {
-                    pushFollow(FOLLOW_lookup_in_expression855);
+                    pushFollow(FOLLOW_lookup_in_expression906);
                     lookup();
 
                     state._fsp--;
@@ -1530,19 +1562,19 @@ public class TLTreeWalker extends TreeParser {
 
 
     // $ANTLR start "list"
-    // TLTreeWalker.g:121:1: list returns [TLNode node] : ^( LIST ( exprList )? ) ;
+    // TLTreeWalker.g:134:1: list returns [TLNode node] : ^( LIST ( exprList )? ) ;
     public final TLNode list() throws RecognitionException {
         TLNode node = null;
 
         try {
-            // TLTreeWalker.g:122:3: ( ^( LIST ( exprList )? ) )
-            // TLTreeWalker.g:122:6: ^( LIST ( exprList )? )
+            // TLTreeWalker.g:135:3: ( ^( LIST ( exprList )? ) )
+            // TLTreeWalker.g:135:6: ^( LIST ( exprList )? )
             {
-            match(input,LIST,FOLLOW_LIST_in_list892); 
+            match(input,LIST,FOLLOW_LIST_in_list943); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // TLTreeWalker.g:122:13: ( exprList )?
+                // TLTreeWalker.g:135:13: ( exprList )?
                 int alt15=2;
                 int LA15_0 = input.LA(1);
 
@@ -1551,9 +1583,9 @@ public class TLTreeWalker extends TreeParser {
                 }
                 switch (alt15) {
                     case 1 :
-                        // TLTreeWalker.g:122:13: exprList
+                        // TLTreeWalker.g:135:13: exprList
                         {
-                        pushFollow(FOLLOW_exprList_in_list894);
+                        pushFollow(FOLLOW_exprList_in_list945);
                         exprList();
 
                         state._fsp--;
@@ -1583,12 +1615,12 @@ public class TLTreeWalker extends TreeParser {
 
 
     // $ANTLR start "lookup"
-    // TLTreeWalker.g:125:1: lookup returns [TLNode node] : ( ^( LOOKUP functionCall ( indexes )? ) | ^( LOOKUP list ( indexes )? ) | ^( LOOKUP expression ( indexes )? ) | ^( LOOKUP Identifier ( indexes )? ) | ^( LOOKUP String ( indexes )? ) );
+    // TLTreeWalker.g:138:1: lookup returns [TLNode node] : ( ^( LOOKUP functionCall ( indexes )? ) | ^( LOOKUP list ( indexes )? ) | ^( LOOKUP expression ( indexes )? ) | ^( LOOKUP Identifier ( indexes )? ) | ^( LOOKUP String ( indexes )? ) );
     public final TLNode lookup() throws RecognitionException {
         TLNode node = null;
 
         try {
-            // TLTreeWalker.g:126:3: ( ^( LOOKUP functionCall ( indexes )? ) | ^( LOOKUP list ( indexes )? ) | ^( LOOKUP expression ( indexes )? ) | ^( LOOKUP Identifier ( indexes )? ) | ^( LOOKUP String ( indexes )? ) )
+            // TLTreeWalker.g:139:3: ( ^( LOOKUP functionCall ( indexes )? ) | ^( LOOKUP list ( indexes )? ) | ^( LOOKUP expression ( indexes )? ) | ^( LOOKUP Identifier ( indexes )? ) | ^( LOOKUP String ( indexes )? ) )
             int alt21=5;
             int LA21_0 = input.LA(1);
 
@@ -1670,17 +1702,17 @@ public class TLTreeWalker extends TreeParser {
             }
             switch (alt21) {
                 case 1 :
-                    // TLTreeWalker.g:126:6: ^( LOOKUP functionCall ( indexes )? )
+                    // TLTreeWalker.g:139:6: ^( LOOKUP functionCall ( indexes )? )
                     {
-                    match(input,LOOKUP,FOLLOW_LOOKUP_in_lookup924); 
+                    match(input,LOOKUP,FOLLOW_LOOKUP_in_lookup975); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_functionCall_in_lookup926);
+                    pushFollow(FOLLOW_functionCall_in_lookup977);
                     functionCall();
 
                     state._fsp--;
 
-                    // TLTreeWalker.g:126:28: ( indexes )?
+                    // TLTreeWalker.g:139:28: ( indexes )?
                     int alt16=2;
                     int LA16_0 = input.LA(1);
 
@@ -1689,9 +1721,9 @@ public class TLTreeWalker extends TreeParser {
                     }
                     switch (alt16) {
                         case 1 :
-                            // TLTreeWalker.g:126:28: indexes
+                            // TLTreeWalker.g:139:28: indexes
                             {
-                            pushFollow(FOLLOW_indexes_in_lookup928);
+                            pushFollow(FOLLOW_indexes_in_lookup979);
                             indexes();
 
                             state._fsp--;
@@ -1708,17 +1740,17 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 2 :
-                    // TLTreeWalker.g:127:6: ^( LOOKUP list ( indexes )? )
+                    // TLTreeWalker.g:140:6: ^( LOOKUP list ( indexes )? )
                     {
-                    match(input,LOOKUP,FOLLOW_LOOKUP_in_lookup940); 
+                    match(input,LOOKUP,FOLLOW_LOOKUP_in_lookup991); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_list_in_lookup942);
+                    pushFollow(FOLLOW_list_in_lookup993);
                     list();
 
                     state._fsp--;
 
-                    // TLTreeWalker.g:127:20: ( indexes )?
+                    // TLTreeWalker.g:140:20: ( indexes )?
                     int alt17=2;
                     int LA17_0 = input.LA(1);
 
@@ -1727,9 +1759,9 @@ public class TLTreeWalker extends TreeParser {
                     }
                     switch (alt17) {
                         case 1 :
-                            // TLTreeWalker.g:127:20: indexes
+                            // TLTreeWalker.g:140:20: indexes
                             {
-                            pushFollow(FOLLOW_indexes_in_lookup944);
+                            pushFollow(FOLLOW_indexes_in_lookup995);
                             indexes();
 
                             state._fsp--;
@@ -1746,17 +1778,17 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 3 :
-                    // TLTreeWalker.g:128:6: ^( LOOKUP expression ( indexes )? )
+                    // TLTreeWalker.g:141:6: ^( LOOKUP expression ( indexes )? )
                     {
-                    match(input,LOOKUP,FOLLOW_LOOKUP_in_lookup956); 
+                    match(input,LOOKUP,FOLLOW_LOOKUP_in_lookup1007); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_lookup958);
+                    pushFollow(FOLLOW_expression_in_lookup1009);
                     expression();
 
                     state._fsp--;
 
-                    // TLTreeWalker.g:128:26: ( indexes )?
+                    // TLTreeWalker.g:141:26: ( indexes )?
                     int alt18=2;
                     int LA18_0 = input.LA(1);
 
@@ -1765,9 +1797,9 @@ public class TLTreeWalker extends TreeParser {
                     }
                     switch (alt18) {
                         case 1 :
-                            // TLTreeWalker.g:128:26: indexes
+                            // TLTreeWalker.g:141:26: indexes
                             {
-                            pushFollow(FOLLOW_indexes_in_lookup960);
+                            pushFollow(FOLLOW_indexes_in_lookup1011);
                             indexes();
 
                             state._fsp--;
@@ -1784,13 +1816,13 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 4 :
-                    // TLTreeWalker.g:129:6: ^( LOOKUP Identifier ( indexes )? )
+                    // TLTreeWalker.g:142:6: ^( LOOKUP Identifier ( indexes )? )
                     {
-                    match(input,LOOKUP,FOLLOW_LOOKUP_in_lookup973); 
+                    match(input,LOOKUP,FOLLOW_LOOKUP_in_lookup1024); 
 
                     match(input, Token.DOWN, null); 
-                    match(input,Identifier,FOLLOW_Identifier_in_lookup975); 
-                    // TLTreeWalker.g:129:26: ( indexes )?
+                    match(input,Identifier,FOLLOW_Identifier_in_lookup1026); 
+                    // TLTreeWalker.g:142:26: ( indexes )?
                     int alt19=2;
                     int LA19_0 = input.LA(1);
 
@@ -1799,9 +1831,9 @@ public class TLTreeWalker extends TreeParser {
                     }
                     switch (alt19) {
                         case 1 :
-                            // TLTreeWalker.g:129:26: indexes
+                            // TLTreeWalker.g:142:26: indexes
                             {
-                            pushFollow(FOLLOW_indexes_in_lookup977);
+                            pushFollow(FOLLOW_indexes_in_lookup1028);
                             indexes();
 
                             state._fsp--;
@@ -1818,13 +1850,13 @@ public class TLTreeWalker extends TreeParser {
                     }
                     break;
                 case 5 :
-                    // TLTreeWalker.g:130:6: ^( LOOKUP String ( indexes )? )
+                    // TLTreeWalker.g:143:6: ^( LOOKUP String ( indexes )? )
                     {
-                    match(input,LOOKUP,FOLLOW_LOOKUP_in_lookup989); 
+                    match(input,LOOKUP,FOLLOW_LOOKUP_in_lookup1040); 
 
                     match(input, Token.DOWN, null); 
-                    match(input,String,FOLLOW_String_in_lookup991); 
-                    // TLTreeWalker.g:130:22: ( indexes )?
+                    match(input,String,FOLLOW_String_in_lookup1042); 
+                    // TLTreeWalker.g:143:22: ( indexes )?
                     int alt20=2;
                     int LA20_0 = input.LA(1);
 
@@ -1833,9 +1865,9 @@ public class TLTreeWalker extends TreeParser {
                     }
                     switch (alt20) {
                         case 1 :
-                            // TLTreeWalker.g:130:22: indexes
+                            // TLTreeWalker.g:143:22: indexes
                             {
-                            pushFollow(FOLLOW_indexes_in_lookup993);
+                            pushFollow(FOLLOW_indexes_in_lookup1044);
                             indexes();
 
                             state._fsp--;
@@ -1875,116 +1907,116 @@ public class TLTreeWalker extends TreeParser {
     public static final BitSet FOLLOW_statement_in_block104 = new BitSet(new long[]{0x0000000000080388L});
     public static final BitSet FOLLOW_RETURN_in_block118 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_expression_in_block121 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_BLOCK_in_delimitedBlock150 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_STATEMENTS_in_delimitedBlock153 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_statement_in_delimitedBlock155 = new BitSet(new long[]{0x0000000000080388L});
-    public static final BitSet FOLLOW_RETURN_in_delimitedBlock160 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_delimitedBlock162 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_assignment_in_statement184 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_functionCall_in_statement190 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ifStatement_in_statement196 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FUNC_CALL_in_functionCall216 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_Identifier_in_functionCall218 = new BitSet(new long[]{0x0000000000040008L});
-    public static final BitSet FOLLOW_exprList_in_functionCall220 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_IF_in_ifStatement250 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_EXP_in_ifStatement254 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_ifStatement258 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_block_in_ifStatement262 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_EXP_in_ifStatement276 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_block_in_ifStatement280 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_ID_LIST_in_idList325 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_Identifier_in_idList327 = new BitSet(new long[]{0x0000000002000008L});
-    public static final BitSet FOLLOW_ASSIGNMENT_in_assignment345 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_Identifier_in_assignment347 = new BitSet(new long[]{0x0007FEFF7801F000L});
-    public static final BitSet FOLLOW_indexes_in_assignment349 = new BitSet(new long[]{0x0007FEFF7801F000L});
-    public static final BitSet FOLLOW_expression_in_assignment352 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_TO_PRINT_in_assignment360 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_assignment362 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_INDEXES_in_indexes383 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_indexes385 = new BitSet(new long[]{0x0007FEFF7801F008L});
-    public static final BitSet FOLLOW_EXP_LIST_in_exprList411 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_exprList413 = new BitSet(new long[]{0x0007FEFF7801F008L});
-    public static final BitSet FOLLOW_Or_in_expression441 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression443 = new BitSet(new long[]{0x0007FEFF7801F000L});
-    public static final BitSet FOLLOW_expression_in_expression445 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_And_in_expression456 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression458 = new BitSet(new long[]{0x0007FEFF7801F000L});
-    public static final BitSet FOLLOW_expression_in_expression460 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Equals_in_expression471 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression475 = new BitSet(new long[]{0x0007FEFF7801F000L});
-    public static final BitSet FOLLOW_expression_in_expression479 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_NEquals_in_expression491 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression495 = new BitSet(new long[]{0x0007FEFF7801F000L});
-    public static final BitSet FOLLOW_expression_in_expression499 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_GTEquals_in_expression511 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression515 = new BitSet(new long[]{0x0007FEFF7801F000L});
-    public static final BitSet FOLLOW_expression_in_expression519 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LTEquals_in_expression531 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression535 = new BitSet(new long[]{0x0007FEFF7801F000L});
-    public static final BitSet FOLLOW_expression_in_expression539 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_GT_in_expression551 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression555 = new BitSet(new long[]{0x0007FEFF7801F000L});
-    public static final BitSet FOLLOW_expression_in_expression559 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LT_in_expression571 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression575 = new BitSet(new long[]{0x0007FEFF7801F000L});
-    public static final BitSet FOLLOW_expression_in_expression579 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Add_in_expression591 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression595 = new BitSet(new long[]{0x0007FEFF7801F000L});
-    public static final BitSet FOLLOW_expression_in_expression599 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Subt_in_expression610 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression614 = new BitSet(new long[]{0x0007FEFF7801F000L});
-    public static final BitSet FOLLOW_expression_in_expression618 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Mult_in_expression629 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression633 = new BitSet(new long[]{0x0007FEFF7801F000L});
-    public static final BitSet FOLLOW_expression_in_expression637 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Div_in_expression648 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression652 = new BitSet(new long[]{0x0007FEFF7801F000L});
-    public static final BitSet FOLLOW_expression_in_expression656 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Int_Div_in_expression667 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression671 = new BitSet(new long[]{0x0007FEFF7801F000L});
-    public static final BitSet FOLLOW_expression_in_expression675 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Mod_in_expression686 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression690 = new BitSet(new long[]{0x0007FEFF7801F000L});
-    public static final BitSet FOLLOW_expression_in_expression694 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Pow_in_expression705 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression707 = new BitSet(new long[]{0x0007FEFF7801F000L});
-    public static final BitSet FOLLOW_expression_in_expression709 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Bit_Xor_in_expression720 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_BLOCK_in_delimitedBlock164 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_STATEMENTS_in_delimitedBlock172 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_statement_in_delimitedBlock175 = new BitSet(new long[]{0x0000000000080388L});
+    public static final BitSet FOLLOW_RETURN_in_delimitedBlock189 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_delimitedBlock192 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_assignment_in_statement222 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_functionCall_in_statement230 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ifStatement_in_statement238 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FUNC_CALL_in_functionCall260 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_Identifier_in_functionCall262 = new BitSet(new long[]{0x0000000000040008L});
+    public static final BitSet FOLLOW_exprList_in_functionCall264 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_IF_in_ifStatement294 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_EXP_in_ifStatement298 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_ifStatement302 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_block_in_ifStatement306 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_EXP_in_ifStatement320 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_block_in_ifStatement324 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_ID_LIST_in_idList369 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_Identifier_in_idList371 = new BitSet(new long[]{0x0000000002000008L});
+    public static final BitSet FOLLOW_ASSIGNMENT_in_assignment393 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_Identifier_in_assignment395 = new BitSet(new long[]{0x0007FEFF7801F000L});
+    public static final BitSet FOLLOW_indexes_in_assignment397 = new BitSet(new long[]{0x0007FEFF7801F000L});
+    public static final BitSet FOLLOW_expression_in_assignment400 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_TO_PRINT_in_assignment408 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_assignment410 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_INDEXES_in_indexes434 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_indexes436 = new BitSet(new long[]{0x0007FEFF7801F008L});
+    public static final BitSet FOLLOW_EXP_LIST_in_exprList462 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_exprList464 = new BitSet(new long[]{0x0007FEFF7801F008L});
+    public static final BitSet FOLLOW_Or_in_expression492 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression494 = new BitSet(new long[]{0x0007FEFF7801F000L});
+    public static final BitSet FOLLOW_expression_in_expression496 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_And_in_expression507 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression509 = new BitSet(new long[]{0x0007FEFF7801F000L});
+    public static final BitSet FOLLOW_expression_in_expression511 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Equals_in_expression522 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression526 = new BitSet(new long[]{0x0007FEFF7801F000L});
+    public static final BitSet FOLLOW_expression_in_expression530 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_NEquals_in_expression542 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression546 = new BitSet(new long[]{0x0007FEFF7801F000L});
+    public static final BitSet FOLLOW_expression_in_expression550 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_GTEquals_in_expression562 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression566 = new BitSet(new long[]{0x0007FEFF7801F000L});
+    public static final BitSet FOLLOW_expression_in_expression570 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LTEquals_in_expression582 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression586 = new BitSet(new long[]{0x0007FEFF7801F000L});
+    public static final BitSet FOLLOW_expression_in_expression590 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_GT_in_expression602 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression606 = new BitSet(new long[]{0x0007FEFF7801F000L});
+    public static final BitSet FOLLOW_expression_in_expression610 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LT_in_expression622 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression626 = new BitSet(new long[]{0x0007FEFF7801F000L});
+    public static final BitSet FOLLOW_expression_in_expression630 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Add_in_expression642 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression646 = new BitSet(new long[]{0x0007FEFF7801F000L});
+    public static final BitSet FOLLOW_expression_in_expression650 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Subt_in_expression661 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression665 = new BitSet(new long[]{0x0007FEFF7801F000L});
+    public static final BitSet FOLLOW_expression_in_expression669 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Mult_in_expression680 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression684 = new BitSet(new long[]{0x0007FEFF7801F000L});
+    public static final BitSet FOLLOW_expression_in_expression688 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Div_in_expression699 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression703 = new BitSet(new long[]{0x0007FEFF7801F000L});
+    public static final BitSet FOLLOW_expression_in_expression707 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Int_Div_in_expression718 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_expression_in_expression722 = new BitSet(new long[]{0x0007FEFF7801F000L});
-    public static final BitSet FOLLOW_expression_in_expression724 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Bit_And_in_expression735 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression737 = new BitSet(new long[]{0x0007FEFF7801F000L});
-    public static final BitSet FOLLOW_expression_in_expression739 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Bit_Or_in_expression750 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression752 = new BitSet(new long[]{0x0007FEFF7801F000L});
-    public static final BitSet FOLLOW_expression_in_expression754 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNARY_MIN_in_expression765 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression767 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_NOT_in_expression778 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression780 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_BIN_NOT_in_expression791 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression793 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Number_in_expression803 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_Bool_in_expression818 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_Null_in_expression833 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_In_in_expression848 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_lookup_in_expression855 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LIST_in_list892 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_exprList_in_list894 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LOOKUP_in_lookup924 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_functionCall_in_lookup926 = new BitSet(new long[]{0x0000000000001008L});
-    public static final BitSet FOLLOW_indexes_in_lookup928 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LOOKUP_in_lookup940 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_list_in_lookup942 = new BitSet(new long[]{0x0000000000001008L});
-    public static final BitSet FOLLOW_indexes_in_lookup944 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LOOKUP_in_lookup956 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_lookup958 = new BitSet(new long[]{0x0000000000001008L});
-    public static final BitSet FOLLOW_indexes_in_lookup960 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LOOKUP_in_lookup973 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_Identifier_in_lookup975 = new BitSet(new long[]{0x0000000000001008L});
-    public static final BitSet FOLLOW_indexes_in_lookup977 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LOOKUP_in_lookup989 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_String_in_lookup991 = new BitSet(new long[]{0x0000000000001008L});
-    public static final BitSet FOLLOW_indexes_in_lookup993 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_expression_in_expression726 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Mod_in_expression737 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression741 = new BitSet(new long[]{0x0007FEFF7801F000L});
+    public static final BitSet FOLLOW_expression_in_expression745 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Pow_in_expression756 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression758 = new BitSet(new long[]{0x0007FEFF7801F000L});
+    public static final BitSet FOLLOW_expression_in_expression760 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Bit_Xor_in_expression771 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression773 = new BitSet(new long[]{0x0007FEFF7801F000L});
+    public static final BitSet FOLLOW_expression_in_expression775 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Bit_And_in_expression786 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression788 = new BitSet(new long[]{0x0007FEFF7801F000L});
+    public static final BitSet FOLLOW_expression_in_expression790 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Bit_Or_in_expression801 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression803 = new BitSet(new long[]{0x0007FEFF7801F000L});
+    public static final BitSet FOLLOW_expression_in_expression805 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNARY_MIN_in_expression816 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression818 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_NOT_in_expression829 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression831 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_BIN_NOT_in_expression842 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression844 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Number_in_expression854 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_Bool_in_expression869 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_Null_in_expression884 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_In_in_expression899 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_lookup_in_expression906 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LIST_in_list943 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_exprList_in_list945 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LOOKUP_in_lookup975 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_functionCall_in_lookup977 = new BitSet(new long[]{0x0000000000001008L});
+    public static final BitSet FOLLOW_indexes_in_lookup979 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LOOKUP_in_lookup991 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_list_in_lookup993 = new BitSet(new long[]{0x0000000000001008L});
+    public static final BitSet FOLLOW_indexes_in_lookup995 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LOOKUP_in_lookup1007 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_lookup1009 = new BitSet(new long[]{0x0000000000001008L});
+    public static final BitSet FOLLOW_indexes_in_lookup1011 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LOOKUP_in_lookup1024 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_Identifier_in_lookup1026 = new BitSet(new long[]{0x0000000000001008L});
+    public static final BitSet FOLLOW_indexes_in_lookup1028 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LOOKUP_in_lookup1040 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_String_in_lookup1042 = new BitSet(new long[]{0x0000000000001008L});
+    public static final BitSet FOLLOW_indexes_in_lookup1044 = new BitSet(new long[]{0x0000000000000008L});
 
 }

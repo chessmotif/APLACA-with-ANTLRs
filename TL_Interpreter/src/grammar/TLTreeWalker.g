@@ -49,7 +49,19 @@ block returns [TLNode node]
   ;
 
 delimitedBlock returns [TLNode node]
-  : ^(BLOCK ^(STATEMENTS statement*) ^(RETURN expression?))
+@init { 
+  BlockNode bn = new BlockNode(); 
+  node = bn; 
+  Scope scope = new Scope(currentScope); 
+  currentScope = scope; 
+}  
+@after { 
+  currentScope = currentScope.parent(); 
+}  
+  :	^(BLOCK 
+  		^(STATEMENTS (statement  {bn.addStatement($statement.node);})*) 
+  		^(RETURN (expression  {bn.addStatement($expression.node);})?)
+  	)
   ;
   
 statement returns [TLNode node]
@@ -60,7 +72,7 @@ statement returns [TLNode node]
 
 functionCall  returns [TLNode node]
   :  ^(FUNC_CALL Identifier exprList?) 
-  |  ^(FUNC_CALL Println expression?) {node = new PrintlnNode($expression.node);}
+//  |  ^(FUNC_CALL Println expression?) {node = new OutNode($expression.node);}
   ;
 
 ifStatement returns [TLNode node]
@@ -77,9 +89,9 @@ idList returns [java.util.List<String> i]
   : ^(ID_LIST Identifier+)
   ;
   
-assignment
+assignment returns [TLNode node]
   : ^(ASSIGNMENT Identifier indexes? expression)
-  | ^(TO_PRINT expression)
+  | ^(TO_PRINT expression)  {node = new OutNode($expression.node);}
   ;
 
 indexes returns [TLNode node]  
