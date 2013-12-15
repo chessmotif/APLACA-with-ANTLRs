@@ -1,0 +1,10 @@
+======================================
+====CSC617M INTERPRETER BUILD FILE====
+======================================
+>>>>>>>COMPILING THE INTERPRETER<<<<<<<
+
+>>>>>>>RUNNING THE INTERPRETER<<<<<<<
+
+>>>>>>>COMPILING APLACA PROGRAMS<<<<<<<
+
+>>>>>>>RUNNING APLACA PROGRAMS<<<<<<<
