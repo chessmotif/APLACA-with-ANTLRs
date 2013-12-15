@@ -9,6 +9,7 @@ options {
   import tl.tree.*; 
   import tl.tree.binNode.*;
   import tl.tree.relNode.*;
+  import tl.tree.unaryNode.*;
   import java.util.Map; 
   import java.util.HashMap; 
 }  
@@ -121,9 +122,9 @@ expression  returns [TLNode node]
   |  ^('^' expression expression)  
   |  ^('&' expression expression)  
   |  ^('|' expression expression)  
-  |  ^(UNARY_MIN expression)  
-  |  ^(NOT expression)  
-  |  ^(BIN_NOT expression)  
+  |  ^(UNARY_MIN expression)  		{node = new MinusNode($expression.node);}
+  |  ^(NOT expression)  			{node = new NotNode($expression.node);}
+  |  ^(BIN_NOT expression)  		{node = new BinNegationNode($expression.node);}
   |  Number							{node = new AtomNode(Double.parseDouble($Number.text));}
   |  Bool							{node = new AtomNode(Boolean.parseBoolean($Bool.text));}
   |  Null							{node = new AtomNode(null);}

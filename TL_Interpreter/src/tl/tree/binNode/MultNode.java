@@ -22,15 +22,6 @@ public class MultNode extends BinNode {
       return new TLValue(a.asDouble() * b.asDouble());
     }
 
-    // list * any, replicate? or disallow this totally
-    if(a.isList() && b.isNumber()) {
-      List<TLValue> list = a.asList();
-      long nB = b.asLong();
-      while (nB-- > 0)
-    	  list.addAll(list);
-      return new TLValue(list);
-    }
-
     throw new RuntimeException("illegal expression: " + this);
   }
 

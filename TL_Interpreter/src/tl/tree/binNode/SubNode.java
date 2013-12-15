@@ -22,13 +22,6 @@ public class SubNode extends BinNode {
       return new TLValue(a.asDouble() - b.asDouble());
     }
 
-    // list - any, list remove
-    if(a.isList()) {
-      List<TLValue> list = a.asList();
-      list.remove(list.indexOf(b));
-      return new TLValue(list);
-    }
-
     throw new RuntimeException("illegal expression: " + this);
   }
 

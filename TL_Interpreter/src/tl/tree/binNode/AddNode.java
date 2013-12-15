@@ -1,10 +1,9 @@
 package tl.tree.binNode;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import tl.TLValue;
 import tl.tree.TLNode;
+
+import java.util.List;
 
 public class AddNode extends BinNode {
 
@@ -22,7 +21,6 @@ public class AddNode extends BinNode {
     if(a.isNumber() && b.isNumber()) {
       return new TLValue(a.asDouble() + b.asDouble());
     }
-
     throw new RuntimeException("illegal expression: " + this);
   }
 
