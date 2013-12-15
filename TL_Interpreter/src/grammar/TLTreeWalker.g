@@ -72,7 +72,6 @@ statement returns [TLNode node]
 
 functionCall  returns [TLNode node]
   :  ^(FUNC_CALL Identifier exprList?) 
-//  |  ^(FUNC_CALL Println expression?) {node = new OutNode($expression.node);}
   ;
 
 ifStatement returns [TLNode node]
@@ -90,7 +89,7 @@ idList returns [java.util.List<String> i]
   ;
   
 assignment returns [TLNode node]
-  : ^(ASSIGNMENT Identifier indexes? expression)
+  : ^(ASSIGNMENT i=Identifier x=indexes? e=expression)   {node = new AssignmentNode($i.node, $x.node, $e.node, currentScope);}
   | ^(TO_PRINT expression)  {node = new OutNode($expression.node);}
   ;
 
@@ -139,6 +138,11 @@ lookup  returns [TLNode node]
   :  ^(LOOKUP functionCall indexes?)  
   |  ^(LOOKUP list indexes?)  
   |  ^(LOOKUP expression indexes?)   
-  |  ^(LOOKUP Identifier indexes?)  
+  |  ^(LOOKUP i=Identifier x=indexes?)  
+  		{ 
+        node = ($x.e != null) 
+          ? new LookupNode(new IdentifierNode($i.text, currentScope), $x.e) 
+          : new IdentifierNode($i.text, currentScope); 
+      }  
   |  ^(LOOKUP String indexes?)  
   ;    
