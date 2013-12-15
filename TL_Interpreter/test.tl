@@ -2,4 +2,8 @@ func mult(a, b) {
 	out <- a * b;
 }
 
-return mult(2, 4);
+func cat (a, b){
+	out <- a # b;
+}
+
+return cat('Hello', 'World');
