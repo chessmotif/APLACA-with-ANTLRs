@@ -1,1 +1,1 @@
-return 'hello world';
+return 7 * 3 =_= 20 + 1;

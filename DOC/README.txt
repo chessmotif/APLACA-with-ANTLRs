@@ -103,8 +103,8 @@ APLACA contains no iterative statements; recursion is used instead.
 
 ---FUNCTIONS---
 func func_name (param1 param2...) {
-var <- param1;
-var <- var + 1;
+
+statement;
 return var;
 }
 

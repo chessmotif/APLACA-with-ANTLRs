@@ -53,13 +53,14 @@ delimitedBlock returns [TLNode node]
   ;
   
 statement returns [TLNode node]
-  : assignment
-  | functionCall
-  | ifStatement
+  : assignment {node =$assignment.node;}
+  | functionCall {node = $functionCall.node;}
+  | ifStatement {node = $ifStatement.node;}
   ;
 
 functionCall  returns [TLNode node]
-  :  ^(FUNC_CALL Identifier exprList?)  
+  :  ^(FUNC_CALL Identifier exprList?) 
+  |  ^(FUNC_CALL Println expression?) {node = new PrintlnNode($expression.node);}
   ;
 
 ifStatement returns [TLNode node]
