@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 TL.g 2013-12-15 20:22:29
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 TL.g 2013-12-15 21:11:17
  
   package tl; 
   import java.util.Map; 
@@ -108,7 +108,6 @@ public class TLParser extends Parser {
       public Map<String, Function> functions = new HashMap<String, Function>(); 
        
       private void defineFunction(String id, Object idList, Object block) { 
-     
         // `idList` is possibly null!  Create an empty tree in that case.  
         CommonTree idListTree = idList == null ? new CommonTree() : (CommonTree)idList; 
      
@@ -127,7 +126,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "parse"
-    // TL.g:49:1: parse : delimitedBlock EOF ;
+    // TL.g:48:1: parse : delimitedBlock EOF ;
     public final TLParser.parse_return parse() throws RecognitionException {
         TLParser.parse_return retval = new TLParser.parse_return();
         retval.start = input.LT(1);
@@ -141,8 +140,8 @@ public class TLParser extends Parser {
         Object EOF2_tree=null;
 
         try {
-            // TL.g:50:3: ( delimitedBlock EOF )
-            // TL.g:50:6: delimitedBlock EOF
+            // TL.g:49:3: ( delimitedBlock EOF )
+            // TL.g:49:6: delimitedBlock EOF
             {
             root_0 = (Object)adaptor.nil();
 
@@ -183,7 +182,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "block"
-    // TL.g:53:1: block : '{' ( statement | functionDecl )* ( Return expression ';' )? '}' -> ^( BLOCK ^( STATEMENTS ( statement )* ) ^( RETURN ( expression )? ) ) ;
+    // TL.g:52:1: block : '{' ( statement | functionDecl )* ( Return expression ';' )? '}' -> ^( BLOCK ^( STATEMENTS ( statement )* ) ^( RETURN ( expression )? ) ) ;
     public final TLParser.block_return block() throws RecognitionException {
         TLParser.block_return retval = new TLParser.block_return();
         retval.start = input.LT(1);
@@ -213,13 +212,13 @@ public class TLParser extends Parser {
         RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
         RewriteRuleSubtreeStream stream_functionDecl=new RewriteRuleSubtreeStream(adaptor,"rule functionDecl");
         try {
-            // TL.g:54:3: ( '{' ( statement | functionDecl )* ( Return expression ';' )? '}' -> ^( BLOCK ^( STATEMENTS ( statement )* ) ^( RETURN ( expression )? ) ) )
-            // TL.g:54:6: '{' ( statement | functionDecl )* ( Return expression ';' )? '}'
+            // TL.g:53:3: ( '{' ( statement | functionDecl )* ( Return expression ';' )? '}' -> ^( BLOCK ^( STATEMENTS ( statement )* ) ^( RETURN ( expression )? ) ) )
+            // TL.g:53:6: '{' ( statement | functionDecl )* ( Return expression ';' )? '}'
             {
             char_literal3=(Token)match(input,Open_Brace,FOLLOW_Open_Brace_in_block151);  
             stream_Open_Brace.add(char_literal3);
 
-            // TL.g:54:10: ( statement | functionDecl )*
+            // TL.g:53:10: ( statement | functionDecl )*
             loop1:
             do {
                 int alt1=3;
@@ -235,7 +234,7 @@ public class TLParser extends Parser {
 
                 switch (alt1) {
             	case 1 :
-            	    // TL.g:54:11: statement
+            	    // TL.g:53:11: statement
             	    {
             	    pushFollow(FOLLOW_statement_in_block154);
             	    statement4=statement();
@@ -247,7 +246,7 @@ public class TLParser extends Parser {
             	    }
             	    break;
             	case 2 :
-            	    // TL.g:54:23: functionDecl
+            	    // TL.g:53:23: functionDecl
             	    {
             	    pushFollow(FOLLOW_functionDecl_in_block158);
             	    functionDecl5=functionDecl();
@@ -264,7 +263,7 @@ public class TLParser extends Parser {
                 }
             } while (true);
 
-            // TL.g:54:38: ( Return expression ';' )?
+            // TL.g:53:38: ( Return expression ';' )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -273,7 +272,7 @@ public class TLParser extends Parser {
             }
             switch (alt2) {
                 case 1 :
-                    // TL.g:54:39: Return expression ';'
+                    // TL.g:53:39: Return expression ';'
                     {
                     Return6=(Token)match(input,Return,FOLLOW_Return_in_block163);  
                     stream_Return.add(Return6);
@@ -309,19 +308,19 @@ public class TLParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 55:5: -> ^( BLOCK ^( STATEMENTS ( statement )* ) ^( RETURN ( expression )? ) )
+            // 54:5: -> ^( BLOCK ^( STATEMENTS ( statement )* ) ^( RETURN ( expression )? ) )
             {
-                // TL.g:55:8: ^( BLOCK ^( STATEMENTS ( statement )* ) ^( RETURN ( expression )? ) )
+                // TL.g:54:8: ^( BLOCK ^( STATEMENTS ( statement )* ) ^( RETURN ( expression )? ) )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(BLOCK, "BLOCK"), root_1);
 
-                // TL.g:55:16: ^( STATEMENTS ( statement )* )
+                // TL.g:54:16: ^( STATEMENTS ( statement )* )
                 {
                 Object root_2 = (Object)adaptor.nil();
                 root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(STATEMENTS, "STATEMENTS"), root_2);
 
-                // TL.g:55:29: ( statement )*
+                // TL.g:54:29: ( statement )*
                 while ( stream_statement.hasNext() ) {
                     adaptor.addChild(root_2, stream_statement.nextTree());
 
@@ -330,12 +329,12 @@ public class TLParser extends Parser {
 
                 adaptor.addChild(root_1, root_2);
                 }
-                // TL.g:55:41: ^( RETURN ( expression )? )
+                // TL.g:54:41: ^( RETURN ( expression )? )
                 {
                 Object root_2 = (Object)adaptor.nil();
                 root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(RETURN, "RETURN"), root_2);
 
-                // TL.g:55:50: ( expression )?
+                // TL.g:54:50: ( expression )?
                 if ( stream_expression.hasNext() ) {
                     adaptor.addChild(root_2, stream_expression.nextTree());
 
@@ -377,7 +376,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "delimitedBlock"
-    // TL.g:58:1: delimitedBlock : ( statement | functionDecl )* ( Return expression ';' )? -> ^( BLOCK ^( STATEMENTS ( statement )* ) ^( RETURN ( expression )? ) ) ;
+    // TL.g:57:1: delimitedBlock : ( statement | functionDecl )* ( Return expression ';' )? -> ^( BLOCK ^( STATEMENTS ( statement )* ) ^( RETURN ( expression )? ) ) ;
     public final TLParser.delimitedBlock_return delimitedBlock() throws RecognitionException {
         TLParser.delimitedBlock_return retval = new TLParser.delimitedBlock_return();
         retval.start = input.LT(1);
@@ -401,10 +400,10 @@ public class TLParser extends Parser {
         RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
         RewriteRuleSubtreeStream stream_functionDecl=new RewriteRuleSubtreeStream(adaptor,"rule functionDecl");
         try {
-            // TL.g:59:3: ( ( statement | functionDecl )* ( Return expression ';' )? -> ^( BLOCK ^( STATEMENTS ( statement )* ) ^( RETURN ( expression )? ) ) )
-            // TL.g:59:5: ( statement | functionDecl )* ( Return expression ';' )?
+            // TL.g:58:3: ( ( statement | functionDecl )* ( Return expression ';' )? -> ^( BLOCK ^( STATEMENTS ( statement )* ) ^( RETURN ( expression )? ) ) )
+            // TL.g:58:5: ( statement | functionDecl )* ( Return expression ';' )?
             {
-            // TL.g:59:5: ( statement | functionDecl )*
+            // TL.g:58:5: ( statement | functionDecl )*
             loop3:
             do {
                 int alt3=3;
@@ -420,7 +419,7 @@ public class TLParser extends Parser {
 
                 switch (alt3) {
             	case 1 :
-            	    // TL.g:59:6: statement
+            	    // TL.g:58:6: statement
             	    {
             	    pushFollow(FOLLOW_statement_in_delimitedBlock209);
             	    statement10=statement();
@@ -432,7 +431,7 @@ public class TLParser extends Parser {
             	    }
             	    break;
             	case 2 :
-            	    // TL.g:59:18: functionDecl
+            	    // TL.g:58:18: functionDecl
             	    {
             	    pushFollow(FOLLOW_functionDecl_in_delimitedBlock213);
             	    functionDecl11=functionDecl();
@@ -449,7 +448,7 @@ public class TLParser extends Parser {
                 }
             } while (true);
 
-            // TL.g:59:33: ( Return expression ';' )?
+            // TL.g:58:33: ( Return expression ';' )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -458,7 +457,7 @@ public class TLParser extends Parser {
             }
             switch (alt4) {
                 case 1 :
-                    // TL.g:59:34: Return expression ';'
+                    // TL.g:58:34: Return expression ';'
                     {
                     Return12=(Token)match(input,Return,FOLLOW_Return_in_delimitedBlock218);  
                     stream_Return.add(Return12);
@@ -481,7 +480,7 @@ public class TLParser extends Parser {
 
 
             // AST REWRITE
-            // elements: expression, statement
+            // elements: statement, expression
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -491,19 +490,19 @@ public class TLParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 60:5: -> ^( BLOCK ^( STATEMENTS ( statement )* ) ^( RETURN ( expression )? ) )
+            // 59:5: -> ^( BLOCK ^( STATEMENTS ( statement )* ) ^( RETURN ( expression )? ) )
             {
-                // TL.g:60:8: ^( BLOCK ^( STATEMENTS ( statement )* ) ^( RETURN ( expression )? ) )
+                // TL.g:59:8: ^( BLOCK ^( STATEMENTS ( statement )* ) ^( RETURN ( expression )? ) )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(BLOCK, "BLOCK"), root_1);
 
-                // TL.g:60:16: ^( STATEMENTS ( statement )* )
+                // TL.g:59:16: ^( STATEMENTS ( statement )* )
                 {
                 Object root_2 = (Object)adaptor.nil();
                 root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(STATEMENTS, "STATEMENTS"), root_2);
 
-                // TL.g:60:29: ( statement )*
+                // TL.g:59:29: ( statement )*
                 while ( stream_statement.hasNext() ) {
                     adaptor.addChild(root_2, stream_statement.nextTree());
 
@@ -512,12 +511,12 @@ public class TLParser extends Parser {
 
                 adaptor.addChild(root_1, root_2);
                 }
-                // TL.g:60:41: ^( RETURN ( expression )? )
+                // TL.g:59:41: ^( RETURN ( expression )? )
                 {
                 Object root_2 = (Object)adaptor.nil();
                 root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(RETURN, "RETURN"), root_2);
 
-                // TL.g:60:50: ( expression )?
+                // TL.g:59:50: ( expression )?
                 if ( stream_expression.hasNext() ) {
                     adaptor.addChild(root_2, stream_expression.nextTree());
 
@@ -559,7 +558,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "statement"
-    // TL.g:63:1: statement : ( assignment ';' -> assignment | functionCall ';' -> functionCall | ifStatement );
+    // TL.g:62:1: statement : ( assignment ';' -> assignment | functionCall ';' -> functionCall | ifStatement );
     public final TLParser.statement_return statement() throws RecognitionException {
         TLParser.statement_return retval = new TLParser.statement_return();
         retval.start = input.LT(1);
@@ -581,7 +580,7 @@ public class TLParser extends Parser {
         RewriteRuleSubtreeStream stream_functionCall=new RewriteRuleSubtreeStream(adaptor,"rule functionCall");
         RewriteRuleSubtreeStream stream_assignment=new RewriteRuleSubtreeStream(adaptor,"rule assignment");
         try {
-            // TL.g:64:3: ( assignment ';' -> assignment | functionCall ';' -> functionCall | ifStatement )
+            // TL.g:63:3: ( assignment ';' -> assignment | functionCall ';' -> functionCall | ifStatement )
             int alt5=3;
             switch ( input.LA(1) ) {
             case Identifier:
@@ -621,7 +620,7 @@ public class TLParser extends Parser {
 
             switch (alt5) {
                 case 1 :
-                    // TL.g:64:6: assignment ';'
+                    // TL.g:63:6: assignment ';'
                     {
                     pushFollow(FOLLOW_assignment_in_statement262);
                     assignment15=assignment();
@@ -645,7 +644,7 @@ public class TLParser extends Parser {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 64:21: -> assignment
+                    // 63:21: -> assignment
                     {
                         adaptor.addChild(root_0, stream_assignment.nextTree());
 
@@ -655,7 +654,7 @@ public class TLParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // TL.g:65:6: functionCall ';'
+                    // TL.g:64:6: functionCall ';'
                     {
                     pushFollow(FOLLOW_functionCall_in_statement275);
                     functionCall17=functionCall();
@@ -679,7 +678,7 @@ public class TLParser extends Parser {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 65:23: -> functionCall
+                    // 64:23: -> functionCall
                     {
                         adaptor.addChild(root_0, stream_functionCall.nextTree());
 
@@ -689,7 +688,7 @@ public class TLParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // TL.g:66:6: ifStatement
+                    // TL.g:65:6: ifStatement
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -728,7 +727,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "ifStatement"
-    // TL.g:69:1: ifStatement : ifStat ( elseIfStat )* ( elseStat )? -> ^( IF ifStat ( elseIfStat )* ( elseStat )? ) ;
+    // TL.g:68:1: ifStatement : ifStat ( elseIfStat )* ( elseStat )? -> ^( IF ifStat ( elseIfStat )* ( elseStat )? ) ;
     public final TLParser.ifStatement_return ifStatement() throws RecognitionException {
         TLParser.ifStatement_return retval = new TLParser.ifStatement_return();
         retval.start = input.LT(1);
@@ -746,8 +745,8 @@ public class TLParser extends Parser {
         RewriteRuleSubtreeStream stream_ifStat=new RewriteRuleSubtreeStream(adaptor,"rule ifStat");
         RewriteRuleSubtreeStream stream_elseStat=new RewriteRuleSubtreeStream(adaptor,"rule elseStat");
         try {
-            // TL.g:70:3: ( ifStat ( elseIfStat )* ( elseStat )? -> ^( IF ifStat ( elseIfStat )* ( elseStat )? ) )
-            // TL.g:70:6: ifStat ( elseIfStat )* ( elseStat )?
+            // TL.g:69:3: ( ifStat ( elseIfStat )* ( elseStat )? -> ^( IF ifStat ( elseIfStat )* ( elseStat )? ) )
+            // TL.g:69:6: ifStat ( elseIfStat )* ( elseStat )?
             {
             pushFollow(FOLLOW_ifStat_in_ifStatement302);
             ifStat20=ifStat();
@@ -755,7 +754,7 @@ public class TLParser extends Parser {
             state._fsp--;
 
             stream_ifStat.add(ifStat20.getTree());
-            // TL.g:70:13: ( elseIfStat )*
+            // TL.g:69:13: ( elseIfStat )*
             loop6:
             do {
                 int alt6=2;
@@ -777,7 +776,7 @@ public class TLParser extends Parser {
 
                 switch (alt6) {
             	case 1 :
-            	    // TL.g:70:13: elseIfStat
+            	    // TL.g:69:13: elseIfStat
             	    {
             	    pushFollow(FOLLOW_elseIfStat_in_ifStatement304);
             	    elseIfStat21=elseIfStat();
@@ -794,7 +793,7 @@ public class TLParser extends Parser {
                 }
             } while (true);
 
-            // TL.g:70:25: ( elseStat )?
+            // TL.g:69:25: ( elseStat )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -803,7 +802,7 @@ public class TLParser extends Parser {
             }
             switch (alt7) {
                 case 1 :
-                    // TL.g:70:25: elseStat
+                    // TL.g:69:25: elseStat
                     {
                     pushFollow(FOLLOW_elseStat_in_ifStatement307);
                     elseStat22=elseStat();
@@ -820,7 +819,7 @@ public class TLParser extends Parser {
 
 
             // AST REWRITE
-            // elements: elseStat, ifStat, elseIfStat
+            // elements: elseIfStat, elseStat, ifStat
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -830,21 +829,21 @@ public class TLParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 70:35: -> ^( IF ifStat ( elseIfStat )* ( elseStat )? )
+            // 69:35: -> ^( IF ifStat ( elseIfStat )* ( elseStat )? )
             {
-                // TL.g:70:38: ^( IF ifStat ( elseIfStat )* ( elseStat )? )
+                // TL.g:69:38: ^( IF ifStat ( elseIfStat )* ( elseStat )? )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(IF, "IF"), root_1);
 
                 adaptor.addChild(root_1, stream_ifStat.nextTree());
-                // TL.g:70:50: ( elseIfStat )*
+                // TL.g:69:50: ( elseIfStat )*
                 while ( stream_elseIfStat.hasNext() ) {
                     adaptor.addChild(root_1, stream_elseIfStat.nextTree());
 
                 }
                 stream_elseIfStat.reset();
-                // TL.g:70:62: ( elseStat )?
+                // TL.g:69:62: ( elseStat )?
                 if ( stream_elseStat.hasNext() ) {
                     adaptor.addChild(root_1, stream_elseStat.nextTree());
 
@@ -883,7 +882,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "ifStat"
-    // TL.g:73:1: ifStat : If expression block -> ^( EXP expression block ) ;
+    // TL.g:72:1: ifStat : If expression block -> ^( EXP expression block ) ;
     public final TLParser.ifStat_return ifStat() throws RecognitionException {
         TLParser.ifStat_return retval = new TLParser.ifStat_return();
         retval.start = input.LT(1);
@@ -901,8 +900,8 @@ public class TLParser extends Parser {
         RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
         RewriteRuleSubtreeStream stream_block=new RewriteRuleSubtreeStream(adaptor,"rule block");
         try {
-            // TL.g:74:3: ( If expression block -> ^( EXP expression block ) )
-            // TL.g:74:6: If expression block
+            // TL.g:73:3: ( If expression block -> ^( EXP expression block ) )
+            // TL.g:73:6: If expression block
             {
             If23=(Token)match(input,If,FOLLOW_If_in_ifStat336);  
             stream_If.add(If23);
@@ -922,7 +921,7 @@ public class TLParser extends Parser {
 
 
             // AST REWRITE
-            // elements: block, expression
+            // elements: expression, block
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -932,9 +931,9 @@ public class TLParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 74:26: -> ^( EXP expression block )
+            // 73:26: -> ^( EXP expression block )
             {
-                // TL.g:74:29: ^( EXP expression block )
+                // TL.g:73:29: ^( EXP expression block )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(EXP, "EXP"), root_1);
@@ -974,7 +973,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "elseIfStat"
-    // TL.g:77:1: elseIfStat : ( Else_If expression block -> ^( EXP expression block ) | Else If expression block -> ^( EXP expression block ) );
+    // TL.g:76:1: elseIfStat : ( Else_If expression block -> ^( EXP expression block ) | Else If expression block -> ^( EXP expression block ) );
     public final TLParser.elseIfStat_return elseIfStat() throws RecognitionException {
         TLParser.elseIfStat_return retval = new TLParser.elseIfStat_return();
         retval.start = input.LT(1);
@@ -1002,7 +1001,7 @@ public class TLParser extends Parser {
         RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
         RewriteRuleSubtreeStream stream_block=new RewriteRuleSubtreeStream(adaptor,"rule block");
         try {
-            // TL.g:78:3: ( Else_If expression block -> ^( EXP expression block ) | Else If expression block -> ^( EXP expression block ) )
+            // TL.g:77:3: ( Else_If expression block -> ^( EXP expression block ) | Else If expression block -> ^( EXP expression block ) )
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -1020,7 +1019,7 @@ public class TLParser extends Parser {
             }
             switch (alt8) {
                 case 1 :
-                    // TL.g:78:6: Else_If expression block
+                    // TL.g:77:6: Else_If expression block
                     {
                     Else_If26=(Token)match(input,Else_If,FOLLOW_Else_If_in_elseIfStat364);  
                     stream_Else_If.add(Else_If26);
@@ -1040,7 +1039,7 @@ public class TLParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: block, expression
+                    // elements: expression, block
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1050,9 +1049,9 @@ public class TLParser extends Parser {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 78:31: -> ^( EXP expression block )
+                    // 77:31: -> ^( EXP expression block )
                     {
-                        // TL.g:78:34: ^( EXP expression block )
+                        // TL.g:77:34: ^( EXP expression block )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(EXP, "EXP"), root_1);
@@ -1069,7 +1068,7 @@ public class TLParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // TL.g:79:6: Else If expression block
+                    // TL.g:78:6: Else If expression block
                     {
                     Else29=(Token)match(input,Else,FOLLOW_Else_in_elseIfStat385);  
                     stream_Else.add(Else29);
@@ -1092,7 +1091,7 @@ public class TLParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: block, expression
+                    // elements: expression, block
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1102,9 +1101,9 @@ public class TLParser extends Parser {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 79:31: -> ^( EXP expression block )
+                    // 78:31: -> ^( EXP expression block )
                     {
-                        // TL.g:79:34: ^( EXP expression block )
+                        // TL.g:78:34: ^( EXP expression block )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(EXP, "EXP"), root_1);
@@ -1146,7 +1145,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "elseStat"
-    // TL.g:82:1: elseStat : Else block -> ^( EXP block ) ;
+    // TL.g:81:1: elseStat : Else block -> ^( EXP block ) ;
     public final TLParser.elseStat_return elseStat() throws RecognitionException {
         TLParser.elseStat_return retval = new TLParser.elseStat_return();
         retval.start = input.LT(1);
@@ -1161,8 +1160,8 @@ public class TLParser extends Parser {
         RewriteRuleTokenStream stream_Else=new RewriteRuleTokenStream(adaptor,"token Else");
         RewriteRuleSubtreeStream stream_block=new RewriteRuleSubtreeStream(adaptor,"rule block");
         try {
-            // TL.g:83:3: ( Else block -> ^( EXP block ) )
-            // TL.g:83:6: Else block
+            // TL.g:82:3: ( Else block -> ^( EXP block ) )
+            // TL.g:82:6: Else block
             {
             Else33=(Token)match(input,Else,FOLLOW_Else_in_elseStat415);  
             stream_Else.add(Else33);
@@ -1186,9 +1185,9 @@ public class TLParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 83:17: -> ^( EXP block )
+            // 82:17: -> ^( EXP block )
             {
-                // TL.g:83:20: ^( EXP block )
+                // TL.g:82:20: ^( EXP block )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(EXP, "EXP"), root_1);
@@ -1227,7 +1226,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "functionDecl"
-    // TL.g:86:1: functionDecl : Def_Func Identifier '(' ( idList )? ')' block ;
+    // TL.g:85:1: functionDecl : Def_Func Identifier '(' ( idList )? ')' block ;
     public final TLParser.functionDecl_return functionDecl() throws RecognitionException {
         TLParser.functionDecl_return retval = new TLParser.functionDecl_return();
         retval.start = input.LT(1);
@@ -1249,8 +1248,8 @@ public class TLParser extends Parser {
         Object char_literal39_tree=null;
 
         try {
-            // TL.g:87:3: ( Def_Func Identifier '(' ( idList )? ')' block )
-            // TL.g:87:6: Def_Func Identifier '(' ( idList )? ')' block
+            // TL.g:86:3: ( Def_Func Identifier '(' ( idList )? ')' block )
+            // TL.g:86:6: Def_Func Identifier '(' ( idList )? ')' block
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1266,7 +1265,7 @@ public class TLParser extends Parser {
             char_literal37_tree = (Object)adaptor.create(char_literal37);
             adaptor.addChild(root_0, char_literal37_tree);
 
-            // TL.g:87:30: ( idList )?
+            // TL.g:86:30: ( idList )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -1275,7 +1274,7 @@ public class TLParser extends Parser {
             }
             switch (alt9) {
                 case 1 :
-                    // TL.g:87:30: idList
+                    // TL.g:86:30: idList
                     {
                     pushFollow(FOLLOW_idList_in_functionDecl445);
                     idList38=idList();
@@ -1327,7 +1326,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "idList"
-    // TL.g:91:1: idList : Identifier ( ',' Identifier )* -> ^( ID_LIST ( Identifier )+ ) ;
+    // TL.g:90:1: idList : Identifier ( ',' Identifier )* -> ^( ID_LIST ( Identifier )+ ) ;
     public final TLParser.idList_return idList() throws RecognitionException {
         TLParser.idList_return retval = new TLParser.idList_return();
         retval.start = input.LT(1);
@@ -1345,13 +1344,13 @@ public class TLParser extends Parser {
         RewriteRuleTokenStream stream_Identifier=new RewriteRuleTokenStream(adaptor,"token Identifier");
 
         try {
-            // TL.g:92:3: ( Identifier ( ',' Identifier )* -> ^( ID_LIST ( Identifier )+ ) )
-            // TL.g:92:6: Identifier ( ',' Identifier )*
+            // TL.g:91:3: ( Identifier ( ',' Identifier )* -> ^( ID_LIST ( Identifier )+ ) )
+            // TL.g:91:6: Identifier ( ',' Identifier )*
             {
             Identifier41=(Token)match(input,Identifier,FOLLOW_Identifier_in_idList472);  
             stream_Identifier.add(Identifier41);
 
-            // TL.g:92:17: ( ',' Identifier )*
+            // TL.g:91:17: ( ',' Identifier )*
             loop10:
             do {
                 int alt10=2;
@@ -1364,7 +1363,7 @@ public class TLParser extends Parser {
 
                 switch (alt10) {
             	case 1 :
-            	    // TL.g:92:18: ',' Identifier
+            	    // TL.g:91:18: ',' Identifier
             	    {
             	    char_literal42=(Token)match(input,Comma,FOLLOW_Comma_in_idList475);  
             	    stream_Comma.add(char_literal42);
@@ -1394,9 +1393,9 @@ public class TLParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 92:35: -> ^( ID_LIST ( Identifier )+ )
+            // 91:35: -> ^( ID_LIST ( Identifier )+ )
             {
-                // TL.g:92:38: ^( ID_LIST ( Identifier )+ )
+                // TL.g:91:38: ^( ID_LIST ( Identifier )+ )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(ID_LIST, "ID_LIST"), root_1);
@@ -1442,7 +1441,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "assignment"
-    // TL.g:95:2: assignment : ( Identifier ( indexes )? '<-' expression -> ^( ASSIGNMENT Identifier ( indexes )? expression ) | Out '<-' expression -> ^( TO_PRINT expression ) );
+    // TL.g:94:2: assignment : ( Identifier ( indexes )? '<-' expression -> ^( ASSIGNMENT Identifier ( indexes )? expression ) | Out '<-' expression -> ^( TO_PRINT expression ) );
     public final TLParser.assignment_return assignment() throws RecognitionException {
         TLParser.assignment_return retval = new TLParser.assignment_return();
         retval.start = input.LT(1);
@@ -1470,7 +1469,7 @@ public class TLParser extends Parser {
         RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
         RewriteRuleSubtreeStream stream_indexes=new RewriteRuleSubtreeStream(adaptor,"rule indexes");
         try {
-            // TL.g:96:3: ( Identifier ( indexes )? '<-' expression -> ^( ASSIGNMENT Identifier ( indexes )? expression ) | Out '<-' expression -> ^( TO_PRINT expression ) )
+            // TL.g:95:3: ( Identifier ( indexes )? '<-' expression -> ^( ASSIGNMENT Identifier ( indexes )? expression ) | Out '<-' expression -> ^( TO_PRINT expression ) )
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -1488,12 +1487,12 @@ public class TLParser extends Parser {
             }
             switch (alt12) {
                 case 1 :
-                    // TL.g:96:6: Identifier ( indexes )? '<-' expression
+                    // TL.g:95:6: Identifier ( indexes )? '<-' expression
                     {
                     Identifier44=(Token)match(input,Identifier,FOLLOW_Identifier_in_assignment504);  
                     stream_Identifier.add(Identifier44);
 
-                    // TL.g:96:17: ( indexes )?
+                    // TL.g:95:17: ( indexes )?
                     int alt11=2;
                     int LA11_0 = input.LA(1);
 
@@ -1502,7 +1501,7 @@ public class TLParser extends Parser {
                     }
                     switch (alt11) {
                         case 1 :
-                            // TL.g:96:17: indexes
+                            // TL.g:95:17: indexes
                             {
                             pushFollow(FOLLOW_indexes_in_assignment506);
                             indexes45=indexes();
@@ -1528,7 +1527,7 @@ public class TLParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: expression, indexes, Identifier
+                    // elements: indexes, Identifier, expression
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1538,15 +1537,15 @@ public class TLParser extends Parser {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 97:5: -> ^( ASSIGNMENT Identifier ( indexes )? expression )
+                    // 96:5: -> ^( ASSIGNMENT Identifier ( indexes )? expression )
                     {
-                        // TL.g:97:8: ^( ASSIGNMENT Identifier ( indexes )? expression )
+                        // TL.g:96:8: ^( ASSIGNMENT Identifier ( indexes )? expression )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(ASSIGNMENT, "ASSIGNMENT"), root_1);
 
                         adaptor.addChild(root_1, stream_Identifier.nextNode());
-                        // TL.g:97:32: ( indexes )?
+                        // TL.g:96:32: ( indexes )?
                         if ( stream_indexes.hasNext() ) {
                             adaptor.addChild(root_1, stream_indexes.nextTree());
 
@@ -1563,7 +1562,7 @@ public class TLParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // TL.g:98:6: Out '<-' expression
+                    // TL.g:97:6: Out '<-' expression
                     {
                     Out48=(Token)match(input,Out,FOLLOW_Out_in_assignment535);  
                     stream_Out.add(Out48);
@@ -1590,9 +1589,9 @@ public class TLParser extends Parser {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 99:9: -> ^( TO_PRINT expression )
+                    // 98:9: -> ^( TO_PRINT expression )
                     {
-                        // TL.g:99:12: ^( TO_PRINT expression )
+                        // TL.g:98:12: ^( TO_PRINT expression )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(TO_PRINT, "TO_PRINT"), root_1);
@@ -1633,7 +1632,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "indexes"
-    // TL.g:102:1: indexes : ( '[' expression ']' )+ -> ^( INDEXES ( expression )+ ) ;
+    // TL.g:101:1: indexes : ( '[' expression ']' )+ -> ^( INDEXES ( expression )+ ) ;
     public final TLParser.indexes_return indexes() throws RecognitionException {
         TLParser.indexes_return retval = new TLParser.indexes_return();
         retval.start = input.LT(1);
@@ -1651,10 +1650,10 @@ public class TLParser extends Parser {
         RewriteRuleTokenStream stream_Close_Bracket=new RewriteRuleTokenStream(adaptor,"token Close_Bracket");
         RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
         try {
-            // TL.g:103:3: ( ( '[' expression ']' )+ -> ^( INDEXES ( expression )+ ) )
-            // TL.g:103:6: ( '[' expression ']' )+
+            // TL.g:102:3: ( ( '[' expression ']' )+ -> ^( INDEXES ( expression )+ ) )
+            // TL.g:102:6: ( '[' expression ']' )+
             {
-            // TL.g:103:6: ( '[' expression ']' )+
+            // TL.g:102:6: ( '[' expression ']' )+
             int cnt13=0;
             loop13:
             do {
@@ -1668,7 +1667,7 @@ public class TLParser extends Parser {
 
                 switch (alt13) {
             	case 1 :
-            	    // TL.g:103:7: '[' expression ']'
+            	    // TL.g:102:7: '[' expression ']'
             	    {
             	    char_literal51=(Token)match(input,Open_Bracket,FOLLOW_Open_Bracket_in_indexes570);  
             	    stream_Open_Bracket.add(char_literal51);
@@ -1708,9 +1707,9 @@ public class TLParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 103:28: -> ^( INDEXES ( expression )+ )
+            // 102:28: -> ^( INDEXES ( expression )+ )
             {
-                // TL.g:103:31: ^( INDEXES ( expression )+ )
+                // TL.g:102:31: ^( INDEXES ( expression )+ )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(INDEXES, "INDEXES"), root_1);
@@ -1756,7 +1755,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "expression"
-    // TL.g:106:2: expression : orExpr ;
+    // TL.g:105:2: expression : orExpr ;
     public final TLParser.expression_return expression() throws RecognitionException {
         TLParser.expression_return retval = new TLParser.expression_return();
         retval.start = input.LT(1);
@@ -1768,8 +1767,8 @@ public class TLParser extends Parser {
 
 
         try {
-            // TL.g:107:3: ( orExpr )
-            // TL.g:107:6: orExpr
+            // TL.g:106:3: ( orExpr )
+            // TL.g:106:6: orExpr
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1806,7 +1805,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "orExpr"
-    // TL.g:116:1: orExpr : andExpr ( '|_|' andExpr )* ;
+    // TL.g:115:1: orExpr : andExpr ( '|_|' andExpr )* ;
     public final TLParser.orExpr_return orExpr() throws RecognitionException {
         TLParser.orExpr_return retval = new TLParser.orExpr_return();
         retval.start = input.LT(1);
@@ -1822,8 +1821,8 @@ public class TLParser extends Parser {
         Object string_literal56_tree=null;
 
         try {
-            // TL.g:117:3: ( andExpr ( '|_|' andExpr )* )
-            // TL.g:117:6: andExpr ( '|_|' andExpr )*
+            // TL.g:116:3: ( andExpr ( '|_|' andExpr )* )
+            // TL.g:116:6: andExpr ( '|_|' andExpr )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1833,7 +1832,7 @@ public class TLParser extends Parser {
             state._fsp--;
 
             adaptor.addChild(root_0, andExpr55.getTree());
-            // TL.g:117:14: ( '|_|' andExpr )*
+            // TL.g:116:14: ( '|_|' andExpr )*
             loop14:
             do {
                 int alt14=2;
@@ -1846,7 +1845,7 @@ public class TLParser extends Parser {
 
                 switch (alt14) {
             	case 1 :
-            	    // TL.g:117:15: '|_|' andExpr
+            	    // TL.g:116:15: '|_|' andExpr
             	    {
             	    string_literal56=(Token)match(input,Or,FOLLOW_Or_in_orExpr621); 
             	    string_literal56_tree = (Object)adaptor.create(string_literal56);
@@ -1894,7 +1893,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "andExpr"
-    // TL.g:120:1: andExpr : bitORExpr ( '&_&' bitORExpr )* ;
+    // TL.g:119:1: andExpr : bitORExpr ( '&_&' bitORExpr )* ;
     public final TLParser.andExpr_return andExpr() throws RecognitionException {
         TLParser.andExpr_return retval = new TLParser.andExpr_return();
         retval.start = input.LT(1);
@@ -1910,8 +1909,8 @@ public class TLParser extends Parser {
         Object string_literal59_tree=null;
 
         try {
-            // TL.g:121:3: ( bitORExpr ( '&_&' bitORExpr )* )
-            // TL.g:121:6: bitORExpr ( '&_&' bitORExpr )*
+            // TL.g:120:3: ( bitORExpr ( '&_&' bitORExpr )* )
+            // TL.g:120:6: bitORExpr ( '&_&' bitORExpr )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1921,7 +1920,7 @@ public class TLParser extends Parser {
             state._fsp--;
 
             adaptor.addChild(root_0, bitORExpr58.getTree());
-            // TL.g:121:16: ( '&_&' bitORExpr )*
+            // TL.g:120:16: ( '&_&' bitORExpr )*
             loop15:
             do {
                 int alt15=2;
@@ -1934,7 +1933,7 @@ public class TLParser extends Parser {
 
                 switch (alt15) {
             	case 1 :
-            	    // TL.g:121:17: '&_&' bitORExpr
+            	    // TL.g:120:17: '&_&' bitORExpr
             	    {
             	    string_literal59=(Token)match(input,And,FOLLOW_And_in_andExpr643); 
             	    string_literal59_tree = (Object)adaptor.create(string_literal59);
@@ -1982,7 +1981,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "bitORExpr"
-    // TL.g:124:1: bitORExpr : bitXORExpr ( '|' bitXORExpr )* ;
+    // TL.g:123:1: bitORExpr : bitXORExpr ( '|' bitXORExpr )* ;
     public final TLParser.bitORExpr_return bitORExpr() throws RecognitionException {
         TLParser.bitORExpr_return retval = new TLParser.bitORExpr_return();
         retval.start = input.LT(1);
@@ -1998,8 +1997,8 @@ public class TLParser extends Parser {
         Object char_literal62_tree=null;
 
         try {
-            // TL.g:125:3: ( bitXORExpr ( '|' bitXORExpr )* )
-            // TL.g:125:6: bitXORExpr ( '|' bitXORExpr )*
+            // TL.g:124:3: ( bitXORExpr ( '|' bitXORExpr )* )
+            // TL.g:124:6: bitXORExpr ( '|' bitXORExpr )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -2009,7 +2008,7 @@ public class TLParser extends Parser {
             state._fsp--;
 
             adaptor.addChild(root_0, bitXORExpr61.getTree());
-            // TL.g:125:17: ( '|' bitXORExpr )*
+            // TL.g:124:17: ( '|' bitXORExpr )*
             loop16:
             do {
                 int alt16=2;
@@ -2022,7 +2021,7 @@ public class TLParser extends Parser {
 
                 switch (alt16) {
             	case 1 :
-            	    // TL.g:125:18: '|' bitXORExpr
+            	    // TL.g:124:18: '|' bitXORExpr
             	    {
             	    char_literal62=(Token)match(input,Bit_Or,FOLLOW_Bit_Or_in_bitORExpr665); 
             	    char_literal62_tree = (Object)adaptor.create(char_literal62);
@@ -2070,7 +2069,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "bitXORExpr"
-    // TL.g:128:1: bitXORExpr : bitANDExpr ( '^' bitANDExpr )* ;
+    // TL.g:127:1: bitXORExpr : bitANDExpr ( '^' bitANDExpr )* ;
     public final TLParser.bitXORExpr_return bitXORExpr() throws RecognitionException {
         TLParser.bitXORExpr_return retval = new TLParser.bitXORExpr_return();
         retval.start = input.LT(1);
@@ -2086,8 +2085,8 @@ public class TLParser extends Parser {
         Object char_literal65_tree=null;
 
         try {
-            // TL.g:129:3: ( bitANDExpr ( '^' bitANDExpr )* )
-            // TL.g:129:6: bitANDExpr ( '^' bitANDExpr )*
+            // TL.g:128:3: ( bitANDExpr ( '^' bitANDExpr )* )
+            // TL.g:128:6: bitANDExpr ( '^' bitANDExpr )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -2097,7 +2096,7 @@ public class TLParser extends Parser {
             state._fsp--;
 
             adaptor.addChild(root_0, bitANDExpr64.getTree());
-            // TL.g:129:17: ( '^' bitANDExpr )*
+            // TL.g:128:17: ( '^' bitANDExpr )*
             loop17:
             do {
                 int alt17=2;
@@ -2110,7 +2109,7 @@ public class TLParser extends Parser {
 
                 switch (alt17) {
             	case 1 :
-            	    // TL.g:129:18: '^' bitANDExpr
+            	    // TL.g:128:18: '^' bitANDExpr
             	    {
             	    char_literal65=(Token)match(input,Bit_Xor,FOLLOW_Bit_Xor_in_bitXORExpr687); 
             	    char_literal65_tree = (Object)adaptor.create(char_literal65);
@@ -2158,7 +2157,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "bitANDExpr"
-    // TL.g:132:1: bitANDExpr : equExpr ( '&' equExpr )* ;
+    // TL.g:131:1: bitANDExpr : equExpr ( '&' equExpr )* ;
     public final TLParser.bitANDExpr_return bitANDExpr() throws RecognitionException {
         TLParser.bitANDExpr_return retval = new TLParser.bitANDExpr_return();
         retval.start = input.LT(1);
@@ -2174,8 +2173,8 @@ public class TLParser extends Parser {
         Object char_literal68_tree=null;
 
         try {
-            // TL.g:133:3: ( equExpr ( '&' equExpr )* )
-            // TL.g:133:6: equExpr ( '&' equExpr )*
+            // TL.g:132:3: ( equExpr ( '&' equExpr )* )
+            // TL.g:132:6: equExpr ( '&' equExpr )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -2185,7 +2184,7 @@ public class TLParser extends Parser {
             state._fsp--;
 
             adaptor.addChild(root_0, equExpr67.getTree());
-            // TL.g:133:14: ( '&' equExpr )*
+            // TL.g:132:14: ( '&' equExpr )*
             loop18:
             do {
                 int alt18=2;
@@ -2198,7 +2197,7 @@ public class TLParser extends Parser {
 
                 switch (alt18) {
             	case 1 :
-            	    // TL.g:133:15: '&' equExpr
+            	    // TL.g:132:15: '&' equExpr
             	    {
             	    char_literal68=(Token)match(input,Bit_And,FOLLOW_Bit_And_in_bitANDExpr709); 
             	    char_literal68_tree = (Object)adaptor.create(char_literal68);
@@ -2246,7 +2245,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "equExpr"
-    // TL.g:136:1: equExpr : relExpr ( ( '=_=' | '>_<' ) relExpr )* ;
+    // TL.g:135:1: equExpr : relExpr ( ( '=_=' | '>_<' ) relExpr )* ;
     public final TLParser.equExpr_return equExpr() throws RecognitionException {
         TLParser.equExpr_return retval = new TLParser.equExpr_return();
         retval.start = input.LT(1);
@@ -2262,8 +2261,8 @@ public class TLParser extends Parser {
         Object set71_tree=null;
 
         try {
-            // TL.g:137:3: ( relExpr ( ( '=_=' | '>_<' ) relExpr )* )
-            // TL.g:137:6: relExpr ( ( '=_=' | '>_<' ) relExpr )*
+            // TL.g:136:3: ( relExpr ( ( '=_=' | '>_<' ) relExpr )* )
+            // TL.g:136:6: relExpr ( ( '=_=' | '>_<' ) relExpr )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -2273,7 +2272,7 @@ public class TLParser extends Parser {
             state._fsp--;
 
             adaptor.addChild(root_0, relExpr70.getTree());
-            // TL.g:137:14: ( ( '=_=' | '>_<' ) relExpr )*
+            // TL.g:136:14: ( ( '=_=' | '>_<' ) relExpr )*
             loop19:
             do {
                 int alt19=2;
@@ -2286,7 +2285,7 @@ public class TLParser extends Parser {
 
                 switch (alt19) {
             	case 1 :
-            	    // TL.g:137:15: ( '=_=' | '>_<' ) relExpr
+            	    // TL.g:136:15: ( '=_=' | '>_<' ) relExpr
             	    {
             	    set71=(Token)input.LT(1);
             	    set71=(Token)input.LT(1);
@@ -2342,7 +2341,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "relExpr"
-    // TL.g:140:1: relExpr : addExpr ( ( '>_=' | '=_<' | '>_>' | '<_<' ) addExpr )* ;
+    // TL.g:139:1: relExpr : addExpr ( ( '>_=' | '=_<' | '>_>' | '<_<' ) addExpr )* ;
     public final TLParser.relExpr_return relExpr() throws RecognitionException {
         TLParser.relExpr_return retval = new TLParser.relExpr_return();
         retval.start = input.LT(1);
@@ -2358,8 +2357,8 @@ public class TLParser extends Parser {
         Object set74_tree=null;
 
         try {
-            // TL.g:141:3: ( addExpr ( ( '>_=' | '=_<' | '>_>' | '<_<' ) addExpr )* )
-            // TL.g:141:6: addExpr ( ( '>_=' | '=_<' | '>_>' | '<_<' ) addExpr )*
+            // TL.g:140:3: ( addExpr ( ( '>_=' | '=_<' | '>_>' | '<_<' ) addExpr )* )
+            // TL.g:140:6: addExpr ( ( '>_=' | '=_<' | '>_>' | '<_<' ) addExpr )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -2369,7 +2368,7 @@ public class TLParser extends Parser {
             state._fsp--;
 
             adaptor.addChild(root_0, addExpr73.getTree());
-            // TL.g:141:14: ( ( '>_=' | '=_<' | '>_>' | '<_<' ) addExpr )*
+            // TL.g:140:14: ( ( '>_=' | '=_<' | '>_>' | '<_<' ) addExpr )*
             loop20:
             do {
                 int alt20=2;
@@ -2382,7 +2381,7 @@ public class TLParser extends Parser {
 
                 switch (alt20) {
             	case 1 :
-            	    // TL.g:141:15: ( '>_=' | '=_<' | '>_>' | '<_<' ) addExpr
+            	    // TL.g:140:15: ( '>_=' | '=_<' | '>_>' | '<_<' ) addExpr
             	    {
             	    set74=(Token)input.LT(1);
             	    set74=(Token)input.LT(1);
@@ -2438,7 +2437,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "addExpr"
-    // TL.g:144:1: addExpr : mulExpr ( ( '+' | '-' ) mulExpr )* ;
+    // TL.g:143:1: addExpr : mulExpr ( ( '+' | '-' ) mulExpr )* ;
     public final TLParser.addExpr_return addExpr() throws RecognitionException {
         TLParser.addExpr_return retval = new TLParser.addExpr_return();
         retval.start = input.LT(1);
@@ -2454,8 +2453,8 @@ public class TLParser extends Parser {
         Object set77_tree=null;
 
         try {
-            // TL.g:145:3: ( mulExpr ( ( '+' | '-' ) mulExpr )* )
-            // TL.g:145:6: mulExpr ( ( '+' | '-' ) mulExpr )*
+            // TL.g:144:3: ( mulExpr ( ( '+' | '-' ) mulExpr )* )
+            // TL.g:144:6: mulExpr ( ( '+' | '-' ) mulExpr )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -2465,7 +2464,7 @@ public class TLParser extends Parser {
             state._fsp--;
 
             adaptor.addChild(root_0, mulExpr76.getTree());
-            // TL.g:145:14: ( ( '+' | '-' ) mulExpr )*
+            // TL.g:144:14: ( ( '+' | '-' ) mulExpr )*
             loop21:
             do {
                 int alt21=2;
@@ -2478,7 +2477,7 @@ public class TLParser extends Parser {
 
                 switch (alt21) {
             	case 1 :
-            	    // TL.g:145:15: ( '+' | '-' ) mulExpr
+            	    // TL.g:144:15: ( '+' | '-' ) mulExpr
             	    {
             	    set77=(Token)input.LT(1);
             	    set77=(Token)input.LT(1);
@@ -2534,7 +2533,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "mulExpr"
-    // TL.g:148:1: mulExpr : powExpr ( ( '*' | '/' | '%' | '//' ) powExpr )* ;
+    // TL.g:147:1: mulExpr : powExpr ( ( '*' | '/' | '%' | '//' ) powExpr )* ;
     public final TLParser.mulExpr_return mulExpr() throws RecognitionException {
         TLParser.mulExpr_return retval = new TLParser.mulExpr_return();
         retval.start = input.LT(1);
@@ -2550,8 +2549,8 @@ public class TLParser extends Parser {
         Object set80_tree=null;
 
         try {
-            // TL.g:149:3: ( powExpr ( ( '*' | '/' | '%' | '//' ) powExpr )* )
-            // TL.g:149:6: powExpr ( ( '*' | '/' | '%' | '//' ) powExpr )*
+            // TL.g:148:3: ( powExpr ( ( '*' | '/' | '%' | '//' ) powExpr )* )
+            // TL.g:148:6: powExpr ( ( '*' | '/' | '%' | '//' ) powExpr )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -2561,7 +2560,7 @@ public class TLParser extends Parser {
             state._fsp--;
 
             adaptor.addChild(root_0, powExpr79.getTree());
-            // TL.g:149:14: ( ( '*' | '/' | '%' | '//' ) powExpr )*
+            // TL.g:148:14: ( ( '*' | '/' | '%' | '//' ) powExpr )*
             loop22:
             do {
                 int alt22=2;
@@ -2574,7 +2573,7 @@ public class TLParser extends Parser {
 
                 switch (alt22) {
             	case 1 :
-            	    // TL.g:149:15: ( '*' | '/' | '%' | '//' ) powExpr
+            	    // TL.g:148:15: ( '*' | '/' | '%' | '//' ) powExpr
             	    {
             	    set80=(Token)input.LT(1);
             	    set80=(Token)input.LT(1);
@@ -2630,7 +2629,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "powExpr"
-    // TL.g:152:1: powExpr : unaryExpr ( '**' unaryExpr )* ;
+    // TL.g:151:1: powExpr : unaryExpr ( '**' unaryExpr )* ;
     public final TLParser.powExpr_return powExpr() throws RecognitionException {
         TLParser.powExpr_return retval = new TLParser.powExpr_return();
         retval.start = input.LT(1);
@@ -2646,8 +2645,8 @@ public class TLParser extends Parser {
         Object string_literal83_tree=null;
 
         try {
-            // TL.g:153:3: ( unaryExpr ( '**' unaryExpr )* )
-            // TL.g:153:6: unaryExpr ( '**' unaryExpr )*
+            // TL.g:152:3: ( unaryExpr ( '**' unaryExpr )* )
+            // TL.g:152:6: unaryExpr ( '**' unaryExpr )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -2657,7 +2656,7 @@ public class TLParser extends Parser {
             state._fsp--;
 
             adaptor.addChild(root_0, unaryExpr82.getTree());
-            // TL.g:153:16: ( '**' unaryExpr )*
+            // TL.g:152:16: ( '**' unaryExpr )*
             loop23:
             do {
                 int alt23=2;
@@ -2670,7 +2669,7 @@ public class TLParser extends Parser {
 
                 switch (alt23) {
             	case 1 :
-            	    // TL.g:153:17: '**' unaryExpr
+            	    // TL.g:152:17: '**' unaryExpr
             	    {
             	    string_literal83=(Token)match(input,Pow,FOLLOW_Pow_in_powExpr859); 
             	    string_literal83_tree = (Object)adaptor.create(string_literal83);
@@ -2718,7 +2717,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "unaryExpr"
-    // TL.g:156:1: unaryExpr : ( '-' atom -> ^( UNARY_MIN atom ) | '!' atom -> ^( NOT atom ) | '~' atom -> ^( BIN_NOT atom ) | atom );
+    // TL.g:155:1: unaryExpr : ( '-' atom -> ^( UNARY_MIN atom ) | '!' atom -> ^( NOT atom ) | '~' atom -> ^( BIN_NOT atom ) | atom );
     public final TLParser.unaryExpr_return unaryExpr() throws RecognitionException {
         TLParser.unaryExpr_return retval = new TLParser.unaryExpr_return();
         retval.start = input.LT(1);
@@ -2745,7 +2744,7 @@ public class TLParser extends Parser {
         RewriteRuleTokenStream stream_Not=new RewriteRuleTokenStream(adaptor,"token Not");
         RewriteRuleSubtreeStream stream_atom=new RewriteRuleSubtreeStream(adaptor,"rule atom");
         try {
-            // TL.g:157:3: ( '-' atom -> ^( UNARY_MIN atom ) | '!' atom -> ^( NOT atom ) | '~' atom -> ^( BIN_NOT atom ) | atom )
+            // TL.g:156:3: ( '-' atom -> ^( UNARY_MIN atom ) | '!' atom -> ^( NOT atom ) | '~' atom -> ^( BIN_NOT atom ) | atom )
             int alt24=4;
             switch ( input.LA(1) ) {
             case Subt:
@@ -2784,7 +2783,7 @@ public class TLParser extends Parser {
 
             switch (alt24) {
                 case 1 :
-                    // TL.g:157:6: '-' atom
+                    // TL.g:156:6: '-' atom
                     {
                     char_literal85=(Token)match(input,Subt,FOLLOW_Subt_in_unaryExpr880);  
                     stream_Subt.add(char_literal85);
@@ -2808,9 +2807,9 @@ public class TLParser extends Parser {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 157:15: -> ^( UNARY_MIN atom )
+                    // 156:15: -> ^( UNARY_MIN atom )
                     {
-                        // TL.g:157:18: ^( UNARY_MIN atom )
+                        // TL.g:156:18: ^( UNARY_MIN atom )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(UNARY_MIN, "UNARY_MIN"), root_1);
@@ -2826,7 +2825,7 @@ public class TLParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // TL.g:158:6: '!' atom
+                    // TL.g:157:6: '!' atom
                     {
                     char_literal87=(Token)match(input,Not,FOLLOW_Not_in_unaryExpr897);  
                     stream_Not.add(char_literal87);
@@ -2850,9 +2849,9 @@ public class TLParser extends Parser {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 158:15: -> ^( NOT atom )
+                    // 157:15: -> ^( NOT atom )
                     {
-                        // TL.g:158:18: ^( NOT atom )
+                        // TL.g:157:18: ^( NOT atom )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(NOT, "NOT"), root_1);
@@ -2868,7 +2867,7 @@ public class TLParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // TL.g:159:6: '~' atom
+                    // TL.g:158:6: '~' atom
                     {
                     char_literal89=(Token)match(input,Bit_Not,FOLLOW_Bit_Not_in_unaryExpr914);  
                     stream_Bit_Not.add(char_literal89);
@@ -2892,9 +2891,9 @@ public class TLParser extends Parser {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 159:15: -> ^( BIN_NOT atom )
+                    // 158:15: -> ^( BIN_NOT atom )
                     {
-                        // TL.g:159:18: ^( BIN_NOT atom )
+                        // TL.g:158:18: ^( BIN_NOT atom )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(BIN_NOT, "BIN_NOT"), root_1);
@@ -2910,7 +2909,7 @@ public class TLParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // TL.g:160:6: atom
+                    // TL.g:159:6: atom
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2949,7 +2948,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "atom"
-    // TL.g:163:1: atom : ( Null | Number | Bool | In | lookup );
+    // TL.g:162:1: atom : ( Null | Number | Bool | In | lookup );
     public final TLParser.atom_return atom() throws RecognitionException {
         TLParser.atom_return retval = new TLParser.atom_return();
         retval.start = input.LT(1);
@@ -2969,7 +2968,7 @@ public class TLParser extends Parser {
         Object In95_tree=null;
 
         try {
-            // TL.g:164:3: ( Null | Number | Bool | In | lookup )
+            // TL.g:163:3: ( Null | Number | Bool | In | lookup )
             int alt25=5;
             switch ( input.LA(1) ) {
             case Null:
@@ -3009,7 +3008,7 @@ public class TLParser extends Parser {
 
             switch (alt25) {
                 case 1 :
-                    // TL.g:164:6: Null
+                    // TL.g:163:6: Null
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3021,7 +3020,7 @@ public class TLParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // TL.g:165:6: Number
+                    // TL.g:164:6: Number
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3033,7 +3032,7 @@ public class TLParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // TL.g:166:6: Bool
+                    // TL.g:165:6: Bool
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3045,7 +3044,7 @@ public class TLParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // TL.g:167:6: In
+                    // TL.g:166:6: In
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3057,7 +3056,7 @@ public class TLParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // TL.g:168:6: lookup
+                    // TL.g:167:6: lookup
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3096,7 +3095,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "lookup"
-    // TL.g:171:1: lookup : ( functionCall ( indexes )? -> ^( LOOKUP functionCall ( indexes )? ) | '(' expression ')' ( indexes )? -> ^( LOOKUP expression ( indexes )? ) | list ( indexes )? -> ^( LOOKUP list ( indexes )? ) | Identifier ( indexes )? -> ^( LOOKUP Identifier ( indexes )? ) | String ( indexes )? -> ^( LOOKUP String ( indexes )? ) );
+    // TL.g:170:1: lookup : ( functionCall ( indexes )? -> ^( LOOKUP functionCall ( indexes )? ) | '(' expression ')' ( indexes )? -> ^( LOOKUP expression ( indexes )? ) | list ( indexes )? -> ^( LOOKUP list ( indexes )? ) | Identifier ( indexes )? -> ^( LOOKUP Identifier ( indexes )? ) | String ( indexes )? -> ^( LOOKUP String ( indexes )? ) );
     public final TLParser.lookup_return lookup() throws RecognitionException {
         TLParser.lookup_return retval = new TLParser.lookup_return();
         retval.start = input.LT(1);
@@ -3137,7 +3136,7 @@ public class TLParser extends Parser {
         RewriteRuleSubtreeStream stream_indexes=new RewriteRuleSubtreeStream(adaptor,"rule indexes");
         RewriteRuleSubtreeStream stream_list=new RewriteRuleSubtreeStream(adaptor,"rule list");
         try {
-            // TL.g:172:3: ( functionCall ( indexes )? -> ^( LOOKUP functionCall ( indexes )? ) | '(' expression ')' ( indexes )? -> ^( LOOKUP expression ( indexes )? ) | list ( indexes )? -> ^( LOOKUP list ( indexes )? ) | Identifier ( indexes )? -> ^( LOOKUP Identifier ( indexes )? ) | String ( indexes )? -> ^( LOOKUP String ( indexes )? ) )
+            // TL.g:171:3: ( functionCall ( indexes )? -> ^( LOOKUP functionCall ( indexes )? ) | '(' expression ')' ( indexes )? -> ^( LOOKUP expression ( indexes )? ) | list ( indexes )? -> ^( LOOKUP list ( indexes )? ) | Identifier ( indexes )? -> ^( LOOKUP Identifier ( indexes )? ) | String ( indexes )? -> ^( LOOKUP String ( indexes )? ) )
             int alt31=5;
             switch ( input.LA(1) ) {
             case Identifier:
@@ -3182,7 +3181,7 @@ public class TLParser extends Parser {
 
             switch (alt31) {
                 case 1 :
-                    // TL.g:172:6: functionCall ( indexes )?
+                    // TL.g:171:6: functionCall ( indexes )?
                     {
                     pushFollow(FOLLOW_functionCall_in_lookup988);
                     functionCall97=functionCall();
@@ -3190,7 +3189,7 @@ public class TLParser extends Parser {
                     state._fsp--;
 
                     stream_functionCall.add(functionCall97.getTree());
-                    // TL.g:172:19: ( indexes )?
+                    // TL.g:171:19: ( indexes )?
                     int alt26=2;
                     int LA26_0 = input.LA(1);
 
@@ -3199,7 +3198,7 @@ public class TLParser extends Parser {
                     }
                     switch (alt26) {
                         case 1 :
-                            // TL.g:172:19: indexes
+                            // TL.g:171:19: indexes
                             {
                             pushFollow(FOLLOW_indexes_in_lookup990);
                             indexes98=indexes();
@@ -3216,7 +3215,7 @@ public class TLParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: functionCall, indexes
+                    // elements: indexes, functionCall
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -3226,15 +3225,15 @@ public class TLParser extends Parser {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 172:30: -> ^( LOOKUP functionCall ( indexes )? )
+                    // 171:30: -> ^( LOOKUP functionCall ( indexes )? )
                     {
-                        // TL.g:172:33: ^( LOOKUP functionCall ( indexes )? )
+                        // TL.g:171:33: ^( LOOKUP functionCall ( indexes )? )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(LOOKUP, "LOOKUP"), root_1);
 
                         adaptor.addChild(root_1, stream_functionCall.nextTree());
-                        // TL.g:172:55: ( indexes )?
+                        // TL.g:171:55: ( indexes )?
                         if ( stream_indexes.hasNext() ) {
                             adaptor.addChild(root_1, stream_indexes.nextTree());
 
@@ -3250,7 +3249,7 @@ public class TLParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // TL.g:173:6: '(' expression ')' ( indexes )?
+                    // TL.g:172:6: '(' expression ')' ( indexes )?
                     {
                     char_literal99=(Token)match(input,Open_Paren,FOLLOW_Open_Paren_in_lookup1011);  
                     stream_Open_Paren.add(char_literal99);
@@ -3264,7 +3263,7 @@ public class TLParser extends Parser {
                     char_literal101=(Token)match(input,Close_Paren,FOLLOW_Close_Paren_in_lookup1015);  
                     stream_Close_Paren.add(char_literal101);
 
-                    // TL.g:173:25: ( indexes )?
+                    // TL.g:172:25: ( indexes )?
                     int alt27=2;
                     int LA27_0 = input.LA(1);
 
@@ -3273,7 +3272,7 @@ public class TLParser extends Parser {
                     }
                     switch (alt27) {
                         case 1 :
-                            // TL.g:173:25: indexes
+                            // TL.g:172:25: indexes
                             {
                             pushFollow(FOLLOW_indexes_in_lookup1017);
                             indexes102=indexes();
@@ -3290,7 +3289,7 @@ public class TLParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: indexes, expression
+                    // elements: expression, indexes
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -3300,15 +3299,15 @@ public class TLParser extends Parser {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 173:34: -> ^( LOOKUP expression ( indexes )? )
+                    // 172:34: -> ^( LOOKUP expression ( indexes )? )
                     {
-                        // TL.g:173:37: ^( LOOKUP expression ( indexes )? )
+                        // TL.g:172:37: ^( LOOKUP expression ( indexes )? )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(LOOKUP, "LOOKUP"), root_1);
 
                         adaptor.addChild(root_1, stream_expression.nextTree());
-                        // TL.g:173:57: ( indexes )?
+                        // TL.g:172:57: ( indexes )?
                         if ( stream_indexes.hasNext() ) {
                             adaptor.addChild(root_1, stream_indexes.nextTree());
 
@@ -3324,7 +3323,7 @@ public class TLParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // TL.g:174:6: list ( indexes )?
+                    // TL.g:173:6: list ( indexes )?
                     {
                     pushFollow(FOLLOW_list_in_lookup1036);
                     list103=list();
@@ -3332,7 +3331,7 @@ public class TLParser extends Parser {
                     state._fsp--;
 
                     stream_list.add(list103.getTree());
-                    // TL.g:174:11: ( indexes )?
+                    // TL.g:173:11: ( indexes )?
                     int alt28=2;
                     int LA28_0 = input.LA(1);
 
@@ -3341,7 +3340,7 @@ public class TLParser extends Parser {
                     }
                     switch (alt28) {
                         case 1 :
-                            // TL.g:174:11: indexes
+                            // TL.g:173:11: indexes
                             {
                             pushFollow(FOLLOW_indexes_in_lookup1038);
                             indexes104=indexes();
@@ -3358,7 +3357,7 @@ public class TLParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: list, indexes
+                    // elements: indexes, list
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -3368,15 +3367,15 @@ public class TLParser extends Parser {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 174:24: -> ^( LOOKUP list ( indexes )? )
+                    // 173:24: -> ^( LOOKUP list ( indexes )? )
                     {
-                        // TL.g:174:27: ^( LOOKUP list ( indexes )? )
+                        // TL.g:173:27: ^( LOOKUP list ( indexes )? )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(LOOKUP, "LOOKUP"), root_1);
 
                         adaptor.addChild(root_1, stream_list.nextTree());
-                        // TL.g:174:41: ( indexes )?
+                        // TL.g:173:41: ( indexes )?
                         if ( stream_indexes.hasNext() ) {
                             adaptor.addChild(root_1, stream_indexes.nextTree());
 
@@ -3392,12 +3391,12 @@ public class TLParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // TL.g:175:6: Identifier ( indexes )?
+                    // TL.g:174:6: Identifier ( indexes )?
                     {
                     Identifier105=(Token)match(input,Identifier,FOLLOW_Identifier_in_lookup1061);  
                     stream_Identifier.add(Identifier105);
 
-                    // TL.g:175:17: ( indexes )?
+                    // TL.g:174:17: ( indexes )?
                     int alt29=2;
                     int LA29_0 = input.LA(1);
 
@@ -3406,7 +3405,7 @@ public class TLParser extends Parser {
                     }
                     switch (alt29) {
                         case 1 :
-                            // TL.g:175:17: indexes
+                            // TL.g:174:17: indexes
                             {
                             pushFollow(FOLLOW_indexes_in_lookup1063);
                             indexes106=indexes();
@@ -3433,15 +3432,15 @@ public class TLParser extends Parser {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 175:28: -> ^( LOOKUP Identifier ( indexes )? )
+                    // 174:28: -> ^( LOOKUP Identifier ( indexes )? )
                     {
-                        // TL.g:175:31: ^( LOOKUP Identifier ( indexes )? )
+                        // TL.g:174:31: ^( LOOKUP Identifier ( indexes )? )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(LOOKUP, "LOOKUP"), root_1);
 
                         adaptor.addChild(root_1, stream_Identifier.nextNode());
-                        // TL.g:175:51: ( indexes )?
+                        // TL.g:174:51: ( indexes )?
                         if ( stream_indexes.hasNext() ) {
                             adaptor.addChild(root_1, stream_indexes.nextTree());
 
@@ -3457,12 +3456,12 @@ public class TLParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // TL.g:176:6: String ( indexes )?
+                    // TL.g:175:6: String ( indexes )?
                     {
                     String107=(Token)match(input,String,FOLLOW_String_in_lookup1084);  
                     stream_String.add(String107);
 
-                    // TL.g:176:13: ( indexes )?
+                    // TL.g:175:13: ( indexes )?
                     int alt30=2;
                     int LA30_0 = input.LA(1);
 
@@ -3471,7 +3470,7 @@ public class TLParser extends Parser {
                     }
                     switch (alt30) {
                         case 1 :
-                            // TL.g:176:13: indexes
+                            // TL.g:175:13: indexes
                             {
                             pushFollow(FOLLOW_indexes_in_lookup1086);
                             indexes108=indexes();
@@ -3498,15 +3497,15 @@ public class TLParser extends Parser {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 176:25: -> ^( LOOKUP String ( indexes )? )
+                    // 175:25: -> ^( LOOKUP String ( indexes )? )
                     {
-                        // TL.g:176:28: ^( LOOKUP String ( indexes )? )
+                        // TL.g:175:28: ^( LOOKUP String ( indexes )? )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(LOOKUP, "LOOKUP"), root_1);
 
                         adaptor.addChild(root_1, stream_String.nextNode());
-                        // TL.g:176:44: ( indexes )?
+                        // TL.g:175:44: ( indexes )?
                         if ( stream_indexes.hasNext() ) {
                             adaptor.addChild(root_1, stream_indexes.nextTree());
 
@@ -3547,7 +3546,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "list"
-    // TL.g:179:1: list : '[' ( exprList )? ']' -> ^( LIST ( exprList )? ) ;
+    // TL.g:178:1: list : '[' ( exprList )? ']' -> ^( LIST ( exprList )? ) ;
     public final TLParser.list_return list() throws RecognitionException {
         TLParser.list_return retval = new TLParser.list_return();
         retval.start = input.LT(1);
@@ -3565,13 +3564,13 @@ public class TLParser extends Parser {
         RewriteRuleTokenStream stream_Close_Bracket=new RewriteRuleTokenStream(adaptor,"token Close_Bracket");
         RewriteRuleSubtreeStream stream_exprList=new RewriteRuleSubtreeStream(adaptor,"rule exprList");
         try {
-            // TL.g:180:3: ( '[' ( exprList )? ']' -> ^( LIST ( exprList )? ) )
-            // TL.g:180:6: '[' ( exprList )? ']'
+            // TL.g:179:3: ( '[' ( exprList )? ']' -> ^( LIST ( exprList )? ) )
+            // TL.g:179:6: '[' ( exprList )? ']'
             {
             char_literal109=(Token)match(input,Open_Bracket,FOLLOW_Open_Bracket_in_list1115);  
             stream_Open_Bracket.add(char_literal109);
 
-            // TL.g:180:10: ( exprList )?
+            // TL.g:179:10: ( exprList )?
             int alt32=2;
             int LA32_0 = input.LA(1);
 
@@ -3580,7 +3579,7 @@ public class TLParser extends Parser {
             }
             switch (alt32) {
                 case 1 :
-                    // TL.g:180:10: exprList
+                    // TL.g:179:10: exprList
                     {
                     pushFollow(FOLLOW_exprList_in_list1117);
                     exprList110=exprList();
@@ -3610,14 +3609,14 @@ public class TLParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 180:24: -> ^( LIST ( exprList )? )
+            // 179:24: -> ^( LIST ( exprList )? )
             {
-                // TL.g:180:27: ^( LIST ( exprList )? )
+                // TL.g:179:27: ^( LIST ( exprList )? )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(LIST, "LIST"), root_1);
 
-                // TL.g:180:34: ( exprList )?
+                // TL.g:179:34: ( exprList )?
                 if ( stream_exprList.hasNext() ) {
                     adaptor.addChild(root_1, stream_exprList.nextTree());
 
@@ -3656,7 +3655,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "exprList"
-    // TL.g:183:1: exprList : expression ( ',' expression )* -> ^( EXP_LIST ( expression )+ ) ;
+    // TL.g:182:1: exprList : expression ( ',' expression )* -> ^( EXP_LIST ( expression )+ ) ;
     public final TLParser.exprList_return exprList() throws RecognitionException {
         TLParser.exprList_return retval = new TLParser.exprList_return();
         retval.start = input.LT(1);
@@ -3673,8 +3672,8 @@ public class TLParser extends Parser {
         RewriteRuleTokenStream stream_Comma=new RewriteRuleTokenStream(adaptor,"token Comma");
         RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
         try {
-            // TL.g:184:3: ( expression ( ',' expression )* -> ^( EXP_LIST ( expression )+ ) )
-            // TL.g:184:6: expression ( ',' expression )*
+            // TL.g:183:3: ( expression ( ',' expression )* -> ^( EXP_LIST ( expression )+ ) )
+            // TL.g:183:6: expression ( ',' expression )*
             {
             pushFollow(FOLLOW_expression_in_exprList1143);
             expression112=expression();
@@ -3682,7 +3681,7 @@ public class TLParser extends Parser {
             state._fsp--;
 
             stream_expression.add(expression112.getTree());
-            // TL.g:184:17: ( ',' expression )*
+            // TL.g:183:17: ( ',' expression )*
             loop33:
             do {
                 int alt33=2;
@@ -3695,7 +3694,7 @@ public class TLParser extends Parser {
 
                 switch (alt33) {
             	case 1 :
-            	    // TL.g:184:18: ',' expression
+            	    // TL.g:183:18: ',' expression
             	    {
             	    char_literal113=(Token)match(input,Comma,FOLLOW_Comma_in_exprList1146);  
             	    stream_Comma.add(char_literal113);
@@ -3728,9 +3727,9 @@ public class TLParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 184:35: -> ^( EXP_LIST ( expression )+ )
+            // 183:35: -> ^( EXP_LIST ( expression )+ )
             {
-                // TL.g:184:38: ^( EXP_LIST ( expression )+ )
+                // TL.g:183:38: ^( EXP_LIST ( expression )+ )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(EXP_LIST, "EXP_LIST"), root_1);
@@ -3776,7 +3775,7 @@ public class TLParser extends Parser {
     };
 
     // $ANTLR start "functionCall"
-    // TL.g:187:1: functionCall : Identifier '(' ( exprList )? ')' -> ^( FUNC_CALL Identifier ( exprList )? ) ;
+    // TL.g:186:1: functionCall : Identifier '(' ( exprList )? ')' -> ^( FUNC_CALL Identifier ( exprList )? ) ;
     public final TLParser.functionCall_return functionCall() throws RecognitionException {
         TLParser.functionCall_return retval = new TLParser.functionCall_return();
         retval.start = input.LT(1);
@@ -3797,8 +3796,8 @@ public class TLParser extends Parser {
         RewriteRuleTokenStream stream_Close_Paren=new RewriteRuleTokenStream(adaptor,"token Close_Paren");
         RewriteRuleSubtreeStream stream_exprList=new RewriteRuleSubtreeStream(adaptor,"rule exprList");
         try {
-            // TL.g:188:3: ( Identifier '(' ( exprList )? ')' -> ^( FUNC_CALL Identifier ( exprList )? ) )
-            // TL.g:188:6: Identifier '(' ( exprList )? ')'
+            // TL.g:187:3: ( Identifier '(' ( exprList )? ')' -> ^( FUNC_CALL Identifier ( exprList )? ) )
+            // TL.g:187:6: Identifier '(' ( exprList )? ')'
             {
             Identifier115=(Token)match(input,Identifier,FOLLOW_Identifier_in_functionCall1173);  
             stream_Identifier.add(Identifier115);
@@ -3806,7 +3805,7 @@ public class TLParser extends Parser {
             char_literal116=(Token)match(input,Open_Paren,FOLLOW_Open_Paren_in_functionCall1175);  
             stream_Open_Paren.add(char_literal116);
 
-            // TL.g:188:21: ( exprList )?
+            // TL.g:187:21: ( exprList )?
             int alt34=2;
             int LA34_0 = input.LA(1);
 
@@ -3815,7 +3814,7 @@ public class TLParser extends Parser {
             }
             switch (alt34) {
                 case 1 :
-                    // TL.g:188:21: exprList
+                    // TL.g:187:21: exprList
                     {
                     pushFollow(FOLLOW_exprList_in_functionCall1177);
                     exprList117=exprList();
@@ -3845,15 +3844,15 @@ public class TLParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 188:35: -> ^( FUNC_CALL Identifier ( exprList )? )
+            // 187:35: -> ^( FUNC_CALL Identifier ( exprList )? )
             {
-                // TL.g:188:38: ^( FUNC_CALL Identifier ( exprList )? )
+                // TL.g:187:38: ^( FUNC_CALL Identifier ( exprList )? )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(FUNC_CALL, "FUNC_CALL"), root_1);
 
                 adaptor.addChild(root_1, stream_Identifier.nextNode());
-                // TL.g:188:61: ( exprList )?
+                // TL.g:187:61: ( exprList )?
                 if ( stream_exprList.hasNext() ) {
                     adaptor.addChild(root_1, stream_exprList.nextTree());
 

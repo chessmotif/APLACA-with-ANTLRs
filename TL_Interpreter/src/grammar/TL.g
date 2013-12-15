@@ -33,7 +33,6 @@ tokens {
   public Map<String, Function> functions = new HashMap<String, Function>(); 
    
   private void defineFunction(String id, Object idList, Object block) { 
- 
     // `idList` is possibly null!  Create an empty tree in that case.  
     CommonTree idListTree = idList == null ? new CommonTree() : (CommonTree)idList; 
  

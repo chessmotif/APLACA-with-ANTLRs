@@ -72,7 +72,7 @@ statement returns [TLNode node]
   ;
 
 functionCall  returns [TLNode node]
-  :  ^(FUNC_CALL Identifier exprList?) 
+  :  ^(FUNC_CALL Identifier exprList?) {node = new FunctionCallNode($Identifier.text, $exprList.e, functions);}
   ;
 
 ifStatement returns [TLNode node]
@@ -86,7 +86,8 @@ ifStatement returns [TLNode node]
   ;
     
 idList returns [java.util.List<String> i] 
-  : ^(ID_LIST Identifier+)
+@init {i = new java.util.ArrayList<String>();}
+  : ^(ID_LIST (Identifier {i.add($Identifier.text);})+)
   ;
   
 assignment returns [TLNode node]
@@ -100,7 +101,8 @@ indexes returns [List<TLNode> e]
   ;
   
 exprList   returns [java.util.List<TLNode> e] 
-  :  ^(EXP_LIST expression+)  
+@init  {e = new java.util.ArrayList<TLNode>();}
+  :  ^(EXP_LIST (expression {e.add($expression.node);})+)  
   ;
   
 expression  returns [TLNode node]  
@@ -122,9 +124,9 @@ expression  returns [TLNode node]
   |  ^('^' expression expression)  
   |  ^('&' expression expression)  
   |  ^('|' expression expression)  
-  |  ^(UNARY_MIN expression)  		{node = new MinusNode($expression.node);}
-  |  ^(NOT expression)  			{node = new NotNode($expression.node);}
-  |  ^(BIN_NOT expression)  		{node = new BinNegationNode($expression.node);}
+  |  ^(UNARY_MIN a=expression)  		{node = new MinusNode($a.node);}
+  |  ^(NOT a=expression)  			{node = new NotNode($a.node);}
+  |  ^(BIN_NOT a=expression)  		{node = new BinNegationNode($a.node);}
   |  Number							{node = new AtomNode(Double.parseDouble($Number.text));}
   |  Bool							{node = new AtomNode(Boolean.parseBoolean($Bool.text));}
   |  Null							{node = new AtomNode(null);}
@@ -133,18 +135,13 @@ expression  returns [TLNode node]
   ;
   
 list  returns [TLNode node]  
-  :  ^(LIST exprList?)  
+  :  ^(LIST exprList?)  {node = new ListNode($exprList.e);}
   ;  
   
 lookup  returns [TLNode node]  
-  :  ^(LOOKUP functionCall indexes?)  
-  |  ^(LOOKUP list indexes?)  
-  |  ^(LOOKUP expression indexes?)   
-  |  ^(LOOKUP i=Identifier x=indexes?)  
-  		{ 
-        node = ($x.e != null) 
-          ? new LookupNode(new IdentifierNode($i.text, currentScope), $x.e) 
-          : new IdentifierNode($i.text, currentScope); 
-      }  
-  |  ^(LOOKUP String indexes?)  
+  :  ^(LOOKUP functionCall i=indexes?) {node = $i.e != null ? new LookupNode($functionCall.node, $indexes.e) : $functionCall.node;} 
+  |  ^(LOOKUP list i=indexes?)   			{node = $i.e != null ? new LookupNode($list.node, $indexes.e) : $list.node;}
+  |  ^(LOOKUP expression i=indexes?)   {node = $i.e != null ? new LookupNode($expression.node, $indexes.e) : $expression.node;}
+  |  ^(LOOKUP Identifier i=indexes?)  {node = $i.e != null ? new LookupNode(new IdentifierNode($Identifier.text, currentScope), $indexes.e) : new IdentifierNode($Identifier.text, currentScope);}
+  |  ^(LOOKUP String i=indexes?)  {node = $i.e != null ? new LookupNode(new AtomNode($String.text), $indexes.e) : new AtomNode($String.text);}
   ;    

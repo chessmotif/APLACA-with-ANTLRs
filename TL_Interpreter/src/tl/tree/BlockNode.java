@@ -27,10 +27,12 @@ public class BlockNode implements TLNode {
   public TLValue evaluate() {
     for(TLNode stat : statements) {
       TLValue value = stat.evaluate();
+      /*
       if(value != TLValue.VOID) {
         // return early from this block if value is a return statement
         return value;
       }
+      */
     }
 
     // return VOID or returnStatement.evaluate() if it's not null

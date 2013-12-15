@@ -23,6 +23,6 @@ public class BinNegationNode extends UnaryNode {
 
 	  @Override
 	  public String toString() {
-	    return String.format("!(%s)", exp);
+	    return String.format("~(%s)", exp);
 	  }
 }
