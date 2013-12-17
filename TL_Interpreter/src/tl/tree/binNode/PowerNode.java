@@ -19,7 +19,7 @@ public class PowerNode extends BinNode {
     
     // number * number
     if(a.isNumber() && b.isNumber()) {
-      return new TLValue(a.asDouble() * b.asDouble());
+      return new TLValue(Math.pow(a.asDouble(), b.asDouble()));
     }
 
     throw new RuntimeException("illegal expression: " + this);
@@ -27,6 +27,6 @@ public class PowerNode extends BinNode {
 
   @Override
   public String toString() {
-    return String.format("(%s * %s)", lhs, rhs);
+    return String.format("(%s ** %s)", lhs, rhs);
   }
 }

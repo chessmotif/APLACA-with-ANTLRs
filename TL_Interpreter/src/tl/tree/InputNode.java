@@ -22,7 +22,7 @@ public class InputNode implements TLNode {
 
     @Override
     public TLValue evaluate() {
-        out.println(prompt);
+        out.print(prompt);
         Scanner keyboard = new Scanner(System.in);
 
         if(keyboard.hasNextDouble()) 

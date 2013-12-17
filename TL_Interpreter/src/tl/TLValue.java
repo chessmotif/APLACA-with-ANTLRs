@@ -1,6 +1,7 @@
 package tl;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class TLValue implements Comparable<TLValue> {
 
@@ -121,6 +122,18 @@ public class TLValue implements Comparable<TLValue> {
 
   @Override
   public String toString() {
-    return isNull() ? "NULL" : isVoid() ? "VOID" : String.valueOf(value);
+    //return isNull() ? "NULL" : isVoid() ? "VOID" : String.valueOf(value);
+	  if (isNull())
+		  return "NULL";
+	  if (isVoid())
+		  return "VOID";
+	  if (isNumber()) {
+		  double a = Double.parseDouble(value.toString());
+		  if (a == Math.floor(a))
+			  return ((int)a)+"";
+		  return a+"";
+	  }
+	  
+	  return String.valueOf(value);
   }
 }

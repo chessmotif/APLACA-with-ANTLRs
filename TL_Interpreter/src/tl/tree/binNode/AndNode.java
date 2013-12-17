@@ -19,7 +19,7 @@ public class AndNode extends BinNode {
   {
 	  return new TLValue(a.asBoolean()&&b.asBoolean());
   }
-    // anything else for division? probs not
+
     throw new RuntimeException("illegal expression: " + this);
   }
 

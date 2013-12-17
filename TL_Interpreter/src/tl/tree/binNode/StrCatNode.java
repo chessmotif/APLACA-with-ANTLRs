@@ -17,8 +17,6 @@ public class StrCatNode extends BinNode {
     TLValue a = lhs.evaluate();
     TLValue b = rhs.evaluate();
     
-   
-
     // string + any, strcat
     if(a.isString()) {
       return new TLValue(a.asString() + "" + b.toString());
