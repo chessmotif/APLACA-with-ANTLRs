@@ -83,7 +83,12 @@ fi{
 	defaultsomething;
 }
 
-APLACA contains no iterative statements; recursion is used instead.
+While statements:
+
+while a >_> b
+{
+	functioncall();
+}
 
 ---FUNCTIONS---
 
