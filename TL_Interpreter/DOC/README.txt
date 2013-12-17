@@ -35,6 +35,7 @@ x >_< y - not equal to
 Logic:
 x &_& y - and
 x |_| y - or
+x ^_^ y - xor
 !x - not
 
 Assignment:
