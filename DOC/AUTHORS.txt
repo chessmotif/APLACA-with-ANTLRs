@@ -4,6 +4,10 @@
 
 >>>>>>>AUTHORS<<<<<<<
 Duke Danielle delos Santos
+duke.delossantos@dlsu.ph
+
 Andrew Laron
+andrew.laron@dlsu.ph
 
 >>>>>>>DECLARATION OF ORIGINAL WORK<<<<<<<
+This project was based on a tutorial by Bart Kiers. However, specific tokens, lexing rules and parsing rules are original to APLACA.

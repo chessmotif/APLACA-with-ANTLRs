@@ -1,10 +1,14 @@
 ======================================
 ====CSC617M INTERPRETER BUILD FILE====
 ======================================
->>>>>>>COMPILING THE INTERPRETER<<<<<<<
+>>>>>>>COMPILING AND RUNNING THE INTERPRETER<<<<<<<
+1. Import the project folder to Eclipse.
+2. From Eclipse, run the Main class, in the package src/tl.
 
->>>>>>>RUNNING THE INTERPRETER<<<<<<<
-
->>>>>>>COMPILING APLACA PROGRAMS<<<<<<<
 
 >>>>>>>RUNNING APLACA PROGRAMS<<<<<<<
+1. Save the APLACA program file to the same folder as the interpreter. File extension is not important.
+2. Run the interpreter.
+3. Enter the name of the program file.
+4. The APLACA program will be compiled and executed.
+
