@@ -1,0 +1,41 @@
+func helloWorld(){
+	out <- 'hello world';
+}
+
+func sayMyName(){
+	out <- 'Hi, ' # in ('What is your name?');
+}
+
+func weightTest(){
+	weight <-in ('What is your weight?');
+	if weight <_< 100{
+		out <- 'Eat something!';
+	}
+	fiif weight >_= 100 &_& weight =_< 200{
+		out <- 'What a boring weight.';
+	}
+	fiif weight >_= 200 &_& weight =_< 300{
+		out <- 'CAUTION: WIDE LOAD';
+	}
+	fi{
+		out<-'Congratulations, you are a planet.';
+	}
+}
+
+func printlol()
+{
+	
+	if num >_> 0{	
+		printlol(num-1);
+		out<-'lol '#num;
+	}
+}
+
+func lols()
+{
+	num<-in('Enter number of lols');
+	printlol(num);
+	
+}
+
+

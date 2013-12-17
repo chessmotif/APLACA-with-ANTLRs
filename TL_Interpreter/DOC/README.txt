@@ -2,15 +2,7 @@
 ====CSC617M INTERPRETER README FILE====
 =======================================
 >>>>>>>PROJECT INFORMATION<<<<<<<
-
-	   wow					
-				regluar expersion
-	  	such project
-					wow
-    very description
-			so 4.0
-				#MasterClass
-           many amaze
+This project is an interpreter using Java and ANTLR for a simple custom programming language.
 
 >>>>>>>LANGUAGE DESCRIPTION<<<<<<<
 This language is called APLACA (A Programming Language Almost Called Alpaca).
@@ -43,10 +35,9 @@ x >_< y - not equal to
 Logic:
 x &_& y - and
 x |_| y - or
+x ^_^ y - xor
 !x - not
 
-
-/*EVERYTHING BELOW THIS POINT IS NOT FULLY IMPLEMENTED*/
 Assignment:
 var <- (exp)
 example:
@@ -68,12 +59,8 @@ string:
 'hello'
 'a'
 
-list: (unimplemented)
-[1,2,3]
-
 null:
 null
-
 
 ---VARIABLES---
 Identifiers must start with any letter or an underscore, and contain only alphanumeric characters and underscores.
@@ -82,9 +69,7 @@ Example: _employees
 	second_type
 	figure9
 
-
----CONDITIONALS AND RECURSION---
-
+---CONDITIONALS---
 
 If statements:
 
@@ -98,19 +83,23 @@ fi{
 	defaultsomething;
 }
 
-
 APLACA contains no iterative statements; recursion is used instead.
 
 ---FUNCTIONS---
-func func_name (param1 param2...) {
 
-statement;
-return var;
+Function declaration:
+
+func func_name (param1 param2...) {
+	statement;
+	return var; ##non-recursive, optional
 }
 
+Function call:
+
+funcname(a,b);
 
 ---INPUT/OUTPUT---
-x <- in # "hi"
+x <- in # 'hi'
 out <- x + 5
 
 ---COMMENTS---
@@ -119,8 +108,7 @@ Multi-line: /* this is also
 		a comment*/
 
 >>>>>>>RESOURCES AND TOOLS USED<<<<<<<
-The APLACA interpreter makes use of ANTLR 3.2. It also uses code based on code snippets from the tutorial "Creating your own programming language with ANTLR", by B. Kiers.
-
+The APLACA interpreter makes use of ANTLR 3.2. It also includes code based on code snippets from the tutorial "Creating your own programming language with ANTLR", by Bart Kiers.
 The following resources were referred to in the making of this project:
 
 	Niemann, T. Lex and Yacc Tutorial. Retrieved from http://epaperpress.com/lexandyacc/
@@ -130,13 +118,11 @@ The following resources were referred to in the making of this project:
 
 >>>>>>>TARGET PLATFORM<<<<<<<
 APLACA interprets to Java code, so it should be capable of running on any system which can run Java 6 or later.
+
 >>>>>>>KNOWN PROBLEMS<<<<<<<
-Bugs:
--cockroach
--beetle
--grasshopper
--mosquito
--wasp
+Loops do not work properly.
+Recursion only works on void functions.
+Newlines cannot be printed.
 
 >>>>>>>MISCELLANEOUS INFORMATION<<<<<<<
 This text file was created using state-of-the-art Notepad technology.
