@@ -63,6 +63,11 @@ statement
   :  assignment ';' -> assignment
   |  functionCall ';' -> functionCall
   |  ifStatement
+  |  whileStatement
+  ;
+
+whileStatement
+  :  While expression block -> ^(While expression block)
   ;
 
 ifStatement
@@ -117,7 +122,11 @@ orExpr
   ;
 
 andExpr
-  :  bitORExpr ('&_&'^ bitORExpr)*
+  :  xorExpr ('&_&'^ xorExpr)*
+  ;
+
+xorExpr
+  :  bitORExpr ('^_^'^ bitORExpr)*
   ;
 
 bitORExpr
@@ -141,7 +150,7 @@ relExpr
   ;
 
 addExpr
-  :  mulExpr (('+' | '-')^ mulExpr)*
+  :  mulExpr (('+' | '-' | '#')^ mulExpr)*
   ;
 
 mulExpr
@@ -164,7 +173,7 @@ atom
   |  Number
   |  Bool
   |  lookup
-  |		In '(' String? ')' -> ^(In String?) // added this line
+  |	 In ('(' String ')')? -> ^(In String?) // added this line
   ;
  
 lookup
@@ -192,6 +201,7 @@ If				: 'if';
 Else_If			: 'fiif';
 Else			: 'fi';
 Return			: 'return';
+While			: 'while';
 Out				: 'out';
 In				: 'in';
 Null			: 'null';

@@ -69,10 +69,15 @@ statement returns [TLNode node]
   : assignment {node =$assignment.node;}
   | functionCall {node = $functionCall.node;}
   | ifStatement {node = $ifStatement.node;}
+  | whileStatement {node = $whileStatement.node;}
   ;
 
 functionCall  returns [TLNode node]
   :  ^(FUNC_CALL Identifier exprList?) {node = new FunctionCallNode($Identifier.text, $exprList.e, functions);}
+  ;
+
+whileStatement returns [TLNode node]
+  :  ^(While expression block) {node = new WhileNode($expression.node, $block.node);}
   ;
 
 ifStatement returns [TLNode node]
@@ -106,9 +111,9 @@ exprList   returns [java.util.List<TLNode> e]
   ;
   
 expression  returns [TLNode node]  
-  :  ^('|_|' expression expression)  	{node = new OrNode($a.node, $b.node);}
-  |  ^('&_&' expression expression)  	{node = new AndNode($a.node, $b.node);}
-  |  ^('^_^' expression expression)  	{node = new XorNode($a.node, $b.node);}
+  :  ^('|_|' a=expression b=expression)  	{node = new OrNode($a.node, $b.node);}
+  |  ^('&_&' a=expression b=expression)  	{node = new AndNode($a.node, $b.node);}
+  |  ^('^_^' a=expression b=expression)  	{node = new XorNode($a.node, $b.node);}
   |  ^('=_=' a=expression b=expression)  {node = new EqNode($a.node, $b.node);}
   |  ^('>_<' a=expression b=expression)  {node = new NENode($a.node, $b.node);}
   |  ^('>_=' a=expression b=expression)  {node = new GTENode($a.node, $b.node);}
@@ -133,7 +138,7 @@ expression  returns [TLNode node]
   |  Bool							{node = new AtomNode(Boolean.parseBoolean($Bool.text));}
   |  Null							{node = new AtomNode(null);}
   |  lookup             			{node = $lookup.node;}  
-  |  ^(In String?)                                  {node = new InputNode($String.text);} // added this line
+  |  ^(In String?)                  {node = new InputNode($String.text);} // added this line
   ;
   
 list  returns [TLNode node]  

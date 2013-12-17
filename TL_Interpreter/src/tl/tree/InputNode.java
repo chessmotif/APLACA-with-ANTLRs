@@ -1,4 +1,4 @@
-package tl.tree.functions;
+package tl.tree;
 
 import tl.TLValue;
 import tl.tree.TLNode;
@@ -22,7 +22,7 @@ public class InputNode implements TLNode {
 
     @Override
     public TLValue evaluate() {
-        out.println(prompt);
+        out.print(prompt);
         Scanner keyboard = new Scanner(System.in);
 
         if(keyboard.hasNextDouble()) 
