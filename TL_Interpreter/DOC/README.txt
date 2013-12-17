@@ -115,6 +115,7 @@ APLACA interprets to Java code, so it should be capable of running on any system
 >>>>>>>KNOWN PROBLEMS<<<<<<<
 Loops do not work properly.
 Recursion only works on void functions.
+Newlines cannot be printed.
 
 >>>>>>>MISCELLANEOUS INFORMATION<<<<<<<
 This text file was created using state-of-the-art Notepad technology.
