@@ -1,4 +1,4 @@
-package tl.tree.functions;
+package tl.tree;
 
 import tl.TLValue;
 import tl.tree.TLNode;
