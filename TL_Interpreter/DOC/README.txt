@@ -113,7 +113,8 @@ The following resources were referred to in the making of this project:
 APLACA interprets to Java code, so it should be capable of running on any system which can run Java 6 or later.
 
 >>>>>>>KNOWN PROBLEMS<<<<<<<
-Recursion and loops do not work properly.
+Loops do not work properly.
+Recursion only works on void functions.
 
 >>>>>>>MISCELLANEOUS INFORMATION<<<<<<<
 This text file was created using state-of-the-art Notepad technology.
