@@ -51,7 +51,7 @@ bool:
 true
 false
 
-number: 
+number: (both integers and floats are recognized, but generally handled the same way)
 1
 1.43
 
