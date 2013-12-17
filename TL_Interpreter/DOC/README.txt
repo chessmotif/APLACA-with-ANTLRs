@@ -85,11 +85,17 @@ fi{
 APLACA contains no iterative statements; recursion is used instead.
 
 ---FUNCTIONS---
-func func_name (param1 param2...) {
 
-statement;
-return var;
+Function declaration:
+
+func func_name (param1 param2...) {
+	statement;
+	return var; ##non-recursive, optional
 }
+
+Function call:
+
+funcname(a,b);
 
 ---INPUT/OUTPUT---
 x <- in # 'hi'
